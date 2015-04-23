@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.MVC", "RoadMaintenance.MVC\RoadMaintenance.MVC.csproj", "{9319AB0F-7082-46DC-A49F-F1EE4A153ECB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.DataService", "RoadMaintenance.DataService\RoadMaintenance.DataService.csproj", "{36BBE207-A837-442A-B17B-C0F40A6E275F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9319AB0F-7082-46DC-A49F-F1EE4A153ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9319AB0F-7082-46DC-A49F-F1EE4A153ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9319AB0F-7082-46DC-A49F-F1EE4A153ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
