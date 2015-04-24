@@ -14,7 +14,6 @@
         </div>
     </section>
 }
-<h3>Test Bed</h3>
 <br/>
 <form>
     <input type="text" id="txtSearch"/> <input type="button" value="search" id="btnSearch"/>
@@ -37,9 +36,10 @@
 
         function formatListItem(dataItem) {
             return $("<ul>").addClass("horizontalList")
-                   .append($("<li>", { text: dataItem.Address1 }))
-                   .append($("<li>", { text: dataItem.Address2 }))
-                   .append($("<li>", { text: dataItem.Type }));
+                .append($("<li>", { text: dataItem.Address1 }))
+                .append($("<li>", { text: dataItem.Address2 }))
+                .append($("<li>", { text: dataItem.Type }))
+                .append($("<li>", { text: dataItem.Status }));
         };
     </script>
 }
