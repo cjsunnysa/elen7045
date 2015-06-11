@@ -1,37 +1,4 @@
-﻿/* my styles
-----------------------------------------------------*/
-#faults {
-    list-style-type: none;
-    padding: 0 0 0 0;
-    margin: 10px 0 0 0;
-}
-
-#faults > li {
-    background-color: purple;
-    padding: 5px 3px;
-    color: white;
-}
-
-#txtSearch {
-    max-width: 30%;
-    margin-right: 5px;
-}
-
-ul.horizontalList {
-    list-style-type: none;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-}
-
-ul.horizontalList li {
-    display: inline-block;
-    padding-right: 20px;
-    min-width: 120px;
-}
-
-
-
-html {
+﻿html {
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
@@ -46,6 +13,14 @@ body {
     margin: 0;
     padding: 0;
 }
+
+
+#faults {
+    border-style: none;
+}
+
+
+
 
 a {
     color: #333;

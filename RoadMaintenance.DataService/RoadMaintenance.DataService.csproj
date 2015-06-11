@@ -43,12 +43,16 @@
     <Compile Include="Datastore\RoadMaintenanceDatabase.cs" />
     <Compile Include="DTO\AddressDTO.cs" />
     <Compile Include="DTO\FaultDTO.cs" />
+    <Compile Include="DTO\FaultSearchDTO.cs" />
+    <Compile Include="DTO\FaultStatusDTO.cs" />
+    <Compile Include="DTO\FaultTypeDTO.cs" />
+    <Compile Include="DTO\GeoCode.cs" />
     <Compile Include="FaultDatabaseRepository.cs" />
     <Compile Include="Interfaces\IFaultRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRoadMaintenanceDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

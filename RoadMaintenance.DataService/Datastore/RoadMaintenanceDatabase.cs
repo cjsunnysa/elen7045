@@ -1,108 +1,115 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using RoadMaintenance.DataService.DTO;
+using RoadMaintenance.DataService.Interfaces;
 
 namespace RoadMaintenance.DataService.Datastore
 {
-    public static class RoadMaintenanceDatabase
+    public class RoadMaintenanceDatabase : IRoadMaintenanceDatasource
     {
-        public static FaultDTO[] GetAllFaults()
+        private readonly FaultDTO[] _faults;
+
+        public RoadMaintenanceDatabase()
+        {
+            _faults = CreateData();
+        }
+
+        public IEnumerable<FaultDTO> GetFaults()
+        {
+            return _faults;
+        }
+
+        public IEnumerable<FaultTypeDTO> GetFaultTypes()
+        {
+            return LookupTables.FaultTypes.Select(t => new FaultTypeDTO {Id = t.Key, Description = t.Value});
+        }
+
+        public IEnumerable<FaultStatusDTO> GetFaultStatuses()
+        {
+            return LookupTables.FaultStatuses.Select(s => new FaultStatusDTO {Id = s.Key, Description = s.Value});
+        }
+
+        private FaultDTO[] CreateData()
         {
             return new[]
             {
                 new FaultDTO
                 {
                     Id = 1,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "1 Sandton Dr",
-                        Address2 = "",
-                        Suburb   = "Sandton",
-                        PostCode = "2196",
-                    },
+                    Latitude = null,
+                    Longitude = null,
+                    Street = "8th Street",
+                    Suburb = "Sandton",
+                    PostCode = "2196",
                     StatusId = 1,
-                    FaultTypeId = 1,
+                    Status = LookupTables.FaultStatuses[1],
+                    TypeId = 1,
+                    Type = LookupTables.FaultTypes[1],
                     EstimatedCompletionDate = null,
-                },
-                new FaultDTO
-                {
-                    Id = 2,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "cnr Ballyclare",
-                        Address2 = "Sycamore",
-                        Suburb   = "Sandton",
-                        PostCode = "2191",
-                    },
-                    StatusId = 1,
-                    FaultTypeId = 2,
-                    EstimatedCompletionDate = null,
-                },
-                new FaultDTO
-                {
-                    Id = 3,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "cnr Beyers Naude",
-                        Address2 = "Christiaan De Wet",
-                        Suburb   = "Randburg",
-                        PostCode = "2196",
-                    },
-                    StatusId = 1,
-                    FaultTypeId = 3,
-                    EstimatedCompletionDate = null,
+                    DateCompleted = null,
                 },
                 new FaultDTO
                 {
                     Id = 4,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "cnr Sandton drive",
-                        Address2 = "Elizabeth ave",
-                        Suburb   = "Sandton",
-                        PostCode = "2196",
-                    },
+                    Latitude = "-26.160226",
+                    Longitude = "27.975857",
+                    Street = "8th Street",
+                    Suburb = "Randburg",
+                    PostCode = "2195",
                     StatusId = 1,
-                    FaultTypeId = 4,
+                    Status = LookupTables.FaultStatuses[5],
+                    TypeId = 1,
+                    Type = LookupTables.FaultTypes[3],
                     EstimatedCompletionDate = null,
+                    DateCompleted = null,
                 },
                 new FaultDTO
                 {
                     Id = 5,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "cnr Boundry Ln",
-                        Address2 = "Victoria Ave",
-                        Suburb   = "Sandton",
-                        PostCode = "2196",
-                    },
+                    Latitude = null,
+                    Longitude = null,
+                    Street = "12th Street",
+                    Suburb = "Linden",
+                    PostCode = "2105",
                     StatusId = 1,
-                    FaultTypeId = 5,
+                    Status = LookupTables.FaultStatuses[5],
+                    TypeId = 1,
+                    Type = LookupTables.FaultTypes[3],
                     EstimatedCompletionDate = null,
+                    DateCompleted = null,
                 },
                 new FaultDTO
                 {
-                    Id = 6,
-                    Address = new AddressDTO
-                    {
-                        GeoCode  = "",
-                        Address1 = "Boundry Rd",
-                        Address2 = "",
-                        Suburb   = "Sandton",
-                        PostCode = "2196",
-                    },
+                    Id = 10,
+                    Latitude = null,
+                    Longitude = null,
+                    Street = "Hill St",
+                    Suburb = "Randburg",
+                    PostCode = "2194",
                     StatusId = 1,
-                    FaultTypeId = 1,
+                    Status = LookupTables.FaultStatuses[5],
+                    TypeId = 1,
+                    Type = LookupTables.FaultTypes[3],
                     EstimatedCompletionDate = null,
+                    DateCompleted = null,
+                },
+                new FaultDTO
+                {
+                    Id = 15,
+                    Latitude = null,
+                    Longitude = null,
+                    Street = "Barry Hertzog",
+                    Suburb = "Greenside",
+                    PostCode = "2195",
+                    StatusId = 1,
+                    Status = LookupTables.FaultStatuses[5],
+                    TypeId = 1,
+                    Type = LookupTables.FaultTypes[3],
+                    EstimatedCompletionDate = null,
+                    DateCompleted = null,
                 },
             };
         }
+
     }
 }

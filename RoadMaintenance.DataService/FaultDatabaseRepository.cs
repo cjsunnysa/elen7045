@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using RoadMaintenance.DataService.Datastore;
+﻿using System.Linq;
 using RoadMaintenance.DataService.DTO;
 using RoadMaintenance.DataService.Interfaces;
 
@@ -8,24 +6,36 @@ namespace RoadMaintenance.DataService
 {
     public class FaultDatabaseRepository : IFaultRepository
     {
+        private readonly IRoadMaintenanceDatasource _dbContext;
+
+        public FaultDatabaseRepository(IRoadMaintenanceDatasource context)
+        {
+            _dbContext = context;
+        }
+        
         public FaultDTO SelectById(int id)
         {
-            return RoadMaintenanceDatabase.GetAllFaults().SingleOrDefault(fault => fault.Id == id);
+            return _dbContext.GetFaults().SingleOrDefault(fault => fault.Id == id);
         }
 
         public FaultDTO[] SelectAll()
         {
-            return RoadMaintenanceDatabase.GetAllFaults();
+            return _dbContext.GetFaults().ToArray();
         }
 
-        public FaultDTO[] SelectByStatusId(int statusId)
+        public FaultDTO[] SelectByFaultSearch(FaultSearchDTO faultSearch)
         {
-            return RoadMaintenanceDatabase.GetAllFaults().Where(fault => fault.StatusId == statusId).ToArray();
-        }
-
-        public FaultDTO[] SelectByAddressProximity(AddressDTO address)
-        {
-            return RoadMaintenanceDatabase.GetAllFaults().Where(fault => fault.Address.Suburb.Equals(address.Suburb, StringComparison.CurrentCultureIgnoreCase)).ToArray();
+            var street = faultSearch.Street;
+            var suburb = faultSearch.Suburb;
+            var postCode = faultSearch.PostCode;
+            
+            return
+                _dbContext.GetFaults()
+                    .Where(fault => 
+                        (string.IsNullOrEmpty(street)   || fault.Street.ToLower().Contains(street.ToLower()) ) && 
+                        (string.IsNullOrEmpty(suburb)   || fault.Suburb.ToLower().Contains(suburb.ToLower()) ) && 
+                        (string.IsNullOrEmpty(postCode) || fault.PostCode.Contains(postCode) ) 
+                    ).ToArray();
         }
     }
 }

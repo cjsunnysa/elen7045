@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Ninject.Web.Mvc;
+using RoadMaintenance.MVC.App_Start;
 
 namespace RoadMaintenance.MVC
 {
@@ -17,9 +14,14 @@ namespace RoadMaintenance.MVC
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.Clear();
-            config.Formatters.Add(new JsonMediaTypeFormatter());
-            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
+            //var formatter =
+            //    config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(f => f.MediaType == "application/xml");
+
+            //if (formatter != null)
+            //    config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(formatter);
+
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
