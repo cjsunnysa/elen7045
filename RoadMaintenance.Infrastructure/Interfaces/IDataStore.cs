@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FaultLogging.Persistence.Interfaces
+namespace RoadMaintenance.FaultLogging.Repos.Interfaces
 {
     public interface IDataStore<out TDataType>
     {

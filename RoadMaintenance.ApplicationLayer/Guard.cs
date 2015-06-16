@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace FaultLogging.Core.Shared
+namespace RoadMaintenance.ApplicationLayer
 {
     public static class Guard
     {

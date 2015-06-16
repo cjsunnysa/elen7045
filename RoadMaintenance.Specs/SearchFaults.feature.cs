@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace FaultLogging.Specs
+namespace RoadMaintenance.FaultLogging.Specs
 {
     using TechTalk.SpecFlow;
     

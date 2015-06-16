@@ -1,7 +1,6 @@
-﻿using System;
-using FaultLogging.Core.Interfaces;
+﻿using RoadMaintenance.FaultLogging.Core.Interfaces;
 
-namespace FaultLogging.Core.Model
+namespace RoadMaintenance.FaultLogging.Core.Model
 {
     public class Address : ValueObject<Address>
     {

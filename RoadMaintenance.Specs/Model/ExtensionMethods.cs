@@ -1,7 +1,7 @@
-﻿using FaultLogging.Core.Enums;
-using FaultLogging.Core.Model;
+﻿using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.SharedKernel.Core.Enums;
 
-namespace FaultLogging.Specs.Model
+namespace RoadMaintenance.FaultLogging.Specs.Model
 {
     public static class ExtensionMethods
     {

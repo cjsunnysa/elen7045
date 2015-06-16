@@ -1,8 +1,6 @@
-﻿using System;
-using FaultLogging.Core.Shared;
+﻿using RoadMaintenance.ApplicationLayer;
 
-
-namespace FaultLogging.Core.Interfaces
+namespace RoadMaintenance.FaultLogging.Core.Interfaces
 {
     public abstract class Entity<TId>
     {

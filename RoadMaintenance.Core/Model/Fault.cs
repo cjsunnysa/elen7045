@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using FaultLogging.Core.Enums;
-using FaultLogging.Core.Interfaces;
-using Guard = FaultLogging.Core.Shared.Guard;
-using Type = FaultLogging.Core.Enums.Type;
+using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.FaultLogging.Core.Interfaces;
+using RoadMaintenance.SharedKernel.Core.Enums;
+using Type = RoadMaintenance.SharedKernel.Core.Enums.Type;
 
-namespace FaultLogging.Core.Model
+namespace RoadMaintenance.FaultLogging.Core.Model
 {
     public class Fault : Entity<Guid>, IEquatable<Fault>
     {
@@ -13,7 +13,7 @@ namespace FaultLogging.Core.Model
         public Status Status { get; private set; }
         public Address Address { get; private set; }
         
-        private List<Transaciton> _transactions;
+        private readonly List<Transaciton> _transactions;
         public IEnumerable<Transaciton> Transacitons
         {
             get { return _transactions; }

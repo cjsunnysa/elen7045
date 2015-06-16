@@ -1,18 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using FaultLogging.Core.Model;
-using FaultLogging.Persistence;
-using FaultLogging.Persistence.Interfaces;
-using FaultLogging.Specs.Model;
 using Moq;
 using Ninject;
 using NUnit.Framework;
+using RoadMaintenance.FaultLogging.Core.DTO;
+using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.FaultLogging.Repos;
+using RoadMaintenance.FaultLogging.Repos.Interfaces;
+using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.MVC.Controllers;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-namespace FaultLogging.Specs
+namespace RoadMaintenance.FaultLogging.Specs
 {
     [Binding]
     public class SearchFaultsSteps

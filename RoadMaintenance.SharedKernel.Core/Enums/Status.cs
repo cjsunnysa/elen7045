@@ -1,4 +1,4 @@
-namespace FaultLogging.Core.Enums
+namespace RoadMaintenance.SharedKernel.Core.Enums
 {
     public enum Status
     {

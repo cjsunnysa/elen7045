@@ -316,13 +316,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.Core\FaultLogging.Core.csproj">
+    <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</Project>
-      <Name>FaultLogging.Core</Name>
+      <Name>RoadMaintenance.FaultLogging.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.Infrastructure\FaultLogging.Persistence.csproj">
+    <ProjectReference Include="..\RoadMaintenance.Infrastructure\RoadMaintenance.FaultLogging.Repos.csproj">
       <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
-      <Name>FaultLogging.Persistence</Name>
+      <Name>RoadMaintenance.FaultLogging.Repos</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

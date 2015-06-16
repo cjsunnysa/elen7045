@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using FaultLogging.Core.Model;
- 
-namespace FaultLogging.Persistence.Interfaces
+using RoadMaintenance.FaultLogging.Core.DTO;
+using RoadMaintenance.FaultLogging.Core.Model;
+
+namespace RoadMaintenance.FaultLogging.Repos.Interfaces
 {
     public interface IFaultRepository
     {

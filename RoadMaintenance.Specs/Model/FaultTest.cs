@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FaultLogging.Specs.Model
+namespace RoadMaintenance.FaultLogging.Specs.Model
 {
     public class FaultTest
     {

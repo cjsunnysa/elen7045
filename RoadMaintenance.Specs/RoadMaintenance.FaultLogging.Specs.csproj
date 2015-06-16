@@ -7,8 +7,8 @@
     <ProjectGuid>{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FaultLogging.Specs</RootNamespace>
-    <AssemblyName>FaultLogging.Specs</AssemblyName>
+    <RootNamespace>RoadMaintenance.FaultLogging.Specs</RootNamespace>
+    <AssemblyName>RoadMaintenance.FaultLogging.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -82,17 +82,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.Core\FaultLogging.Core.csproj">
+    <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</Project>
-      <Name>FaultLogging.Core</Name>
+      <Name>RoadMaintenance.FaultLogging.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.Infrastructure\FaultLogging.Persistence.csproj">
+    <ProjectReference Include="..\RoadMaintenance.Infrastructure\RoadMaintenance.FaultLogging.Repos.csproj">
       <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
-      <Name>FaultLogging.Persistence</Name>
+      <Name>RoadMaintenance.FaultLogging.Repos</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.MVC\RoadMaintenance.MVC.csproj">
       <Project>{8CA22219-F124-4E22-848D-3C0196F7008B}</Project>
       <Name>RoadMaintenance.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6F1D-4662-B241-B81ACE3A1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

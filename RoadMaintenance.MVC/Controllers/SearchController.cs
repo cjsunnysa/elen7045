@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
-using FaultLogging.Core.Model;
-using FaultLogging.Persistence.Interfaces;
+using RoadMaintenance.FaultLogging.Core.DTO;
+using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.FaultLogging.Repos.Interfaces;
 
 namespace RoadMaintenance.MVC.Controllers
 {

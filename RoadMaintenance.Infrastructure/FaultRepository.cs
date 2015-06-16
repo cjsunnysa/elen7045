@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FaultLogging.Core.Model;
-using FaultLogging.Persistence.Interfaces;
+using RoadMaintenance.FaultLogging.Core.DTO;
+using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.FaultLogging.Repos.Interfaces;
 
-namespace FaultLogging.Persistence
+namespace RoadMaintenance.FaultLogging.Repos
 {
     public class FaultRepository : IFaultRepository
     {
