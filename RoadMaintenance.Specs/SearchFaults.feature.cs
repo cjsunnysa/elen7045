@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace RoadMaintenance.Specs
+namespace FaultLogging.Specs
 {
     using TechTalk.SpecFlow;
     
@@ -67,11 +67,11 @@ namespace RoadMaintenance.Specs
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Find open and recently closed faults by street name")]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by street name")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void FindOpenAndRecentlyClosedFaultsByStreetName()
+        public virtual void FindOpenFaultsByStreetName()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by street name", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by street name", new string[] {
                         "mytag"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
@@ -85,25 +85,23 @@ this.ScenarioSetup(scenarioInfo);
                         "Latitude",
                         "Longitude",
                         "Street",
+                        "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "Status",
                         "TypeId",
-                        "Type",
                         "EstimatedCompletionDate",
                         "DateCompleted"});
             table1.AddRow(new string[] {
                         "1",
                         "null",
                         "null",
-                        "8th St",
+                        "Sandton Dr",
+                        "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "Awaiting Inspection",
                         "1",
-                        "Pothole",
                         "null",
                         "null"});
             table1.AddRow(new string[] {
@@ -111,12 +109,11 @@ this.ScenarioSetup(scenarioInfo);
                         "null",
                         "null",
                         "10th St",
+                        "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "Awaiting Inspection",
-                        "1",
-                        "Pothole",
+                        "2",
                         "null",
                         "null"});
             table1.AddRow(new string[] {
@@ -124,27 +121,25 @@ this.ScenarioSetup(scenarioInfo);
                         "-26.160226",
                         "27.975857",
                         "8th Street",
+                        "null",
                         "Randburg",
                         "2195",
-                        "5",
-                        "Repaired",
+                        "1",
                         "3",
-                        "Traffic Light",
-                        "15-05-2015",
-                        "16-05-2015"});
+                        "null",
+                        "null"});
             table1.AddRow(new string[] {
-                        "50",
-                        "-26.160226",
-                        "27.975857",
-                        "8th Str",
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "Repaired",
-                        "4",
-                        "Road Marking",
-                        "01-05-2015",
-                        "01-05-2015"});
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
 #line 10
  testRunner.And("These faults exist", ((string)(null)), table1, "And ");
 #line 16
@@ -155,42 +150,697 @@ this.ScenarioSetup(scenarioInfo);
                         "Latitude",
                         "Longitude",
                         "Street",
+                        "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "Status",
                         "TypeId",
-                        "Type",
                         "EstimatedCompletionDate",
                         "DateCompleted"});
-            table2.AddRow(new string[] {
-                        "1",
-                        "null",
-                        "null",
-                        "8th St",
-                        "Sandton",
-                        "2196",
-                        "1",
-                        "Awaiting Inspection",
-                        "1",
-                        "Pothole",
-                        "null",
-                        "null"});
             table2.AddRow(new string[] {
                         "47",
                         "-26.160226",
                         "27.975857",
                         "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+#line 17
+ testRunner.Then("The results should be", ((string)(null)), table2, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by passing the cross street name as the street name")]
+        public virtual void FindOpenFaultsByPassingTheCrossStreetNameAsTheStreetName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by passing the cross street name as the street name", ((string[])(null)));
+#line 21
+this.ScenarioSetup(scenarioInfo);
+#line 22
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 23
+ testRunner.And("I enter \'Grayston Dr\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table3.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table3.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table3.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "Repaired",
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
+#line 24
+ testRunner.And("These faults exist", ((string)(null)), table3, "And ");
+#line 30
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table4.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+#line 31
+ testRunner.Then("The results should be", ((string)(null)), table4, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by cross street name")]
+        public virtual void FindOpenFaultsByCrossStreetName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by cross street name", ((string[])(null)));
+#line 35
+this.ScenarioSetup(scenarioInfo);
+#line 36
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
+ testRunner.And("I enter \'Grayston Dr\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table5.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table5.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table5.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
                         "3",
-                        "Traffic Light",
-                        "15-05-2015",
-                        "16-05-2015"});
-#line 17
- testRunner.Then("The results should be", ((string)(null)), table2, "Then ");
+                        "null",
+                        "null"});
+            table5.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "5",
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
+#line 38
+ testRunner.And("These faults exist", ((string)(null)), table5, "And ");
+#line 44
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table6.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+#line 45
+ testRunner.Then("The results should be", ((string)(null)), table6, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by passing the street name as the cross street name")]
+        public virtual void FindOpenFaultsByPassingTheStreetNameAsTheCrossStreetName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by passing the street name as the cross street name", ((string[])(null)));
+#line 49
+this.ScenarioSetup(scenarioInfo);
+#line 50
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 51
+ testRunner.And("I enter \'Sandton Dr\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table7.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table7.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table7.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table7.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "5",
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
+#line 52
+ testRunner.And("These faults exist", ((string)(null)), table7, "And ");
+#line 58
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table8.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+#line 59
+ testRunner.Then("The results should be", ((string)(null)), table8, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by suburb name")]
+        public virtual void FindOpenFaultsBySuburbName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by suburb name", ((string[])(null)));
+#line 63
+this.ScenarioSetup(scenarioInfo);
+#line 64
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 65
+ testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table9.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table9.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table9.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table9.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "5",
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
+#line 66
+ testRunner.And("These faults exist", ((string)(null)), table9, "And ");
+#line 72
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table10.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table10.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+#line 73
+ testRunner.Then("The results should be", ((string)(null)), table10, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by type")]
+        public virtual void FindOpenFaultsByType()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by type", ((string[])(null)));
+#line 78
+this.ScenarioSetup(scenarioInfo);
+#line 79
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 80
+ testRunner.And("I enter \'3\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table11.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "Sandton Dr",
+                        "Grayston Dr",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table11.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "10th St",
+                        "null",
+                        "Sandton",
+                        "2195",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table11.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table11.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "Hill Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "5",
+                        "1",
+                        "11-01-2015",
+                        "13-01-2015"});
+#line 81
+ testRunner.And("These faults exist", ((string)(null)), table11, "And ");
+#line 87
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table12.AddRow(new string[] {
+                        "47",
+                        "-26.160226",
+                        "27.975857",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+#line 88
+ testRunner.Then("The results should be", ((string)(null)), table12, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find open faults by street name, suburb, type combination")]
+        public virtual void FindOpenFaultsByStreetNameSuburbTypeCombination()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open faults by street name, suburb, type combination", ((string[])(null)));
+#line 92
+this.ScenarioSetup(scenarioInfo);
+#line 93
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 94
+ testRunner.And("I enter \'8th Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+ testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 96
+ testRunner.And("I enter \'3\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table13.AddRow(new string[] {
+                        "1",
+                        "null",
+                        "null",
+                        "8th Street",
+                        "null",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "1",
+                        "null",
+                        "null"});
+            table13.AddRow(new string[] {
+                        "27",
+                        "null",
+                        "null",
+                        "8th Street",
+                        "null",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "2",
+                        "null",
+                        "null"});
+            table13.AddRow(new string[] {
+                        "47",
+                        "null",
+                        "null",
+                        "8th Street",
+                        "null",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table13.AddRow(new string[] {
+                        "52",
+                        "null",
+                        "null",
+                        "8th Street",
+                        "null",
+                        "Randburg",
+                        "2195",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+            table13.AddRow(new string[] {
+                        "78",
+                        "null",
+                        "null",
+                        "9th Street",
+                        "null",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+#line 97
+ testRunner.And("These faults exist", ((string)(null)), table13, "And ");
+#line 104
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "EstimatedCompletionDate",
+                        "DateCompleted"});
+            table14.AddRow(new string[] {
+                        "47",
+                        "null",
+                        "null",
+                        "8th Street",
+                        "null",
+                        "Sandton",
+                        "2196",
+                        "1",
+                        "3",
+                        "null",
+                        "null"});
+#line 105
+ testRunner.Then("The results should be", ((string)(null)), table14, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

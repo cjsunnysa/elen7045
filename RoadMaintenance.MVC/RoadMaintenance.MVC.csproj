@@ -195,11 +195,9 @@
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\NinjectResolver.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\FaultApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -309,6 +307,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Search\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -317,9 +316,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.DataService\RoadMaintenance.DataService.csproj">
-      <Project>{36BBE207-A837-442A-B17B-C0F40A6E275F}</Project>
-      <Name>RoadMaintenance.DataService</Name>
+    <ProjectReference Include="..\RoadMaintenance.Core\FaultLogging.Core.csproj">
+      <Project>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</Project>
+      <Name>FaultLogging.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.Infrastructure\FaultLogging.Persistence.csproj">
+      <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
+      <Name>FaultLogging.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

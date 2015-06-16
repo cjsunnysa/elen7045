@@ -1,6 +1,4 @@
 ﻿using System.Web.Http;
-using Ninject.Web.Mvc;
-using RoadMaintenance.MVC.App_Start;
 
 namespace RoadMaintenance.MVC
 {

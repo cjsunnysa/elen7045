@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.DataService", "RoadMaintenance.DataService\RoadMaintenance.DataService.csproj", "{36BBE207-A837-442A-B17B-C0F40A6E275F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.Specs", "RoadMaintenance.Specs\RoadMaintenance.Specs.csproj", "{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLogging.Specs", "RoadMaintenance.Specs\FaultLogging.Specs.csproj", "{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.MVC", "RoadMaintenance.MVC\RoadMaintenance.MVC.csproj", "{8CA22219-F124-4E22-848D-3C0196F7008B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLogging.Core", "RoadMaintenance.Core\FaultLogging.Core.csproj", "{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaultLogging.Persistence", "RoadMaintenance.Infrastructure\FaultLogging.Persistence.csproj", "{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FaultLogging", "FaultLogging", "{AC4E0FFE-0F7B-4893-967A-1EF0FDC5CC90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36BBE207-A837-442A-B17B-C0F40A6E275F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,8 +27,21 @@ Global
 		{8CA22219-F124-4E22-848D-3C0196F7008B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CA22219-F124-4E22-848D-3C0196F7008B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CA22219-F124-4E22-848D-3C0196F7008B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A} = {AC4E0FFE-0F7B-4893-967A-1EF0FDC5CC90}
+		{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B} = {AC4E0FFE-0F7B-4893-967A-1EF0FDC5CC90}
+		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC} = {AC4E0FFE-0F7B-4893-967A-1EF0FDC5CC90}
 	EndGlobalSection
 EndGlobal

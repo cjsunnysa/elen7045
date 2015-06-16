@@ -1,21 +1,15 @@
 using System;
 using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
-using Ninject.Activation;
 using Ninject.Web.Common;
-using RoadMaintenance.DataService;
-using RoadMaintenance.DataService.Datastore;
-using RoadMaintenance.DataService.Interfaces;
-using RoadMaintenance.MVC.App_Start;
+using RoadMaintenance.MVC;
 using WebActivatorEx;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
-namespace RoadMaintenance.MVC.App_Start
+namespace RoadMaintenance.MVC
 {
     public static class NinjectWebCommon 
     {
@@ -53,8 +47,6 @@ namespace RoadMaintenance.MVC.App_Start
 
                 RegisterServices(kernel);
 
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
-
                 return kernel;
             }
             catch
@@ -70,8 +62,7 @@ namespace RoadMaintenance.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IFaultRepository>().To<FaultDatabaseRepository>();
-            kernel.Bind<IRoadMaintenanceDatasource>().To<RoadMaintenanceDatabase>();
+            
         }        
     }
 }
