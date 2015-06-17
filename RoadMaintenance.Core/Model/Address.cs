@@ -1,4 +1,4 @@
-﻿using RoadMaintenance.FaultLogging.Core.Interfaces;
+﻿using RoadMaintenance.SharedKernel.Repos.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
 {

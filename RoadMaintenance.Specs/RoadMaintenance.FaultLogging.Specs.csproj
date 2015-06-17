@@ -90,13 +90,13 @@
       <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
       <Name>RoadMaintenance.FaultLogging.Repos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.MVC\RoadMaintenance.MVC.csproj">
-      <Project>{8CA22219-F124-4E22-848D-3C0196F7008B}</Project>
-      <Name>RoadMaintenance.MVC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
       <Project>{14116858-6F1D-4662-B241-B81ACE3A1682}</Project>
       <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3C2375E2-CB74-4309-8943-4B32C5D4F30B}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

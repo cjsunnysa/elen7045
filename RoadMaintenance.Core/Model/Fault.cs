@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using RoadMaintenance.ApplicationLayer;
-using RoadMaintenance.FaultLogging.Core.Interfaces;
 using RoadMaintenance.SharedKernel.Core.Enums;
+using RoadMaintenance.SharedKernel.Repos.Interfaces;
 using Type = RoadMaintenance.SharedKernel.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
@@ -13,15 +13,15 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public Status Status { get; private set; }
         public Address Address { get; private set; }
         
-        private readonly List<Transaciton> _transactions;
-        public IEnumerable<Transaciton> Transacitons
+        private readonly List<Call> _transactions;
+        public IEnumerable<Call> Transacitons
         {
             get { return _transactions; }
         }
 
         private Fault(Guid id) : base(id)
         {
-            _transactions = new List<Transaciton>();
+            _transactions = new List<Call>();
         }
 
         public static Fault Create(Type type, Status status, Address address)
@@ -40,7 +40,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Type type, 
             Status status, 
             Address address, 
-            IEnumerable<Transaciton> transactions)
+            IEnumerable<Call> transactions)
         {
             Guard.ForNull(address, "address");
             
@@ -70,12 +70,12 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Address = address;
         }
 
-        public void AddTransaction(Transaciton transaction)
+        public void AddTransaction(Call transaction)
         {
             _transactions.Add(transaction);
         }
 
-        public void AddTransactions(IEnumerable<Transaciton> transacitons)
+        public void AddTransactions(IEnumerable<Call> transacitons)
         {
             _transactions.AddRange(transacitons);
         }

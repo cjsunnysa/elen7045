@@ -39,12 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FaultRepository.cs" />
-    <Compile Include="Interfaces\IDataStore.cs" />
-    <Compile Include="Interfaces\IFaultRepository.cs" />
+    <Compile Include="FaultLoggingRepository.cs" />
+    <Compile Include="Interfaces\IFaultLoggingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
+      <Project>{7C04BF02-7227-426A-8E1C-32BD7444047E}</Project>
+      <Name>RoadMaintenance.ApplicationLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{d08cb96d-d6c6-4cf2-b8a9-344000d7a41a}</Project>
       <Name>RoadMaintenance.FaultLogging.Core</Name>
@@ -52,6 +55,10 @@
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
       <Project>{14116858-6F1D-4662-B241-B81ACE3A1682}</Project>
       <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

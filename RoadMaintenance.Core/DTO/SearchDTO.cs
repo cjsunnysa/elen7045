@@ -1,6 +1,6 @@
 ﻿namespace RoadMaintenance.FaultLogging.Core.DTO
 {
-    public class SearchDTO
+    public class FaultSearchRequest
     {
         public int? TypeId { get; set; }
         public string Street1 { get; set; }

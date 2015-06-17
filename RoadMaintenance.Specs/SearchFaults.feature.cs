@@ -82,64 +82,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table1.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table1.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "2",
-                        "null",
-                        "null"});
+                        "2"});
             table1.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table1.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 10
  testRunner.And("These faults exist", ((string)(null)), table1, "And ");
 #line 16
@@ -147,28 +127,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table2.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
 #line 17
  testRunner.Then("The results should be", ((string)(null)), table2, "Then ");
 #line hidden
@@ -189,64 +161,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table3.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table3.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
             table3.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table3.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 24
  testRunner.And("These faults exist", ((string)(null)), table3, "And ");
 #line 30
@@ -254,28 +206,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table4.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
 #line 31
  testRunner.Then("The results should be", ((string)(null)), table4, "Then ");
 #line hidden
@@ -296,64 +240,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table5.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table5.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
             table5.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table5.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 38
  testRunner.And("These faults exist", ((string)(null)), table5, "And ");
 #line 44
@@ -361,28 +285,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table6.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
 #line 45
  testRunner.Then("The results should be", ((string)(null)), table6, "Then ");
 #line hidden
@@ -403,64 +319,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table7.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table7.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
             table7.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table7.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 52
  testRunner.And("These faults exist", ((string)(null)), table7, "And ");
 #line 58
@@ -468,28 +364,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table8.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
 #line 59
  testRunner.Then("The results should be", ((string)(null)), table8, "Then ");
 #line hidden
@@ -510,64 +398,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table9.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table9.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
             table9.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table9.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 66
  testRunner.And("These faults exist", ((string)(null)), table9, "And ");
 #line 72
@@ -575,40 +443,28 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table10.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table10.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
 #line 73
  testRunner.Then("The results should be", ((string)(null)), table10, "Then ");
 #line hidden
@@ -629,64 +485,44 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table11.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "Sandton Dr",
                         "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "1"});
             table11.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
                         "10th St",
                         "null",
                         "Sandton",
                         "2195",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "2"});
             table11.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
             table11.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "Hill Street",
                         "null",
                         "Randburg",
                         "2195",
                         "5",
-                        "1",
-                        "11-01-2015",
-                        "13-01-2015"});
+                        "1"});
 #line 81
  testRunner.And("These faults exist", ((string)(null)), table11, "And ");
 #line 87
@@ -694,28 +530,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table12.AddRow(new string[] {
                         "47",
-                        "-26.160226",
-                        "27.975857",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
 #line 88
  testRunner.Then("The results should be", ((string)(null)), table12, "Then ");
 #line hidden
@@ -740,76 +568,52 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table13.AddRow(new string[] {
                         "1",
-                        "null",
-                        "null",
                         "8th Street",
-                        "null",
+                        "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "1",
-                        "null",
-                        "null"});
+                        "3"});
             table13.AddRow(new string[] {
                         "27",
-                        "null",
-                        "null",
-                        "8th Street",
+                        "10th St",
                         "null",
                         "Sandton",
-                        "2196",
+                        "2195",
                         "1",
-                        "2",
-                        "null",
-                        "null"});
+                        "2"});
             table13.AddRow(new string[] {
                         "47",
-                        "null",
-                        "null",
                         "8th Street",
                         "null",
                         "Sandton",
-                        "2196",
+                        "2195",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "1"});
             table13.AddRow(new string[] {
                         "52",
-                        "null",
-                        "null",
                         "8th Street",
                         "null",
                         "Randburg",
                         "2195",
-                        "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "5",
+                        "3"});
             table13.AddRow(new string[] {
                         "78",
-                        "null",
-                        "null",
                         "9th Street",
                         "null",
                         "Sandton",
                         "2196",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
 #line 97
  testRunner.And("These faults exist", ((string)(null)), table13, "And ");
 #line 104
@@ -817,28 +621,20 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
                         "PostCode",
                         "StatusId",
-                        "TypeId",
-                        "EstimatedCompletionDate",
-                        "DateCompleted"});
+                        "TypeId"});
             table14.AddRow(new string[] {
-                        "47",
-                        "null",
-                        "null",
+                        "1",
                         "8th Street",
-                        "null",
+                        "Grayston Dr",
                         "Sandton",
                         "2196",
                         "1",
-                        "3",
-                        "null",
-                        "null"});
+                        "3"});
 #line 105
  testRunner.Then("The results should be", ((string)(null)), table14, "Then ");
 #line hidden

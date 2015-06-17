@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Linq;
 
 namespace RoadMaintenance.ApplicationLayer
@@ -23,10 +24,10 @@ namespace RoadMaintenance.ApplicationLayer
                 throw new ArgumentNullException(name, string.Format("{0} cannot be null.", name));
         }
 
-        public static void AllArgumentNotNullOrEmpty(string[] paramArray, string paramNames)
+        public static void AllArgumentNotNullOrEmpty(object[] paramArray, string paramNames)
         {
-            if (paramArray.All(string.IsNullOrEmpty))
-                throw new ArgumentNullException(paramNames, string.Format("{0} cannot all be null or empty.", paramNames));
+            if (paramArray.OfType<string>().All(string.IsNullOrEmpty) && paramArray.All(p => p == null))
+                throw new ArgumentNullException(paramNames, string.Format("Properties of {0} cannot all be null or empty.", paramNames));
         }
     }
 }

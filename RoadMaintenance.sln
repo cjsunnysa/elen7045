@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.FaultLogging.Specs", "RoadMaintenance.Specs\RoadMaintenance.FaultLogging.Specs.csproj", "{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.MVC", "RoadMaintenance.MVC\RoadMaintenance.MVC.csproj", "{8CA22219-F124-4E22-848D-3C0196F7008B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.FaultLogging.Core", "RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj", "{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadMaintenance.FaultLogging.Repos", "RoadMaintenance.Infrastructure\RoadMaintenance.FaultLogging.Repos.csproj", "{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}"
@@ -55,10 +53,6 @@ Global
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF59B0DF-5C55-4FAD-A4DB-4B3FCDAD5EBC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CA22219-F124-4E22-848D-3C0196F7008B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CA22219-F124-4E22-848D-3C0196F7008B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CA22219-F124-4E22-848D-3C0196F7008B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CA22219-F124-4E22-848D-3C0196F7008B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
