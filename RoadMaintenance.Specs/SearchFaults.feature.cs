@@ -640,6 +640,78 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Find recently closed faults by street name")]
+        public virtual void FindRecentlyClosedFaultsByStreetName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find recently closed faults by street name", ((string[])(null)));
+#line 109
+this.ScenarioSetup(scenarioInfo);
+#line 110
+ testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 111
+ testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 112
+ testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 113
+ testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "DateCompleted"});
+            table15.AddRow(new string[] {
+                        "1",
+                        "Hill Street",
+                        "Malabongwe Drive",
+                        "Randburg",
+                        "2194",
+                        "4",
+                        "2",
+                        "2015-03-02"});
+            table15.AddRow(new string[] {
+                        "2",
+                        "Hill Street",
+                        "Malabongwe Drive",
+                        "Randburg",
+                        "2194",
+                        "4",
+                        "2",
+                        "2015-03-01"});
+#line 114
+ testRunner.And("These faults exist", ((string)(null)), table15, "And ");
+#line 118
+ testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "DateCompleted"});
+            table16.AddRow(new string[] {
+                        "1",
+                        "Hill Street",
+                        "Malabongwe Drive",
+                        "Randburg",
+                        "2194",
+                        "4",
+                        "2",
+                        "2015-03-02"});
+#line 119
+ testRunner.Then("The results should be", ((string)(null)), table16, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

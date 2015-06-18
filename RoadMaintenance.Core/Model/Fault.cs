@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.SharedKernel.Core.Enums;
 using RoadMaintenance.SharedKernel.Repos.Interfaces;
@@ -12,16 +13,17 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public Type Type { get; private set; }
         public Status Status { get; private set; }
         public Address Address { get; private set; }
+        public DateTime? DateCompleted { get; set; }
         
-        private readonly List<Call> _transactions;
-        public IEnumerable<Call> Transacitons
+        private readonly List<Call> _calls;
+        public IEnumerable<Call> Calls
         {
-            get { return _transactions; }
+            get { return _calls; }
         }
 
         private Fault(Guid id) : base(id)
         {
-            _transactions = new List<Call>();
+            _calls = new List<Call>();
         }
 
         public static Fault Create(Type type, Status status, Address address)
@@ -39,8 +41,9 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Guid id, 
             Type type, 
             Status status, 
-            Address address, 
-            IEnumerable<Call> transactions)
+            Address address,
+            DateTime? dateCompleted,
+            IEnumerable<Call> calls)
         {
             Guard.ForNull(address, "address");
             
@@ -49,8 +52,10 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             newRec.UpdateType(type);
             newRec.UpdateStatus(status);
             newRec.UpdateAddress(address);
-            if (transactions != null)
-                newRec.AddTransactions(transactions);
+            newRec.UpdateDateCompleted(dateCompleted);
+
+            if (calls != null)
+                newRec.AddCalls(calls);
 
             return newRec;
         }
@@ -70,22 +75,34 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Address = address;
         }
 
-        public void AddTransaction(Call transaction)
+        public void UpdateDateCompleted(DateTime? dateCompleted)
         {
-            _transactions.Add(transaction);
+            DateCompleted = dateCompleted;
         }
 
-        public void AddTransactions(IEnumerable<Call> transacitons)
+        public void AddCalls(Call call)
         {
-            _transactions.AddRange(transacitons);
+            _calls.Add(call);
+        }
+
+        public void AddCalls(IEnumerable<Call> calls)
+        {
+            _calls.AddRange(calls);
         }
 
         public bool Equals(Fault other)
         {
+            foreach (var call in Calls)
+            {
+                if (!other.Calls.Any(c => c.ReferenceNumber.Equals(call.ReferenceNumber)))
+                    return false;
+            }
+            
             return Id.Equals(other.Id) &&
                    Type.Equals(other.Type) &&
                    Status.Equals(other.Status) &&
-                   Address.Equals(other.Address);
+                   Address.Equals(other.Address) &&
+                   DateCompleted.Equals(other.DateCompleted);
         }
     }
 }

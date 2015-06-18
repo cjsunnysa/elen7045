@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Linq;
+using System.Reflection;
 
 namespace RoadMaintenance.ApplicationLayer
 {
@@ -24,10 +25,14 @@ namespace RoadMaintenance.ApplicationLayer
                 throw new ArgumentNullException(name, string.Format("{0} cannot be null.", name));
         }
 
-        public static void AllArgumentNotNullOrEmpty(object[] paramArray, string paramNames)
+        public static void ForAllPropertiesNullOrEmpty(object param, string paramName)
         {
-            if (paramArray.OfType<string>().All(string.IsNullOrEmpty) && paramArray.All(p => p == null))
-                throw new ArgumentNullException(paramNames, string.Format("Properties of {0} cannot all be null or empty.", paramNames));
+            var nonNullOrEmptyParams = (from p in param.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                        where p.GetValue(param, null) != null
+                                        select param);
+
+            if (!nonNullOrEmptyParams.Any())
+                throw new ArgumentNullException(paramName, string.Format("Properties of {0} cannot all be null or empty.", paramName));
         }
     }
 }

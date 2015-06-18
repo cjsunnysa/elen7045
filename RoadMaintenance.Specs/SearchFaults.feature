@@ -105,3 +105,17 @@ Scenario: Find open faults by street name, suburb, type combination
 	Then  The results should be
 	| Id | Street      | CrossStreet | Suburb   | PostCode | StatusId | TypeId |
 	| 1  | 8th Street  | Grayston Dr | Sandton  | 2196     | 1        | 3      |
+
+Scenario: Find recently closed faults by street name
+	Given I am on the Fault Search page
+	And   I enter 'Hill Street' as the street name
+	And   The date today is '2015-04-01'
+	And   The recently closed fault logging search period is '30' days
+	And   These faults exist
+	| Id | Street      | CrossStreet      | Suburb   | PostCode | StatusId | TypeId | DateCompleted |
+	| 1  | Hill Street | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
+	| 2  | Hill Street | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-01    |
+	When I press the Search button
+	Then The results should be
+	| Id | Street      | CrossStreet      | Suburb   | PostCode | StatusId | TypeId | DateCompleted |
+	| 1  | Hill Street | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
