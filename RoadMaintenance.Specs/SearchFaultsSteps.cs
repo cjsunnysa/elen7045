@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Moq;
@@ -8,6 +9,7 @@ using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
+using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Repos.Interfaces;
 using TechTalk.SpecFlow;
@@ -20,6 +22,7 @@ namespace RoadMaintenance.FaultLogging.Specs
     {
         private IKernel _kernel;
         private IEnumerable<Fault> _results;
+        private DateTime? _todayDate;
         
 
         [BeforeScenario]
@@ -58,6 +61,20 @@ namespace RoadMaintenance.FaultLogging.Specs
         {
             _kernel.Get<FaultSearchRequest>().TypeId = faultTypeId;
         }
+
+        [Given(@"The date today is '(.*)'")]
+        public void GivenTheDateTodayIs(string todayDate)
+        {
+            _todayDate = todayDate.AsDateTime();
+        }
+
+        [Given(@"The recently closed fault logging search period is '(.*)' days")]
+        public void GivenTheRecentlyClosedFaultLoggingSearchPeriodIsDays(int days)
+        {
+            var search = _kernel.Get<FaultSearchRequest>();
+            search.RepairedPeriodStartDate = _todayDate.Value.AddDays(-days);
+        }
+
         
         [Given(@"These faults exist")]
         public void GivenTheseFaultsExist(Table table)

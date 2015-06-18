@@ -63,7 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ExtensionMethods.cs" />
+    <Compile Include="Helpers\TestHelpers.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Model\FaultTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchFaults.feature.cs">

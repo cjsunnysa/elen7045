@@ -5,6 +5,7 @@ using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
+using RoadMaintenance.SharedKernel.Core.Enums;
 using RoadMaintenance.SharedKernel.Repos.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Repos
@@ -26,7 +27,7 @@ namespace RoadMaintenance.FaultLogging.Repos
 
         public IEnumerable<Fault> Find(FaultSearchRequest searchRequest)
         {
-            Guard.AllArgumentNotNullOrEmpty(new object[] {searchRequest.Street1, searchRequest.Street2, searchRequest.Suburb, searchRequest.TypeId}, "searchRequest");
+            Guard.ForAllPropertiesNullOrEmpty(searchRequest, "searchRequest");
             
             var street1 = string.IsNullOrEmpty(searchRequest.Street1)
                           ? null
@@ -40,7 +41,6 @@ namespace RoadMaintenance.FaultLogging.Repos
                           ? null
                           : searchRequest.Suburb.ToLower();
 
-            
             return from d in _dataStore.Data
                    let s = d.Address.Street.ToLower()
                    let cs = d.Address.CrossStreet.ToLower()
@@ -49,7 +49,9 @@ namespace RoadMaintenance.FaultLogging.Repos
                        (street1 == null  || s.Contains(street1) || cs.Contains(street1)) &&
                        (street2 == null  || s.Contains(street2) || cs.Contains(street2)) &&
                        (suburb  == null  || sub.Contains(suburb)) &&
-                       (searchRequest.TypeId == null || (int) d.Type == searchRequest.TypeId)
+                       (searchRequest.TypeId == null || (int) d.Type == searchRequest.TypeId) &&
+                       (d.Status != Status.Repaired || 
+                            (searchRequest.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)searchRequest.RepairedPeriodStartDate))
                    select d;
         }
 
