@@ -63,9 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindFault.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FindFault.feature</DependentUpon>
+    </Compile>
+    <Compile Include="FindFaultSteps.cs" />
     <Compile Include="Helpers\TestHelpers.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Model\FaultTest.cs" />
+    <Compile Include="Model\ITestResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchFaults.feature.cs">
       <AutoGen>True</AutoGen>
@@ -73,9 +80,15 @@
       <DependentUpon>SearchFaults.feature</DependentUpon>
     </Compile>
     <Compile Include="SearchFaultsSteps.cs" />
+    <Compile Include="SharedSteps.cs" />
+    <Compile Include="Model\StepParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="FindFault.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FindFault.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="SearchFaults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -99,11 +112,10 @@
       <Project>{3C2375E2-CB74-4309-8943-4B32C5D4F30B}</Project>
       <Name>RoadMaintenance.SharedKernel.Repos</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="chromedriver.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Services\RoadMaintenance.SharedKernel.Services.csproj">
+      <Project>{A704F286-7AA0-4451-9F64-9103A23F729E}</Project>
+      <Name>RoadMaintenance.SharedKernel.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

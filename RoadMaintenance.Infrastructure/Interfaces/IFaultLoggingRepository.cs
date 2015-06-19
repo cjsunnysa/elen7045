@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Model;
-using RoadMaintenance.SharedKernel.Repos.Interfaces;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Repos.Interfaces
 {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using RoadMaintenance.ApplicationLayer;
-using RoadMaintenance.SharedKernel.Core.Enums;
-using RoadMaintenance.SharedKernel.Repos.Interfaces;
-using Type = RoadMaintenance.SharedKernel.Core.Enums.Type;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
+using Status = RoadMaintenance.FaultLogging.Core.Enums.Status;
+using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
 {

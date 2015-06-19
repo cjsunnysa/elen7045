@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.DTO;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
-using RoadMaintenance.SharedKernel.Core.Enums;
-using RoadMaintenance.SharedKernel.Repos.Interfaces;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Repos
 {
@@ -49,7 +49,7 @@ namespace RoadMaintenance.FaultLogging.Repos
                        (street1 == null  || s.Contains(street1) || cs.Contains(street1)) &&
                        (street2 == null  || s.Contains(street2) || cs.Contains(street2)) &&
                        (suburb  == null  || sub.Contains(suburb)) &&
-                       (searchRequest.TypeId == null || (int) d.Type == searchRequest.TypeId) &&
+                       (searchRequest.Type == null || d.Type == searchRequest.Type) &&
                        (d.Status != Status.Repaired || 
                             (searchRequest.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)searchRequest.RepairedPeriodStartDate))
                    select d;

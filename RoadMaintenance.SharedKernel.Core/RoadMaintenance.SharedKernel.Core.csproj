@@ -40,9 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Enums\Status.cs" />
-    <Compile Include="Enums\Type.cs" />
+    <Compile Include="Interfaces\Entity.cs" />
+    <Compile Include="Interfaces\IDataStore.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\ValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
+      <Project>{7C04BF02-7227-426A-8E1C-32BD7444047E}</Project>
+      <Name>RoadMaintenance.ApplicationLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\RecentlyClosed.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="Enums\Type.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Fault.cs" />
     <Compile Include="DTO\SearchDTO.cs" />

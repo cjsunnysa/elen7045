@@ -11,7 +11,7 @@ using RoadMaintenance.FaultLogging.Repos;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
-using RoadMaintenance.SharedKernel.Repos.Interfaces;
+using RoadMaintenance.SharedKernel.Services;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -20,94 +20,75 @@ namespace RoadMaintenance.FaultLogging.Specs
     [Binding]
     public class SearchFaultsSteps
     {
-        private IKernel _kernel;
-        private IEnumerable<Fault> _results;
-        private DateTime? _todayDate;
-        
-
-        [BeforeScenario]
-        public void ScenarioSetUp()
-        {
-            _kernel = new StandardKernel();
-            _kernel.Bind<IFaultLoggingRepository>().To<FaultLoggingRepository>();
-            _kernel.Bind<FaultSearchRequest>().ToConstant(new FaultSearchRequest());
-        }
-
         [Given(@"I am on the Fault Search page")]
         public void GivenIAmOnTheFaultSearchPage()
         {
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            stepParams.GivenSearchRequest = new FaultSearchRequest();
         }
 
         [Given(@"I enter '(.*)' as the street name")]
         public void GivenIEnterAsTheStreetName(string streetName)
         {
-            _kernel.Get<FaultSearchRequest>().Street1 = streetName;
-        }
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-        [Given(@"I enter '(.*)' as the suburb name")]
-        public void GivenIEnterAsTheSuburbName(string suburb)
-        {
-            _kernel.Get<FaultSearchRequest>().Suburb = suburb;
+            stepParams.GivenSearchRequest.Street1 = streetName;
         }
 
         [Given(@"I enter '(.*)' as the cross street name")]
         public void GivenIEnterAsTheCrossStreetName(string crossStreetName)
         {
-            _kernel.Get<FaultSearchRequest>().Street2 = crossStreetName;
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            stepParams.GivenSearchRequest.Street2 = crossStreetName;
         }
 
-        [Given(@"I enter '(.*)' as the fault type")]
-        public void GivenIEnterAsTheFaultType(int faultTypeId)
+        [Given(@"I enter '(.*)' as the suburb name")]
+        public void GivenIEnterAsTheSuburbName(string suburb)
         {
-            _kernel.Get<FaultSearchRequest>().TypeId = faultTypeId;
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            
+            stepParams.GivenSearchRequest.Suburb = suburb;
+        }
+
+        [Given(@"I select '(.*)' as the fault type")]
+        public void GivenIEnterAsTheFaultType(string faultTypeDescription)
+        {
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            var service = new FaultService(stepParams.Kernel.Get<IFaultLoggingRepository>());
+            var faultType = service.GetType(faultTypeDescription);
+
+            stepParams.GivenSearchRequest.Type = faultType;
         }
 
         [Given(@"The date today is '(.*)'")]
         public void GivenTheDateTodayIs(string todayDate)
         {
-            _todayDate = todayDate.AsDateTime();
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            
+            stepParams.GivenSearchRequest.TodayDate = todayDate.AsDateTime();
         }
 
         [Given(@"The recently closed fault logging search period is '(.*)' days")]
         public void GivenTheRecentlyClosedFaultLoggingSearchPeriodIsDays(int days)
         {
-            var search = _kernel.Get<FaultSearchRequest>();
-            search.RepairedPeriodStartDate = _todayDate.Value.AddDays(-days);
-        }
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-        
-        [Given(@"These faults exist")]
-        public void GivenTheseFaultsExist(Table table)
-        {
-            var source = new Mock<IDataStore<Fault>>();
-            var data = table.CreateSet<FaultTest>().Select(test => test.ToDomainModel()).AsQueryable();
+            Assert.NotNull(stepParams.GivenSearchRequest.TodayDate);
 
-            source.Setup(instance => instance.Data)
-                    .Returns(data);
-
-            _kernel.Bind<IDataStore<Fault>>().ToConstant(source.Object);
+            stepParams.GivenSearchRequest.RepairedPeriodStartDate = stepParams.GivenSearchRequest.TodayDate.Value.AddDays(-days);
         }
 
         [When(@"I press the Search button")]
         public void WhenIPressTheSearchButton()
         {
-            var repo = _kernel.Get<IFaultLoggingRepository>();
-            _results = repo.Find(_kernel.Get<FaultSearchRequest>());
-        }
-
-        [Then(@"The results should be")]
-        public void ThenTheResultsShouldBe(Table table)
-        {
-            var testSet = table.CreateSet<FaultTest>()
-                                .Select(t => t.ToDomainModel());
+            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
-            CollectionAssert.AreEquivalent(testSet, _results);
-        }
+            var repo = stepParams.Kernel.Get<IFaultLoggingRepository>();
+            var results = repo.Find(stepParams.GivenSearchRequest);
 
-        [AfterScenario]
-        public void SearchFaultStepsTearDown()
-        {
-            _kernel.Dispose();
+            stepParams.ResultsCollection = results;
         }
     }
 }

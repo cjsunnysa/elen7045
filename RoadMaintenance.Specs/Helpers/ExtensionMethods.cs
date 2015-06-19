@@ -1,6 +1,6 @@
-﻿using RoadMaintenance.FaultLogging.Core.Model;
+﻿using RoadMaintenance.FaultLogging.Core.Enums;
+using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Specs.Model;
-using RoadMaintenance.SharedKernel.Core.Enums;
 
 namespace RoadMaintenance.FaultLogging.Specs.Helpers
 {
@@ -10,7 +10,7 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         {
             return Fault.Create(
                 id:                 testData.Id, 
-                type:               (Type) testData.TypeId, 
+                type:          (Type) testData.TypeId, 
                 status:             (Status) testData.StatusId, 
                 address:            new Address(
                     street:             testData.Street, 

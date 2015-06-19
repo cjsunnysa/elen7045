@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 
 namespace RoadMaintenance.FaultLogging.Core.DTO
 {
