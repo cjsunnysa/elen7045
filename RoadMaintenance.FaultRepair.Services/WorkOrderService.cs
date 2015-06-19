@@ -9,18 +9,25 @@ namespace RoadMaintenance.FaultRepair.Services
 {
     public class WorkOrderService
     {
-        IWorkOrderRepository workOrderRepo;
+        private readonly IWorkOrderRepository workOrderRepo;
 
         public WorkOrderService(IWorkOrderRepository workOrderRepo) 
         {
             this.workOrderRepo = workOrderRepo;
         }
 
-        public WorkOrder CreateWorkOrder()
+        public WorkOrder CreateWorkOrder(WorkOrderDTO workOrderDetails)
         {
-            return new WorkOrder();
+            // Use factory to create new work order
+            WorkOrderBuilder wob = new WorkOrderBuilder("WO001", "New Work Order");
 
+            WorkOrder newWO = wob.GetResult();
+
+            // Insert new work order into repo
+
+            workOrderRepo.InsertWorkOrder(newWO);
+
+            return newWO;
         }
-
     }
 }
