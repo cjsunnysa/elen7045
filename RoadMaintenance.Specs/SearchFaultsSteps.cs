@@ -9,9 +9,9 @@ using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
+using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
-using RoadMaintenance.SharedKernel.Services;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 

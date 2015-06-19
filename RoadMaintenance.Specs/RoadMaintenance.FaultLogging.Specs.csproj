@@ -100,6 +100,10 @@
       <Project>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</Project>
       <Name>RoadMaintenance.FaultLogging.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultLogging.Services\RoadMaintenance.FaultLogging.Services.csproj">
+      <Project>{c49978f8-b030-422d-b8d0-493ec9a8f9b6}</Project>
+      <Name>RoadMaintenance.FaultLogging.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.Infrastructure\RoadMaintenance.FaultLogging.Repos.csproj">
       <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
       <Name>RoadMaintenance.FaultLogging.Repos</Name>
@@ -111,10 +115,6 @@
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
       <Project>{3C2375E2-CB74-4309-8943-4B32C5D4F30B}</Project>
       <Name>RoadMaintenance.SharedKernel.Repos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Services\RoadMaintenance.SharedKernel.Services.csproj">
-      <Project>{A704F286-7AA0-4451-9F64-9103A23F729E}</Project>
-      <Name>RoadMaintenance.SharedKernel.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
