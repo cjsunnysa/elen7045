@@ -5,9 +5,9 @@ using System.Text;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
-    public class BillOfMaterials
+    public class WorkOrderService
     {
-        public BillOfMaterials()
+        public WorkOrderService()
         {
 
         }

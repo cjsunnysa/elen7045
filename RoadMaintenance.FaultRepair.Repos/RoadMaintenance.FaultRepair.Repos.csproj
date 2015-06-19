@@ -40,7 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DummyWorkOrderRepository.cs" />
+    <Compile Include="IWorkOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Core\RoadMaintenance.FaultRepair.Core.csproj">
+      <Project>{e35c6087-300a-47a0-8d28-b50c17f84b1b}</Project>
+      <Name>RoadMaintenance.FaultRepair.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

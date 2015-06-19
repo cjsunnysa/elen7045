@@ -5,8 +5,18 @@ using System.Text;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
-    class Equipment
+    public class Equipment
     {
         private string description;
+
+        public Equipment()
+        {
+            description = string.Empty;
+        }
+
+        public Equipment(string description)
+        {
+            this.description = description;
+        }
     }
 }

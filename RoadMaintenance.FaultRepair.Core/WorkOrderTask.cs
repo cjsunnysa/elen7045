@@ -5,11 +5,23 @@ using System.Text;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
-    enum WorkOrderTaskStatus { Created, Verified };
+    public enum WorkOrderTaskStatus { Created, Completed };
 
-    class WorkOrderTask
+    public class WorkOrderTask
     {
         private WorkOrderTaskStatus status;
-        private string Description;
+        private string description;
+
+        public WorkOrderTask()
+        {
+            status = WorkOrderTaskStatus.Created;
+            description = string.Empty;
+        }
+
+        public WorkOrderTask(WorkOrderTaskStatus status, string description)
+        {
+            this.status = status;
+            this.description = description;
+        }
     }
 }
