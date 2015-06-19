@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,10 +41,64 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkOrderAssignToFault.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderAssignToFault.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderAssignToFaultSteps.cs" />
+    <Compile Include="WorkOrderCreation.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderCreation.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderFaultNotModified.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderFaultNotModified.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderFaultNotModifiedSteps.cs" />
+    <Compile Include="WorkOrderGetFaultDetails.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderGetFaultDetails.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderGetFaultDetailsSteps.cs" />
+    <Compile Include="WorkOrderViewFaults.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderViewFaults.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderViewFaultsSteps.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WorkOrderAssignToFault.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderAssignToFault.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderCreation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderCreation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderFaultNotModified.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderFaultNotModified.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderGetFaultDetails.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderGetFaultDetails.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderViewFaults.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderViewFaults.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
