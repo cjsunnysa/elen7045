@@ -9,9 +9,11 @@ namespace RoadMaintenance.FaultRepair.Core
     {
         private WorkOrder wo;
 
-        public WorkOrderBuilder()
+        public WorkOrderBuilder(string id, string description)
         {
             wo = new WorkOrder();
+            wo.ID = id;
+            wo.Description = description;
             wo.CreationDate = DateTime.Now;
             wo.FaultID = 0;
             wo.Department = string.Empty;
@@ -22,14 +24,14 @@ namespace RoadMaintenance.FaultRepair.Core
             wo.Tasks.Add(new WorkOrderTask(WorkOrderTaskStatus.Created, description));
         }
 
-        public void AddEquipment(string description)
+        public void AddEquipment(string description, int quantity)
         {
-            wo.Equipment.Add(new Equipment(description));
+            wo.Equipment.Add(new Equipment(description, quantity));
         }
 
-        public void AddMaterial(string description, double quantity)
+        public void AddMaterial(string description, double quantity, MeasurementType mType)
         {
-            wo.BillOfMaterials.Add(new BillOfMaterialsItem(description, quantity, MeasurementType.Amount));
+            wo.BillOfMaterials.Add(new BillOfMaterialsItem(description, quantity, mType));
         }
 
         public WorkOrder GetResult()

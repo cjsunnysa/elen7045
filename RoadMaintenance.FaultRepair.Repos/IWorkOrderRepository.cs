@@ -8,7 +8,7 @@ namespace RoadMaintenance.FaultRepair.Repos
 {
     public interface IWorkOrderRepository
     {
-        WorkOrder GetWorkOrderByID(int id);
+        WorkOrder GetWorkOrderByID(string id);
         List<WorkOrder> GetWorkOrdersByStatus(WorkOrderStatus status);
         List<WorkOrder> GetWorkOrdersByFault(int faultID);
 

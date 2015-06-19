@@ -47,7 +47,6 @@
     <Compile Include="WorkOrder.cs" />
     <Compile Include="WorkOrderBuilder.cs" />
     <Compile Include="WorkOrderFactory.cs" />
-    <Compile Include="WorkOrderService.cs" />
     <Compile Include="WorkOrderTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,7 +11,8 @@ namespace RoadMaintenance.FaultRepair.Core
     {
         // Private members
 
-        private int id;
+        private string id;
+        private string description;
         private WorkOrderStatus status;
         private DateTime creationDate;
         private string department;
@@ -22,7 +23,7 @@ namespace RoadMaintenance.FaultRepair.Core
         private List<Equipment> equipment;
 
         // Properties
-        public int ID
+        public string ID
         {
             get
             {
@@ -31,6 +32,18 @@ namespace RoadMaintenance.FaultRepair.Core
             set
             {
                 id = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
             }
         }
 
@@ -113,7 +126,7 @@ namespace RoadMaintenance.FaultRepair.Core
             equipment = new List<Equipment>();
         }
 
-        public WorkOrder(int id, WorkOrderStatus status, DateTime creationDate, string department, int faultID)
+        public WorkOrder(string id, WorkOrderStatus status, DateTime creationDate, string department, int faultID)
             : this()
         {
             this.id = id;
