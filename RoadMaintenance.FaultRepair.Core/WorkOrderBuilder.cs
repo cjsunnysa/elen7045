@@ -18,6 +18,11 @@ namespace RoadMaintenance.FaultRepair.Core
             wo.Department = string.Empty;
         }
 
+        public WorkOrderBuilder(WorkOrder wo)
+        {
+            this.wo = wo;
+        }
+
         public void AddTask(string description)
         {
             wo.Tasks.Add(new WorkOrderTask(WorkOrderTaskStatus.Created, description));
