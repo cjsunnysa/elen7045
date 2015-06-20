@@ -47,6 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReallocateWorkOrder\ReallocateWorkOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReallocateWorkOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ReallocateWorkOrder\ReallocateWorkOrderSteps.cs" />
+    <Compile Include="RepairTeamList\RepairTeamList.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepairTeamList.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleWorkOrder\ScheduleWorkOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleWorkOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleWorkOrder\ScheduleWorkOrderSteps.cs" />
     <Compile Include="WorkOrderAssignToFault.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +87,12 @@
       <DependentUpon>WorkOrderGetFaultDetails.feature</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderGetFaultDetailsSteps.cs" />
+    <Compile Include="WorkOrderList\WorkOrderList.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderList.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderList\WorkOrderListSteps.cs" />
     <Compile Include="WorkOrderViewFaults.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +101,18 @@
     <Compile Include="WorkOrderViewFaultsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ReallocateWorkOrder\ReallocateWorkOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ReallocateWorkOrder.feature.cs</LastGenOutput>
+    </None>
+    <None Include="RepairTeamList\RepairTeamList.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RepairTeamList.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ScheduleWorkOrder\ScheduleWorkOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ScheduleWorkOrder.feature.cs</LastGenOutput>
+    </None>
     <None Include="WorkOrderAssignToFault.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderAssignToFault.feature.cs</LastGenOutput>
@@ -94,11 +129,16 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderGetFaultDetails.feature.cs</LastGenOutput>
     </None>
+    <None Include="WorkOrderList\WorkOrderList.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderList.feature.cs</LastGenOutput>
+    </None>
     <None Include="WorkOrderViewFaults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderViewFaults.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
