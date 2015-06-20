@@ -19,8 +19,8 @@ namespace RoadMaintenance.FaultRepair.Repos
             var wob = new WorkOrderBuilder("Potholes at West Street, JHB");
             wob.AddTask("Fix Pothole");
             wob.AddTask("Repaint road markings");
-            wob.AddMaterial("Bitumen", 100, MeasurementType.WeightInKG);
-            wob.AddMaterial("White Paint", 100, MeasurementType.VolumeInLiter);
+            wob.AddMaterial("Bitumen", 100, MeasurementType.Kg);
+            wob.AddMaterial("White Paint", 100, MeasurementType.Liters);
             wob.AddEquipment("Shovel", 5);
             wob.AddEquipment("Steamroller", 1);
             dummyData.Add(wob.GetResult());
@@ -29,8 +29,8 @@ namespace RoadMaintenance.FaultRepair.Repos
             wob.AddTask("Remove broken robot");
             wob.AddTask("Erect new robot");
             wob.AddTask("Connect robot wirings");
-            wob.AddMaterial("Wires", 100, MeasurementType.Amount);
-            wob.AddMaterial("Cement", 100, MeasurementType.WeightInKG);
+            wob.AddMaterial("Wires", 100, MeasurementType.Items);
+            wob.AddMaterial("Cement", 100, MeasurementType.Kg);
             wob.AddEquipment("Cement Mixer", 1);
             wob.AddEquipment("Pliers", 2);
             wob.AddEquipment("Shovel", 10);
@@ -41,6 +41,11 @@ namespace RoadMaintenance.FaultRepair.Repos
             wob.AddEquipment("Pump", 1);
             dummyData.Add(wob.GetResult());
 
+        }
+
+        public DummyWorkOrderRepository(IEnumerable<WorkOrder> data)
+        {
+            this.dummyData = data.ToList();
         }
 
         public WorkOrder GetWorkOrderByID(string id)

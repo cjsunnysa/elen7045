@@ -114,19 +114,19 @@ this.ScenarioSetup(scenarioInfo);
                         "Status"});
             table2.AddRow(new string[] {
                         "0",
-                        "unscheduled"});
+                        "issued"});
             table2.AddRow(new string[] {
                         "1",
-                        "unscheduled"});
+                        "issued"});
             table2.AddRow(new string[] {
                         "2",
-                        "unscheduled"});
+                        "issued"});
             table2.AddRow(new string[] {
                         "3",
-                        "unscheduled"});
+                        "issued"});
             table2.AddRow(new string[] {
                         "4",
-                        "unscheduled"});
+                        "issued"});
 #line 18
  testRunner.Given("these work orders exist", ((string)(null)), table2, "Given ");
 #line 25
@@ -137,19 +137,19 @@ this.ScenarioSetup(scenarioInfo);
                         "Status"});
             table3.AddRow(new string[] {
                         "0",
-                        "unscheduled"});
+                        "issued"});
             table3.AddRow(new string[] {
                         "1",
-                        "unscheduled"});
+                        "issued"});
             table3.AddRow(new string[] {
                         "2",
-                        "unscheduled"});
+                        "issued"});
             table3.AddRow(new string[] {
                         "3",
-                        "unscheduled"});
+                        "issued"});
             table3.AddRow(new string[] {
                         "4",
-                        "unscheduled"});
+                        "issued"});
 #line 26
  testRunner.Then("I receive these work orders", ((string)(null)), table3, "Then ");
 #line hidden
@@ -169,22 +169,25 @@ this.ScenarioSetup(scenarioInfo);
                         "Status"});
             table4.AddRow(new string[] {
                         "0",
-                        "unscheduled"});
+                        "issued"});
             table4.AddRow(new string[] {
                         "1",
-                        "scheduled"});
+                        "created"});
             table4.AddRow(new string[] {
                         "2",
-                        "unscheduled"});
+                        "issued"});
             table4.AddRow(new string[] {
                         "3",
-                        "unscheduled"});
+                        "issued"});
             table4.AddRow(new string[] {
                         "4",
-                        "scheduled"});
+                        "verified"});
+            table4.AddRow(new string[] {
+                        "5",
+                        "closed"});
 #line 35
  testRunner.Given("these work orders exist", ((string)(null)), table4, "Given ");
-#line 42
+#line 43
  testRunner.When("I request a list of unscheduled work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -192,14 +195,14 @@ this.ScenarioSetup(scenarioInfo);
                         "Status"});
             table5.AddRow(new string[] {
                         "0",
-                        "unscheduled"});
+                        "issued"});
             table5.AddRow(new string[] {
                         "2",
-                        "unscheduled"});
+                        "issued"});
             table5.AddRow(new string[] {
                         "3",
-                        "unscheduled"});
-#line 43
+                        "issued"});
+#line 44
  testRunner.Then("I receive these work orders", ((string)(null)), table5, "Then ");
 #line hidden
             this.ScenarioCleanup();

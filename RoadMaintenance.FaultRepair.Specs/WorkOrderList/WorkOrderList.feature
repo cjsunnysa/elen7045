@@ -16,32 +16,33 @@ Scenario: All work orders are scheduled
 
 Scenario: All work orders are unscheduled
 	Given these work orders exist
-	| Id | Status      |
-	| 0  | unscheduled |
-	| 1  | unscheduled |
-	| 2  | unscheduled |
-	| 3  | unscheduled |
-	| 4  | unscheduled |
+	| Id | Status |
+	| 0  | issued |
+	| 1  | issued |
+	| 2  | issued |
+	| 3  | issued |
+	| 4  | issued |
 	When I request a list of unscheduled work orders
 	Then I receive these work orders
-	| Id | Status      |
-	| 0  | unscheduled |
-	| 1  | unscheduled |
-	| 2  | unscheduled |
-	| 3  | unscheduled |
-	| 4  | unscheduled |
+	| Id | Status |
+	| 0  | issued |
+	| 1  | issued |
+	| 2  | issued |
+	| 3  | issued |
+	| 4  | issued |
 
 Scenario: Work orders with mixed statuses
 	Given these work orders exist
-	| Id | Status      |
-	| 0  | unscheduled |
-	| 1  | scheduled   |
-	| 2  | unscheduled |
-	| 3  | unscheduled |
-	| 4  | scheduled   |
+	| Id | Status   |
+	| 0  | issued   |
+	| 1  | created  |
+	| 2  | issued   |
+	| 3  | issued   |
+	| 4  | verified |
+	| 5  | closed   |
 	When I request a list of unscheduled work orders
 	Then I receive these work orders
-	| Id | Status      |
-	| 0  | unscheduled |	
-	| 2  | unscheduled |
-	| 3  | unscheduled |	
+	| Id | Status |
+	| 0  | issued |
+	| 2  | issued |
+	| 3  | issued |

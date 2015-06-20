@@ -30,8 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -101,6 +103,7 @@
     <Compile Include="WorkOrderViewFaults\WorkOrderViewFaultsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="ReallocateWorkOrder\ReallocateWorkOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ReallocateWorkOrder.feature.cs</LastGenOutput>
@@ -138,7 +141,23 @@
       <LastGenOutput>WorkOrderViewFaults.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Core\RoadMaintenance.FaultRepair.Core.csproj">
+      <Project>{e35c6087-300a-47a0-8d28-b50c17f84b1b}</Project>
+      <Name>RoadMaintenance.FaultRepair.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Repos\RoadMaintenance.FaultRepair.Repos.csproj">
+      <Project>{a7ea58eb-7104-4a5d-a99f-cafdb56ecbbb}</Project>
+      <Name>RoadMaintenance.FaultRepair.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Services\RoadMaintenance.FaultRepair.Services.csproj">
+      <Project>{ad58825a-4257-4d46-99bc-d8bdebbdb9c6}</Project>
+      <Name>RoadMaintenance.FaultRepair.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

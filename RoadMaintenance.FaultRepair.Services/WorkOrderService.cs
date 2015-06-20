@@ -133,5 +133,13 @@ namespace RoadMaintenance.FaultRepair.Services
             equipment = new List<Tuple<string, int>>();
             materials = new List<Tuple<string, double, MeasurementType>>();
         }
+
+        public IEnumerable<WorkOrderInfo> GetUnscheduledWorkOrders()
+        {
+            return
+                workOrderRepo.GetWorkOrdersByStatus(WorkOrderStatus.Issued)
+                    .Select(workOrder => new WorkOrderInfo(workOrder));
+
+        }
     }
 }

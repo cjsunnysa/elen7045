@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</ProjectGuid>
+    <ProjectGuid>{4C0E5D17-D5CE-4141-885C-554AA1840AD1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RoadMaintenance.FaultLogging.Core</RootNamespace>
-    <AssemblyName>RoadMaintenance.FaultLogging.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>RoadMaintenance.SharedKernel.Specs</RootNamespace>
+    <AssemblyName>RoadMaintenance.SharedKernel.Specs</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,30 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\RecentlyClosed.cs" />
-    <Compile Include="Enums\Status.cs" />
-    <Compile Include="Enums\Type.cs" />
-    <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\Fault.cs" />
-    <Compile Include="DTO\SearchDTO.cs" />
-    <Compile Include="Model\Call.cs" />
+    <Compile Include="TestKernelBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
-      <Project>{7c04bf02-7227-426a-8e1c-32bd7444047e}</Project>
-      <Name>RoadMaintenance.ApplicationLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
-      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
-      <Name>RoadMaintenance.SharedKernel.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
-      <Project>{3C2375E2-CB74-4309-8943-4B32C5D4F30B}</Project>
-      <Name>RoadMaintenance.SharedKernel.Repos</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

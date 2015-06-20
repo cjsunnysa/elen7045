@@ -24,7 +24,7 @@ namespace RoadMaintenance.FaultRepair.Core
         private List<BillOfMaterialsItem> billOfMaterials;
         private List<Equipment> equipment;
 
-        private string GenerateID()
+        private static string GenerateID()
         {
             ++idSequence;
             string newID = string.Format("WO{1}", idSequence);
@@ -124,9 +124,9 @@ namespace RoadMaintenance.FaultRepair.Core
             }
         }
 
-        public WorkOrder()
+        public WorkOrder(string id)
         {
-            id           = GenerateID();
+            this.id           = id;
             description  = string.Empty;
             status       = WorkOrderStatus.Created;
             creationDate = DateTime.Now;
@@ -138,10 +138,15 @@ namespace RoadMaintenance.FaultRepair.Core
             equipment       = new List<Equipment>();
         }
 
+        public WorkOrder()
+            : this(GenerateID())
+        {
+            
+        }
+
         public WorkOrder(WorkOrderStatus status, DateTime creationDate, string department, int faultID)
             : this()
-        {
-            this.id           = GenerateID();
+        {            
             this.status       = status;
             this.creationDate = creationDate;
             this.department   = department;
