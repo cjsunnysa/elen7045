@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace RoadMaintenance.FaultRepair.Specs
+namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetFaultDetails
 {
     using TechTalk.SpecFlow;
     
