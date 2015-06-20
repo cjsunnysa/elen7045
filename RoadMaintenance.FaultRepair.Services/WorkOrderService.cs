@@ -16,10 +16,31 @@ namespace RoadMaintenance.FaultRepair.Services
             this.workOrderRepo = workOrderRepo;
         }
 
-        public WorkOrder CreateWorkOrder(WorkOrderDTO workOrderDetails)
+        public string CreateWorkOrder(string       description, 
+                                      List<string> tasks,
+                                      List<Tuple<string, int>> equipment,
+                                      List<Tuple<string, double, MeasurementType>> materials)
         {
-            // Use factory to create new work order
-            WorkOrderBuilder wob = new WorkOrderBuilder("WO001", "New Work Order");
+            // Use factory (builder) to create new work order
+            WorkOrderBuilder wob = new WorkOrderBuilder(description);
+            
+            // Set tasks
+            foreach(var task in tasks)
+            {
+                wob.AddTask(task);
+            }
+
+            // Set equipment
+            foreach(var tool in equipment)
+            {
+                wob.AddEquipment(tool.Item1, tool.Item2);
+            }
+
+            // Set material
+            foreach(var material in materials)
+            {
+                wob.AddMaterial(material.Item1, material.Item2, material.Item3);
+            }            
 
             WorkOrder newWO = wob.GetResult();
 
@@ -27,7 +48,19 @@ namespace RoadMaintenance.FaultRepair.Services
 
             workOrderRepo.InsertWorkOrder(newWO);
 
-            return newWO;
+            return newWO.ID;
+        }
+
+        public void AssignWorkOrderToFault (string workOrderID, int faultID)
+        {
+            // Get existing work order from repository
+            WorkOrder wo = workOrderRepo.GetWorkOrderByID(workOrderID);
+
+            // Assign fault
+            wo.FaultID = faultID;
+
+            // Update repo with new details
+            workOrderRepo.UpdateWorkOrder(wo);
         }
     }
 }

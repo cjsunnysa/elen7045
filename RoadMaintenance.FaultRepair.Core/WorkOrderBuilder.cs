@@ -9,10 +9,9 @@ namespace RoadMaintenance.FaultRepair.Core
     {
         private WorkOrder wo;
 
-        public WorkOrderBuilder(string id, string description)
+        public WorkOrderBuilder(string description)
         {
             wo = new WorkOrder();
-            wo.ID = id;
             wo.Description = description;
             wo.CreationDate = DateTime.Now;
             wo.FaultID = 0;
