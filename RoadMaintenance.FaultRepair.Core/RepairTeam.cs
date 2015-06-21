@@ -27,7 +27,9 @@ namespace RoadMaintenance.FaultRepair.Core
                         (scheduleEntry.StartTime > existingEntry.StartTime &&
                          scheduleEntry.StartTime < existingEntry.EndTime) ||
                         (scheduleEntry.EndTime > existingEntry.StartTime &&
-                         scheduleEntry.EndTime < existingEntry.EndTime)))
+                         scheduleEntry.EndTime < existingEntry.EndTime) ||
+                        (existingEntry.StartTime > scheduleEntry.StartTime &&
+                        existingEntry.EndTime < scheduleEntry.EndTime)))
             {
                 if (existingIndex != -1)
                     Schedule.Insert(existingIndex, existingItem);

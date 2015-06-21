@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Repos;
@@ -49,6 +50,29 @@ namespace RoadMaintenance.FaultRepair.Services
             var result = repairTeam.UnassignWorkOrder(workOrderId);
             if (result)
                 repairTeamRepo.Save(repairTeam);
+
+            return result;
+        }        
+
+        public bool ReassignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
+        {
+            var oldRepairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);
+
+            var workOrder = workOrderRepo.GetWorkOrderByID(workOrderId);
+            var repairTeam = repairTeamRepo.Find(repairTeamId);
+
+            var result = repairTeam.Assign(workOrder, workOrderStartTime);
+            if (result)
+            {
+                if (oldRepairTeam != null)
+                {
+                    if (!oldRepairTeam.UnassignWorkOrder(workOrderId))
+                        return false;
+
+                    repairTeamRepo.Save(oldRepairTeam);
+                }                
+                repairTeamRepo.Save(repairTeam);
+            }
 
             return result;
         }
