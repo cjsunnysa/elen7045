@@ -66,22 +66,160 @@ namespace RoadMaintenance.FaultRepair.Specs.RepairTeamList
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void AddTwoNumbers()
+        [NUnit.Framework.DescriptionAttribute("Teams with work orders scheduled")]
+        public virtual void TeamsWithWorkOrdersScheduled()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "mytag"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Teams with work orders scheduled", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "WorkOrderID",
+                        "StartTime",
+                        "EndTime"});
+            table1.AddRow(new string[] {
+                        "0",
+                        "2014-01-06 08:00",
+                        "2014-01-06 14:00"});
+            table1.AddRow(new string[] {
+                        "1",
+                        "2014-01-07 08:00",
+                        "2014-01-08 12:00"});
+            table1.AddRow(new string[] {
+                        "2",
+                        "2014-01-08 14:00",
+                        "2014-01-09 13:00"});
 #line 8
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I have a repair team with id 1 and the following schedule", ((string)(null)), table1, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "WorkOrderID",
+                        "StartTime",
+                        "EndTime"});
+            table2.AddRow(new string[] {
+                        "3",
+                        "2014-01-06 12:00",
+                        "2014-01-06 16:00"});
+            table2.AddRow(new string[] {
+                        "4",
+                        "2014-01-07 08:00",
+                        "2014-01-09 12:00"});
+            table2.AddRow(new string[] {
+                        "5",
+                        "2014-01-09 14:00",
+                        "2014-01-10 13:00"});
+            table2.AddRow(new string[] {
+                        "6",
+                        "2014-01-10 14:00",
+                        "2014-01-10 16:00"});
+            table2.AddRow(new string[] {
+                        "7",
+                        "2014-01-11 08:00",
+                        "2014-01-11 13:00"});
+#line 13
+ testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table2, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "WorkOrderID",
+                        "StartTime",
+                        "EndTime"});
+            table3.AddRow(new string[] {
+                        "8",
+                        "2014-01-06 10:00",
+                        "2014-01-06 12:00"});
+            table3.AddRow(new string[] {
+                        "9",
+                        "2014-01-06 13:00",
+                        "2014-01-07 10:00"});
+            table3.AddRow(new string[] {
+                        "10",
+                        "2014-01-07 12:00",
+                        "2014-01-07 16:00"});
+            table3.AddRow(new string[] {
+                        "11",
+                        "2014-01-08 08:00",
+                        "2014-01-08 16:00"});
+            table3.AddRow(new string[] {
+                        "12",
+                        "2014-01-09 08:00",
+                        "2014-01-11 18:00"});
+#line 20
+ testRunner.And("I have a repair team with id 3 and the following schedule", ((string)(null)), table3, "And ");
+#line 27
+ testRunner.When("I request a list of repair teams", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "RepairTeamID",
+                        "WorkOrderID",
+                        "StartTime",
+                        "EndTime"});
+            table4.AddRow(new string[] {
+                        "1",
+                        "0",
+                        "2014-01-06 08:00",
+                        "2014-01-06 14:00"});
+            table4.AddRow(new string[] {
+                        "1",
+                        "1",
+                        "2014-01-07 08:00",
+                        "2014-01-08 12:00"});
+            table4.AddRow(new string[] {
+                        "1",
+                        "2",
+                        "2014-01-08 14:00",
+                        "2014-01-09 13:00"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "3",
+                        "2014-01-06 12:00",
+                        "2014-01-06 16:00"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "4",
+                        "2014-01-07 08:00",
+                        "2014-01-09 12:00"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "5",
+                        "2014-01-09 14:00",
+                        "2014-01-10 13:00"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "6",
+                        "2014-01-10 14:00",
+                        "2014-01-10 16:00"});
+            table4.AddRow(new string[] {
+                        "2",
+                        "7",
+                        "2014-01-11 08:00",
+                        "2014-01-11 13:00"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "8",
+                        "2014-01-06 10:00",
+                        "2014-01-06 12:00"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "9",
+                        "2014-01-06 13:00",
+                        "2014-01-07 10:00"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "10",
+                        "2014-01-07 12:00",
+                        "2014-01-07 16:00"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "11",
+                        "2014-01-08 08:00",
+                        "2014-01-08 16:00"});
+            table4.AddRow(new string[] {
+                        "3",
+                        "12",
+                        "2014-01-09 08:00",
+                        "2014-01-11 18:00"});
+#line 28
+ testRunner.Then("I get a list of repair teams with schedules as below", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
