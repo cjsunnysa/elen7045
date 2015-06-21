@@ -114,8 +114,8 @@ this.ScenarioSetup(scenarioInfo);
                         "2014-01-10 16:00"});
             table2.AddRow(new string[] {
                         "7",
-                        "2014-01-11 08:00",
-                        "2014-01-11 13:00"});
+                        "2014-01-13 08:00",
+                        "2014-01-13 13:00"});
 #line 13
  testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table2, "And ");
 #line hidden
@@ -142,7 +142,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "12",
                         "2014-01-09 08:00",
-                        "2014-01-11 18:00"});
+                        "2014-01-13 16:00"});
 #line 20
  testRunner.And("I have a repair team with id 3 and the following schedule", ((string)(null)), table3, "And ");
 #line 27
@@ -191,8 +191,8 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "2",
                         "7",
-                        "2014-01-11 08:00",
-                        "2014-01-11 13:00"});
+                        "2014-01-13 08:00",
+                        "2014-01-13 13:00"});
             table4.AddRow(new string[] {
                         "3",
                         "8",
@@ -217,7 +217,7 @@ this.ScenarioSetup(scenarioInfo);
                         "3",
                         "12",
                         "2014-01-09 08:00",
-                        "2014-01-11 18:00"});
+                        "2014-01-13 16:00"});
 #line 28
  testRunner.Then("I get a list of repair teams with schedules as below", ((string)(null)), table4, "Then ");
 #line hidden

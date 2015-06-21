@@ -95,5 +95,17 @@ namespace RoadMaintenance.FaultRepair.Core
 
             return duration;
         }
+
+        public override bool Equals(object obj)
+        {
+            var otherEntry = obj as ScheduleEntry;
+            if (otherEntry == null)
+                return false;
+
+            return this.WorkOrderId == otherEntry.WorkOrderId
+                   && this.StartTime == otherEntry.StartTime
+                   && this.EndTime == otherEntry.EndTime;
+            
+        }
     }
 }

@@ -43,7 +43,6 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepairTeam.cs" />
-    <Compile Include="ScheduleBlock.cs" />
     <Compile Include="ScheduleEntry.cs" />
     <Compile Include="WorkOrder.cs" />
     <Compile Include="WorkOrderBuilder.cs" />
