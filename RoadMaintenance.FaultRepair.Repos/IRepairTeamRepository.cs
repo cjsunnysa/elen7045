@@ -8,6 +8,9 @@ namespace RoadMaintenance.FaultRepair.Repos
 {
     public interface IRepairTeamRepository
     {
-        IEnumerable<RepairTeam> GeRepairTeams();        
+        RepairTeam Find(string id);
+        void Save(RepairTeam repairTeam);
+        IEnumerable<RepairTeam> GeRepairTeams();
+        RepairTeam GetRepairTeamForWorkOrder(string workOrderId);
     }
 }

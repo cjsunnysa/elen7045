@@ -124,6 +124,8 @@ namespace RoadMaintenance.FaultRepair.Core
             }
         }
 
+        public int Duration { get; set; }
+
         public WorkOrder(string id)
         {
             this.id           = id;
@@ -152,5 +154,6 @@ namespace RoadMaintenance.FaultRepair.Core
             this.department   = department;
             this.faultID      = faultID;
         }
+        
     }
 }

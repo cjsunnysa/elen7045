@@ -18,14 +18,31 @@ namespace RoadMaintenance.FaultRepair.Repos
             dummyData = data.ToList();
         }
 
-        public void AddRepairTeam(RepairTeam repairTeam)
+        public RepairTeam Find(string id)
         {
-            dummyData.Add(repairTeam);
+            return dummyData.FirstOrDefault(repairTeam => repairTeam.Id == id);
+        }
+
+        public void Save(RepairTeam repairTeam)
+        {
+            var index = dummyData.IndexOf(repairTeam);
+            if (index == -1)
+                dummyData.Add(repairTeam);
+            else
+                dummyData[index] = repairTeam;
         }
 
         public IEnumerable<RepairTeam> GeRepairTeams()
         {
             return dummyData;
+        }
+
+
+        public RepairTeam GetRepairTeamForWorkOrder(string workOrderId)
+        {
+            return
+                dummyData.FirstOrDefault(
+                    repairTeam => repairTeam.Schedule.Any(entry => entry.WorkOrderId == workOrderId));
         }
     }
 }

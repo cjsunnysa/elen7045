@@ -8,17 +8,49 @@ namespace RoadMaintenance.FaultRepair.Services
 {
     public class RepairTeamService
     {
-        private IRepairTeamRepository repo;
-        public RepairTeamService(IRepairTeamRepository repo)
+        private IRepairTeamRepository repairTeamRepo;
+        private IWorkOrderRepository workOrderRepo;
+
+        public RepairTeamService(IRepairTeamRepository repairTeamRepo, IWorkOrderRepository workOrderRepo)
         {
-            this.repo = repo;            
+            this.repairTeamRepo = repairTeamRepo;
+            this.workOrderRepo = workOrderRepo;
+        }
+
+        public RepairTeamInfo GetRepairTeam(string id)
+        {
+            var repairTeam = repairTeamRepo.Find(id);
+            return repairTeam == null ? null : new RepairTeamInfo(repairTeam);
         }
 
         public IEnumerable<RepairTeamInfo> GetRepairTeams()
         {
-            return repo.GeRepairTeams().Select(team => new RepairTeamInfo(team));
+            return repairTeamRepo.GeRepairTeams().Select(team => new RepairTeamInfo(team));
         }
 
-        
+        public bool AssignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
+        {
+            var workOrder = workOrderRepo.GetWorkOrderByID(workOrderId);
+            var repairTeam = repairTeamRepo.Find(repairTeamId);
+
+            var result = repairTeam.Assign(workOrder, workOrderStartTime);
+            if (result)
+                repairTeamRepo.Save(repairTeam);
+
+            return result;
+        }
+
+        public bool UnassignWorkOrder(string workOrderId)
+        {
+            var repairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);
+            if (repairTeam == null)
+                return false;
+
+            var result = repairTeam.UnassignWorkOrder(workOrderId);
+            if (result)
+                repairTeamRepo.Save(repairTeam);
+
+            return result;
+        }
     }
 }

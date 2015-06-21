@@ -16,7 +16,7 @@ namespace RoadMaintenance.FaultRepair.Specs.RepairTeamList
         [When(@"I request a list of repair teams")]
         public void WhenIRequestAListOfRepairTeams()
         {
-            var service = ScenarioContext.Current.Get<StandardKernel>("kernel").Get<RepairTeamService>();
+            var service = ScenarioContext.Current.Get<RepairTeamService>("service");
             ScenarioContext.Current.Add("results", service.GetRepairTeams());
         }
         

@@ -50,17 +50,23 @@ namespace RoadMaintenance.FaultRepair.Core
             var dayLength = DayEndTime - DayStartTime;
 
             var days = duration / (dayLength);
+            var remainingDuration = duration - days * dayLength;
+            if (remainingDuration == 0 && endTime.Hour == DayStartTime)
+            {
+                remainingDuration = dayLength;
+                days--;
+            }
+
             for (int i = 0; i < days; i++)
                 endTime = incrementDay(endTime);
-
-            var remainingDuration = duration - days * dayLength;
+            
             var availableTimeLeftInDay = DayEndTime - endTime.Hour;
 
             if (availableTimeLeftInDay < remainingDuration)
             {
                 remainingDuration -= availableTimeLeftInDay;
                 endTime = incrementDay(endTime);
-                endTime = endTime.AddDays(DayStartTime - endTime.Hour);
+                endTime = endTime.AddHours(DayStartTime - endTime.Hour);
             }
 
             return endTime.AddHours(remainingDuration);           

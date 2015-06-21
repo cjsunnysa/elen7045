@@ -103,7 +103,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 16
  testRunner.When("I reallocate the work order to team with id 2 to start at \"2014-01-06 08:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 17
- testRunner.Then("the work order reallocation should be \"succesful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the work order reallocation should be \"successful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -180,7 +180,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 37
  testRunner.When("I reallocate the work order to team with id 2 to start at \"2014-01-06 08:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 38
- testRunner.Then("the work order reallocation should be \"succesful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the work order reallocation should be \"successful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
