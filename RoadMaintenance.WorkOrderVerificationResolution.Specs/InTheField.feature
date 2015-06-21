@@ -1,10 +1,10 @@
-﻿Feature: In the Field
+﻿Feature: InTheField
+Inspectors conduct inspections
+in order to verify completed work orders
+when it is not possible make a decision from the central office.
 
-#Inspectors conduct inspections
-#in order to verify completed work orders
-#when it is not possible make a decision from the central office.
-
-Scenario: Work Order List
+@GreenPath
+Scenario: Scheduled Work
 Given Inspectors use mobile devices to receive scheduled inspections, to navigate to fault locations, and to perform the actual verification of work orders.
 When inspector logs on to the system via his/her device
 Then the device will download the ten work orders requiring inspection.
