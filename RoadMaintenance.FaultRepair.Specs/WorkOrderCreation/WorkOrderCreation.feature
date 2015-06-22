@@ -1,11 +1,39 @@
 ﻿Feature: WorkOrderCreation
 	As an authorised staff member of the transport department
-	I want to capture a work order
-	In order for it to be assigned to a fault
+	I want to capture a work order for a logged fault
 
 @mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+Scenario: Create a basic work order
+	Given I have the following work orders in the system
+	| Description  |
+	| Work Order 1 |
+	When I create and add a work order 
+	| Description  |
+	| Work Order 2 |
+	Then the result should be a new work order number
+	And the work orders in the system should be 
+	| Description  |
+	| Work Order 1 |
+	| Work Order 2 |
+
+Scenario: Create a complex work order with tasks, equipment and materials
+    Given I have no work orders in the system
+	When I created a work order as follows 
+	| Description  |
+	| Work Order 2 |
+	And I add the following tasks 
+	| Description |
+	| Task 1      |
+	| Task 2      |
+	| Task 3      |
+	And I add the following equipment 
+	| Description | Number |
+	| Tool 1      | 5      |
+	And I add the following material
+	| Description | Amount | Measurement |
+	| Material 1  | 5      | Kg          |
+	| Material 2  | 100    | Liter       |
+	Then the result should be a new work order number
+	And there should be 1 work order in the system
+
+
