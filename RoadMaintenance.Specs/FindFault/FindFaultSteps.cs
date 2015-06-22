@@ -6,7 +6,7 @@ using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;
 
-namespace RoadMaintenance.FaultLogging.Specs
+namespace RoadMaintenance.FaultLogging.Specs.FindFault
 {
     [Binding]
     public class FindFaultSteps
