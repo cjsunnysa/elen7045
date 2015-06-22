@@ -1,10 +1,4 @@
 ﻿using System;
-<<<<<<< HEAD
-=======
-using System.Collections.Generic;
-using System.Linq;
-using Moq;
->>>>>>> cd5ce2bcac0ec53f34f2b5951c4415b859ad7470
 using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Core.Model;

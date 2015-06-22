@@ -70,7 +70,6 @@
     <Compile Include="Helpers\TestHelpers.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Model\FaultTest.cs" />
-    <Compile Include="Model\ITestResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchFaults.feature.cs">
       <AutoGen>True</AutoGen>
