@@ -30,8 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -46,59 +48,120 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkOrderAssignToFault.feature.cs">
+    <Compile Include="ReallocateWorkOrder\ReallocateWorkOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReallocateWorkOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ReallocateWorkOrder\ReallocateWorkOrderSteps.cs" />
+    <Compile Include="RepairTeamList\RepairTeamList.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepairTeamList.feature</DependentUpon>
+    </Compile>
+    <Compile Include="RepairTeamList\RepairTeamListSteps.cs" />
+    <Compile Include="ScheduleWorkOrder\ScheduleWorkOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleWorkOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleWorkOrder\ScheduleWorkOrderSteps.cs" />
+    <Compile Include="WorkOrderAssignToFault\WorkOrderAssignToFault.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderAssignToFault.feature</DependentUpon>
     </Compile>
-    <Compile Include="WorkOrderAssignToFaultSteps.cs" />
-    <Compile Include="WorkOrderCreation.feature.cs">
+    <Compile Include="WorkOrderAssignToFault\WorkOrderAssignToFaultSteps.cs" />
+    <Compile Include="WorkOrderCreation\WorkOrderCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderCreation.feature</DependentUpon>
     </Compile>
-    <Compile Include="WorkOrderFaultNotModified.feature.cs">
+    <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModified.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderFaultNotModified.feature</DependentUpon>
     </Compile>
-    <Compile Include="WorkOrderFaultNotModifiedSteps.cs" />
-    <Compile Include="WorkOrderGetFaultDetails.feature.cs">
+    <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModifiedSteps.cs" />
+    <Compile Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderGetFaultDetails.feature</DependentUpon>
     </Compile>
-    <Compile Include="WorkOrderGetFaultDetailsSteps.cs" />
-    <Compile Include="WorkOrderViewFaults.feature.cs">
+    <Compile Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetailsSteps.cs" />
+    <Compile Include="WorkOrderList\WorkOrderList.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderList.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderList\WorkOrderListSteps.cs" />
+    <Compile Include="WorkOrderViewFaults\WorkOrderViewFaults.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderViewFaults.feature</DependentUpon>
     </Compile>
-    <Compile Include="WorkOrderViewFaultsSteps.cs" />
+    <Compile Include="WorkOrderViewFaults\WorkOrderViewFaultsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="WorkOrderAssignToFault.feature">
+    <None Include="packages.config" />
+    <None Include="ReallocateWorkOrder\ReallocateWorkOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ReallocateWorkOrder.feature.cs</LastGenOutput>
+    </None>
+    <None Include="RepairTeamList\RepairTeamList.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RepairTeamList.feature.cs</LastGenOutput>
+    </None>
+    <None Include="ScheduleWorkOrder\ScheduleWorkOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ScheduleWorkOrder.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderAssignToFault\WorkOrderAssignToFault.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderAssignToFault.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderCreation.feature">
+    <None Include="WorkOrderCreation\WorkOrderCreation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderCreation.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderFaultNotModified.feature">
+    <None Include="WorkOrderFaultNotModified\WorkOrderFaultNotModified.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderFaultNotModified.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderGetFaultDetails.feature">
+    <None Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderGetFaultDetails.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderViewFaults.feature">
+    <None Include="WorkOrderList\WorkOrderList.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderList.feature.cs</LastGenOutput>
+    </None>
+    <None Include="WorkOrderViewFaults\WorkOrderViewFaults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderViewFaults.feature.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Core\RoadMaintenance.FaultRepair.Core.csproj">
+      <Project>{e35c6087-300a-47a0-8d28-b50c17f84b1b}</Project>
+      <Name>RoadMaintenance.FaultRepair.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Repos\RoadMaintenance.FaultRepair.Repos.csproj">
+      <Project>{a7ea58eb-7104-4a5d-a99f-cafdb56ecbbb}</Project>
+      <Name>RoadMaintenance.FaultRepair.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Services\RoadMaintenance.FaultRepair.Services.csproj">
+      <Project>{ad58825a-4257-4d46-99bc-d8bdebbdb9c6}</Project>
+      <Name>RoadMaintenance.FaultRepair.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

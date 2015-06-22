@@ -13,6 +13,7 @@ namespace RoadMaintenance.FaultRepair.Repos
         List<WorkOrder> GetWorkOrdersByFault(int faultID);
 
         void InsertWorkOrder(WorkOrder wo);
+        void UpdateWorkOrder(WorkOrder wo);
         void DeleteWorkOrder(WorkOrder wo);
     }
 }

@@ -9,19 +9,19 @@ namespace RoadMaintenance.FaultRepair.Core
 
     public class WorkOrderTask
     {
-        private WorkOrderTaskStatus status;
-        private string description;
+        public WorkOrderTaskStatus Status { get; set; }
+        public string Description { get; set; }
 
         public WorkOrderTask()
         {
-            status = WorkOrderTaskStatus.Created;
-            description = string.Empty;
+            Status = WorkOrderTaskStatus.Created;
+            Description = string.Empty;
         }
 
         public WorkOrderTask(WorkOrderTaskStatus status, string description)
         {
-            this.status = status;
-            this.description = description;
+            this.Status = status;
+            this.Description = description;
         }
     }
 }

@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DummyRepairTeamRepository.cs" />
     <Compile Include="DummyWorkOrderRepository.cs" />
+    <Compile Include="IRepairTeamRepository.cs" />
     <Compile Include="IWorkOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,19 +7,19 @@ namespace RoadMaintenance.FaultRepair.Core
 {
     public class Equipment
     {
-        private string description;
-        private int quantity;
+        public string Description { get; set; }
+        public int Quantity { get; set; }
 
         public Equipment()
         {
-            description = string.Empty;
-            quantity = 0;
+            Description = string.Empty;
+            Quantity = 0;
         }
 
         public Equipment(string description, int quantity)
         {
-            this.description = description;
-            this.quantity = quantity;
+            this.Description = description;
+            this.Quantity = quantity;
         }
     }
 }

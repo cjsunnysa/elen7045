@@ -5,13 +5,15 @@ using System.Text;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
-    public enum WorkOrderStatus {Created, Issued, Scheduled, Verified, Closed};
+    public enum WorkOrderStatus {Creating, Created, Issued, Scheduled, Verified, Closed};
 
     public class WorkOrder
     {
         // Private members
 
-        private string id;
+        private static int idSequence = 0;
+
+        private string id;        
         private string description;
         private WorkOrderStatus status;
         private DateTime creationDate;
@@ -22,16 +24,19 @@ namespace RoadMaintenance.FaultRepair.Core
         private List<BillOfMaterialsItem> billOfMaterials;
         private List<Equipment> equipment;
 
+        private static string GenerateID()
+        {
+            ++idSequence;
+            string newID = string.Format("WO{1}", idSequence);
+            return newID;
+        }
+
         // Properties
         public string ID
         {
             get
             {
                 return id;
-            }
-            set
-            {
-                id = value;
             }
         }
 
@@ -119,21 +124,36 @@ namespace RoadMaintenance.FaultRepair.Core
             }
         }
 
-        public WorkOrder()
+        public int Duration { get; set; }
+
+        public WorkOrder(string id)
         {
-            tasks = new List<WorkOrderTask>();
+            this.id           = id;
+            description  = string.Empty;
+            status       = WorkOrderStatus.Created;
+            creationDate = DateTime.Now;
+            department   = string.Empty;
+            faultID      = 0;
+
+            tasks           = new List<WorkOrderTask>();
             billOfMaterials = new List<BillOfMaterialsItem>();
-            equipment = new List<Equipment>();
+            equipment       = new List<Equipment>();
         }
 
-        public WorkOrder(string id, WorkOrderStatus status, DateTime creationDate, string department, int faultID)
-            : this()
+        public WorkOrder()
+            : this(GenerateID())
         {
-            this.id = id;
-            this.status = status;
-            this.creationDate = creationDate;
-            this.department = department;
-            this.faultID = faultID;
+            
         }
+
+        public WorkOrder(WorkOrderStatus status, DateTime creationDate, string department, int faultID)
+            : this()
+        {            
+            this.status       = status;
+            this.creationDate = creationDate;
+            this.department   = department;
+            this.faultID      = faultID;
+        }
+        
     }
 }
