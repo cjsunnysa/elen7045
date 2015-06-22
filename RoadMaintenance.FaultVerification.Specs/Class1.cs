@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RoadMaintenance.FaultVerification.Specs
+﻿namespace RoadMaintenance.FaultVerification.Specs
 {
     public class Class1
     {

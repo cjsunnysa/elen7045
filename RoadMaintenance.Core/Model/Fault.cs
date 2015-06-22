@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
-using Status = RoadMaintenance.FaultLogging.Core.Enums.Status;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
 {
-    public class Fault : Entity<Guid>, IEquatable<Fault>
+    public class Fault : Entity<Guid>
     {
         public Type Type { get; private set; }
         public Status Status { get; private set; }
         public Address Address { get; private set; }
         public DateTime? DateCompleted { get; set; }
+        public DateTime? EstimatedCompletionDate { get; set; }
+        
         
         private readonly List<Call> _calls;
         public IEnumerable<Call> Calls
         {
             get { return _calls; }
         }
-
+        
+        
         private Fault(Guid id) : base(id)
         {
             _calls = new List<Call>();
@@ -43,6 +45,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Status status, 
             Address address,
             DateTime? dateCompleted,
+            DateTime? estCompletionDate,
             IEnumerable<Call> calls)
         {
             Guard.ForNull(address, "address");
@@ -52,6 +55,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             newRec.UpdateType(type);
             newRec.UpdateStatus(status);
             newRec.UpdateAddress(address);
+            newRec.UpdateEstimatedCompletionDate(estCompletionDate);
             newRec.UpdateDateCompleted(dateCompleted);
 
             if (calls != null)
@@ -75,6 +79,11 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Address = address;
         }
 
+        public void UpdateEstimatedCompletionDate(DateTime? estCompletionDate)
+        {
+            EstimatedCompletionDate = estCompletionDate;
+        }
+
         public void UpdateDateCompleted(DateTime? dateCompleted)
         {
             DateCompleted = dateCompleted;
@@ -88,21 +97,6 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public void AddCalls(IEnumerable<Call> calls)
         {
             _calls.AddRange(calls);
-        }
-
-        public bool Equals(Fault other)
-        {
-            foreach (var call in Calls)
-            {
-                if (!other.Calls.Any(c => c.ReferenceNumber.Equals(call.ReferenceNumber)))
-                    return false;
-            }
-            
-            return Id.Equals(other.Id) &&
-                   Type.Equals(other.Type) &&
-                   Status.Equals(other.Status) &&
-                   Address.Equals(other.Address) &&
-                   DateCompleted.Equals(other.DateCompleted);
         }
     }
 }

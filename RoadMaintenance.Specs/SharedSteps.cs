@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Moq;
 using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos;
-using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
@@ -23,7 +20,7 @@ namespace RoadMaintenance.FaultLogging.Specs
         public virtual void ScenarioSetUp()
         {
             var stepParams = new StepParameters { Kernel = new StandardKernel() };
-            stepParams.Kernel.Bind<IFaultLoggingRepository>().To<FaultLoggingRepository>();
+            stepParams.Kernel.Bind<IRepository<Fault,Guid>>().To<FaultLoggingRepository>();
 
             ScenarioContext.Current.Add("Params", stepParams);
         }
@@ -47,7 +44,7 @@ namespace RoadMaintenance.FaultLogging.Specs
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
             var testSet = table.CreateSet<FaultTest>()
-                                .Select(t => t.ToDomainModel());
+                                .Select(t => t.ToResponse());
 
 
             CollectionAssert.AreEquivalent(testSet, stepParams.ResultsCollection);
