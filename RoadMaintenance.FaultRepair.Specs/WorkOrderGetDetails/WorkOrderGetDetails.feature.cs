@@ -82,7 +82,7 @@ this.ScenarioSetup(scenarioInfo);
                         "WO1",
                         "Work Order 1"});
 #line 8
- testRunner.Given("I have created a work order as follows", ((string)(null)), table1, "Given ");
+ testRunner.Given("The system has a work order", ((string)(null)), table1, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Description"});
@@ -93,7 +93,7 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "Task 3"});
 #line 11
- testRunner.And("The work order has the following tasks", ((string)(null)), table2, "And ");
+ testRunner.And("the work order has tasks", ((string)(null)), table2, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Description",
@@ -102,7 +102,7 @@ this.ScenarioSetup(scenarioInfo);
                         "Tool 1",
                         "5"});
 #line 16
- testRunner.And("And the work order has the following equipment", ((string)(null)), table3, "And ");
+ testRunner.And("the work order has equipment", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Description",
@@ -117,17 +117,12 @@ this.ScenarioSetup(scenarioInfo);
                         "100",
                         "Liter"});
 #line 19
- testRunner.And("And the work order has the following material", ((string)(null)), table4, "And ");
+ testRunner.And("the work order has material", ((string)(null)), table4, "And ");
 #line 23
- testRunner.When("I retrieve the work order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I retrieve the work order details by ID \"WO1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 24
- testRunner.Then("the returned work order should have a Description of \"Work Order 1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 25
- testRunner.And("the returned work order should have 3 tasks allocated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
- testRunner.And("the returned work order should have 2 materials allocated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
- testRunner.And("the returned work order should have 1 equipment allocated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("the returned work order should have a Description of \"Work Order 1\", with 3 tasks" +
+                    ", 2 materials and 1 equipment allocated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

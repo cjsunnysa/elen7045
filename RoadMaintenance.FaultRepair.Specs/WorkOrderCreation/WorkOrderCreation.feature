@@ -33,7 +33,7 @@ Scenario: Create a complex work order with tasks, equipment and materials
 	| Description | Amount | Measurement |
 	| Material 1  | 5      | Kg          |
 	| Material 2  | 100    | Liter       |
-	Then the result should be a new work order number
+	Then the result should be a new work order number created
 	And there should be 1 work order in the system
 
 

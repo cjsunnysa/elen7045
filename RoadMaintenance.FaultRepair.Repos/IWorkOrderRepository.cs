@@ -11,6 +11,7 @@ namespace RoadMaintenance.FaultRepair.Repos
         WorkOrder GetWorkOrderByID(string id);
         List<WorkOrder> GetWorkOrdersByStatus(WorkOrderStatus status);
         List<WorkOrder> GetWorkOrdersByFault(int faultID);
+        List<WorkOrder> GetAllWorkOrders();
 
         void InsertWorkOrder(WorkOrder wo);
         void UpdateWorkOrder(WorkOrder wo);
