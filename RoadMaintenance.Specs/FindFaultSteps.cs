@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Linq;
-using Moq;
 using Ninject;
-using NUnit.Framework;
-using RoadMaintenance.FaultLogging.Repos;
-using RoadMaintenance.FaultLogging.Repos.Interfaces;
-using RoadMaintenance.FaultLogging.Specs.Helpers;
+using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Specs.Model;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace RoadMaintenance.FaultLogging.Specs
 {
@@ -31,9 +27,10 @@ namespace RoadMaintenance.FaultLogging.Specs
         public void WhenIPressTheFindButton()
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            var repo = stepParams.Kernel.Get<IRepository<Fault, Guid>>();
             
-            
-            var findResult = stepParams.Kernel.Get<IFaultLoggingRepository>().Find(new Guid(stepParams.GivenFaultId));
+            var findResult = new FaultService(repo).Find(new Guid(stepParams.GivenFaultId));
 
             stepParams.ResultsCollection = new[] {findResult};
         }

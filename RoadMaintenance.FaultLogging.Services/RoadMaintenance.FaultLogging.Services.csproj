@@ -39,10 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Response\FaultSearchResponse.cs" />
+    <Compile Include="Request\FaultSearchRequest.cs" />
     <Compile Include="FaultService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
+      <Project>{7c04bf02-7227-426a-8e1c-32bd7444047e}</Project>
+      <Name>RoadMaintenance.ApplicationLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{d08cb96d-d6c6-4cf2-b8a9-344000d7a41a}</Project>
       <Name>RoadMaintenance.FaultLogging.Core</Name>

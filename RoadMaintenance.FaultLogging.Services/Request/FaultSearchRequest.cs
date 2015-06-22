@@ -1,8 +1,7 @@
 ﻿using System;
-using RoadMaintenance.FaultLogging.Core.Enums;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
-namespace RoadMaintenance.FaultLogging.Core.DTO
+namespace RoadMaintenance.FaultLogging.Services.DTO
 {
     public class FaultSearchRequest
     {

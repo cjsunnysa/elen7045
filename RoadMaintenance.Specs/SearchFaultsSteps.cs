@@ -1,18 +1,19 @@
 ﻿using System;
+<<<<<<< HEAD
+=======
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
+>>>>>>> cd5ce2bcac0ec53f34f2b5951c4415b859ad7470
 using Ninject;
 using NUnit.Framework;
-using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Model;
-using RoadMaintenance.FaultLogging.Repos;
-using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.FaultLogging.Services;
+using RoadMaintenance.FaultLogging.Services.DTO;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace RoadMaintenance.FaultLogging.Specs
 {
@@ -55,7 +56,7 @@ namespace RoadMaintenance.FaultLogging.Specs
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            var service = new FaultService(stepParams.Kernel.Get<IFaultLoggingRepository>());
+            var service = new FaultService(stepParams.Kernel.Get<IRepository<Fault,Guid>>());
             var faultType = service.GetType(faultTypeDescription);
 
             stepParams.GivenSearchRequest.Type = faultType;
@@ -84,8 +85,8 @@ namespace RoadMaintenance.FaultLogging.Specs
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
-            var repo = stepParams.Kernel.Get<IFaultLoggingRepository>();
-            var results = repo.Find(stepParams.GivenSearchRequest);
+            var repo = stepParams.Kernel.Get<IRepository<Fault,Guid>>();
+            var results = new FaultService(repo).Search(stepParams.GivenSearchRequest);
 
             stepParams.ResultsCollection = results;
         }
