@@ -5,7 +5,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
 {
     public class Call : Entity<string>
     {
-        public string ReferenceNumber { get { return Id; } }
+        public string ReferenceNumber { get; private set; }
         public int OperatorId { get; private set; }
         public DateTime TransactionDate { get; private set; }
 
@@ -20,16 +20,16 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             return new Call(referenceNumber, operatorId, callDate);
         }
 
-        public Call Create(int operatorId, DateTime callDate)
+        public static Call Create(int operatorId, DateTime callDate)
         {
             var referenceNumber = GenerateNewReferenceNumber();
 
             return new Call(referenceNumber, operatorId, callDate);
         }
 
-        private string GenerateNewReferenceNumber()
+        private static string GenerateNewReferenceNumber()
         {
-            return Guid.NewGuid().ToString().Substring(0, 8);
+            return Guid.NewGuid().ToString().Substring(0, 6);
         }
     }
 }

@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaultFactory.cs" />
+    <Compile Include="Interfaces\IFaultFactory.cs" />
+    <Compile Include="Response\CreateFaultResponse.cs" />
+    <Compile Include="Request\CreateFaultRequest.cs" />
     <Compile Include="Response\FaultSearchResponse.cs" />
     <Compile Include="Request\FaultSearchRequest.cs" />
     <Compile Include="FaultService.cs" />

@@ -15,7 +15,6 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public DateTime? DateCompleted { get; set; }
         public DateTime? EstimatedCompletionDate { get; set; }
         
-        
         private readonly List<Call> _calls;
         public IEnumerable<Call> Calls
         {

@@ -20,6 +20,7 @@ namespace RoadMaintenance.FaultLogging.Specs.FindFault
         public void GivenIEnterAsTheFaultIdentificationNumber(string faultIdentificationNumber)
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+
             stepParams.GivenFaultId = faultIdentificationNumber;
         }
         
@@ -28,9 +29,7 @@ namespace RoadMaintenance.FaultLogging.Specs.FindFault
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            var repo = stepParams.Kernel.Get<IRepository<Fault, Guid>>();
-            
-            var findResult = new FaultService(repo).Find(new Guid(stepParams.GivenFaultId));
+            var findResult = stepParams.Service.Find(new Guid(stepParams.GivenFaultId));
 
             stepParams.ResultsCollection = new[] {findResult};
         }

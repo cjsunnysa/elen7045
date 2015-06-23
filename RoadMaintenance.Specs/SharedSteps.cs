@@ -5,6 +5,7 @@ using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos;
+using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
@@ -19,8 +20,13 @@ namespace RoadMaintenance.FaultLogging.Specs
         [BeforeScenario]
         public virtual void ScenarioSetUp()
         {
-            var stepParams = new StepParameters { Kernel = new StandardKernel() };
-            stepParams.Kernel.Bind<IRepository<Fault,Guid>>().To<FaultLoggingRepository>();
+            var mock = new Mock<IDataStore<Fault>>();
+
+            var stepParams = new StepParameters
+            {
+                MockDataSource = mock,
+                Service = new FaultService(new FaultLoggingRepository(mock.Object), new FaultFactory()),
+            };
 
             ScenarioContext.Current.Add("Params", stepParams);
         }
@@ -32,10 +38,7 @@ namespace RoadMaintenance.FaultLogging.Specs
             
             var data = table.CreateSet<FaultTest>().Select(test => test.ToDomainModel()).AsQueryable();
 
-            var mock = new Mock<IDataStore<Fault>>();
-            mock.Setup(m => m.Data).Returns(data);
-
-            stepParams.Kernel.Bind<IDataStore<Fault>>().ToConstant(mock.Object);
+            stepParams.MockDataSource.Setup(m => m.Data).Returns(data);
         }
         
         [Then(@"The results should be")]
@@ -48,14 +51,6 @@ namespace RoadMaintenance.FaultLogging.Specs
 
 
             CollectionAssert.AreEquivalent(testSet, stepParams.ResultsCollection);
-        }
-
-        [AfterScenario]
-        public virtual void SearchFaultStepsTearDown()
-        {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
-
-            stepParams.Kernel.Dispose();
         }
     }
 }

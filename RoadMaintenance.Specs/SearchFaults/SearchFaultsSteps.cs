@@ -3,7 +3,7 @@ using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Services;
-using RoadMaintenance.FaultLogging.Services.DTO;
+using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
@@ -17,8 +17,6 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"I am on the Fault Search page")]
         public void GivenIAmOnTheFaultSearchPage()
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
-            stepParams.GivenSearchRequest = new FaultSearchRequest();
         }
 
         [Given(@"I enter '(.*)' as the street name")]
@@ -26,7 +24,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            stepParams.GivenSearchRequest.Street1 = streetName;
+            stepParams.Street1 = streetName;
         }
 
         [Given(@"I enter '(.*)' as the cross street name")]
@@ -34,7 +32,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            stepParams.GivenSearchRequest.Street2 = crossStreetName;
+            stepParams.Street2 = crossStreetName;
         }
 
         [Given(@"I enter '(.*)' as the suburb name")]
@@ -42,7 +40,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
-            stepParams.GivenSearchRequest.Suburb = suburb;
+            stepParams.Suburb = suburb;
         }
 
         [Given(@"I select '(.*)' as the fault type")]
@@ -50,10 +48,9 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            var service = new FaultService(stepParams.Kernel.Get<IRepository<Fault,Guid>>());
-            var faultType = service.GetType(faultTypeDescription);
+            var faultType = stepParams.Service.GetType(faultTypeDescription);
 
-            stepParams.GivenSearchRequest.Type = faultType;
+            stepParams.Type = faultType;
         }
 
         [Given(@"The date today is '(.*)'")]
@@ -61,7 +58,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
-            stepParams.GivenSearchRequest.TodayDate = todayDate.AsDateTime();
+            stepParams.TodayDate = todayDate.AsDateTime();
         }
 
         [Given(@"The recently closed fault logging search period is '(.*)' days")]
@@ -69,9 +66,9 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            Assert.NotNull(stepParams.GivenSearchRequest.TodayDate);
+            Assert.NotNull(stepParams.TodayDate);
 
-            stepParams.GivenSearchRequest.RepairedPeriodStartDate = stepParams.GivenSearchRequest.TodayDate.Value.AddDays(-days);
+            stepParams.RepairedPeriodStartDate = stepParams.TodayDate.Value.AddDays(-days);
         }
 
         [When(@"I press the Search button")]
@@ -79,8 +76,17 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         {
             var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
             
-            var repo = stepParams.Kernel.Get<IRepository<Fault,Guid>>();
-            var results = new FaultService(repo).Search(stepParams.GivenSearchRequest);
+            var searchRequest = new FaultSearchRequest
+            {
+                Type = stepParams.Type,
+                Street1 = stepParams.Street1,
+                Street2 = stepParams.Street2,
+                Suburb = stepParams.Suburb,
+                RepairedPeriodStartDate = stepParams.RepairedPeriodStartDate,
+                TodayDate = stepParams.TodayDate
+            };
+
+            var results = stepParams.Service.Search(searchRequest);
 
             stepParams.ResultsCollection = results;
         }
