@@ -6,7 +6,6 @@ using System.Linq;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
-using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Services.Response;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
@@ -94,31 +93,20 @@ namespace RoadMaintenance.FaultLogging.Services
                    select new FaultDetailsView(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
         }
 
-        public FaultDetailsView CreateFault(CreateFaultRequest request)
+        public Guid CreateFault(CreateFaultRequest request)
         {
             var faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
             
             var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
             faultRec.UpdateAddress(address);
 
-
-            var call = Call.Create(request.OperatorId, request.CurrentDateTime);
-            faultRec.AddCall(call);
-            
             _repository.Save(faultRec);
 
             
-            return new FaultDetailsView(
-                faultRec.Id,
-                faultRec.Type,
-                faultRec.Status,
-                faultRec.EstimatedCompletionDate,
-                faultRec.DateCompleted,
-                faultRec.Address,
-                faultRec.GpsCoordinates);
+            return faultRec.Id;
         }
 
-        public FaultDetailsView UpdateFaultGpsCoordinates(UpdateGpsCoordinatesRequest request)
+        public void UpdateGpsCoordinates(UpdateGpsCoordinatesRequest request)
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
 
@@ -130,14 +118,22 @@ namespace RoadMaintenance.FaultLogging.Services
 
             faultRec.UpdateGPSCoordinates(gps);
 
-            return new FaultDetailsView(
-                faultRec.Id,
-                faultRec.Type,
-                faultRec.Status,
-                faultRec.EstimatedCompletionDate,
-                faultRec.DateCompleted,
-                faultRec.Address,
-                faultRec.GpsCoordinates);
+            _repository.Save(faultRec);
+        }
+
+        public void UpdateAddress(UpdateAddressRequest request)
+        {
+            Guard.ForNull(request.FaultId, "request.FaultId");
+
+            var faultRec = _repository.Find(request.FaultId);
+            if (faultRec == null)
+                throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
+
+            var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
+
+            faultRec.UpdateAddress(address);
+
+            _repository.Save(faultRec);
         }
     }
 }

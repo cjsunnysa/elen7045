@@ -10,19 +10,14 @@ namespace RoadMaintenance.FaultLogging.Services.Request
         public string Suburb { get; set; }
         public string PostCode { get; set; }
         public Type Type { get; set; }
-        public int OperatorId { get; set; }
-        public DateTime CurrentDateTime { get; set; }
 
-
-        public CreateFaultRequest(string street1, string street2, string suburb, string postCode, Type type, int operatorId, DateTime currentDateTime)
+        public CreateFaultRequest(string street1, string street2, string suburb, string postCode, Type type)
         {
             StreetName = street1;
             CrossStreet = street2;
             Suburb = suburb;
             PostCode = postCode;
             Type = type;
-            OperatorId = operatorId;
-            CurrentDateTime = currentDateTime;
         }
     }
 }

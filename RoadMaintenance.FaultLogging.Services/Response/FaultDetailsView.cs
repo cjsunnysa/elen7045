@@ -42,12 +42,12 @@ namespace RoadMaintenance.FaultLogging.Services.Response
                 Status.Equals(other.Status) &&
                 StreetName.Equals(other.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
                 Suburb.Equals(other.Suburb, StringComparison.CurrentCultureIgnoreCase) &&
-                Longitude == null                 ? other.Longitude == null                 : Longitude.Equals(other.Longitude) &&
-                Latitude == null                  ? other.Latitude == null                  : Latitude.Equals(other.Latitude) &&
-                DateCompleted == null             ? other.DateCompleted == null             : DateCompleted.Equals(other.DateCompleted) &&
-                EstimatedCompletionDate == null   ? other.EstimatedCompletionDate == null   : EstimatedCompletionDate.Equals(other.EstimatedCompletionDate) &&
-                string.IsNullOrEmpty(CrossStreet) ? string.IsNullOrEmpty(other.CrossStreet) : CrossStreet.Equals(other.CrossStreet, StringComparison.CurrentCultureIgnoreCase) &&
-                string.IsNullOrEmpty(PostCode)    ? string.IsNullOrEmpty(other.PostCode)    : PostCode.Equals(other.PostCode, StringComparison.CurrentCultureIgnoreCase);
+                (Longitude == null                 ? other.Longitude == null                 : Longitude.Equals(other.Longitude) ) &&
+                (Latitude == null                  ? other.Latitude == null                  : Latitude.Equals(other.Latitude) ) &&
+                (DateCompleted == null             ? other.DateCompleted == null             : DateCompleted.Equals(other.DateCompleted) ) &&
+                (EstimatedCompletionDate == null   ? other.EstimatedCompletionDate == null   : EstimatedCompletionDate.Equals(other.EstimatedCompletionDate) ) &&
+                (string.IsNullOrEmpty(CrossStreet) ? string.IsNullOrEmpty(other.CrossStreet) : CrossStreet.Equals(other.CrossStreet, StringComparison.CurrentCultureIgnoreCase) ) &&
+                (string.IsNullOrEmpty(PostCode)    ? string.IsNullOrEmpty(other.PostCode)    : PostCode.Equals(other.PostCode, StringComparison.CurrentCultureIgnoreCase) );
         }
     }
 }

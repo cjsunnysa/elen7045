@@ -1,5 +1,7 @@
 ﻿using System;
+using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Services.Request;
+using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using TechTalk.SpecFlow;
 
@@ -12,15 +14,7 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
         public void GivenIAmOnTheAddGPSCoordinatesPage()
         {
         }
-        
-        [Given(@"the fault I am editing has the Id '(.*)'")]
-        public void GivenTheFaultIAmEditingHasTheId(string faultId)
-        {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            param.GivenFaultId = faultId;
-        }
-        
         [Given(@"I enter '(.*)' as the longitude")]
         public void GivenIEnterAsTheLongitude(string longitude)
         {
@@ -44,24 +38,40 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
 
             var faultId = new Guid(param.GivenFaultId);
 
-            param.Service.UpdateFaultGpsCoordinates(new UpdateGpsCoordinatesRequest
+            try
             {
-                FaultId = faultId,
-                Latitude = param.Latitude,
-                Longitude = param.Longitude
-            });
+                param.Service.UpdateGpsCoordinates(new UpdateGpsCoordinatesRequest
+                {
+                    FaultId = faultId,
+                    Latitude = param.Latitude,
+                    Longitude = param.Longitude
+                });
+            }
+            catch (InvalidOperationException)
+            {
+                param.InvalidOperationThrown = true;
+            }
+            catch (ArgumentException)
+            {
+                param.ArgumentExceptionThrown = true;
+            }
         }
 
-        [When(@"I perform a find for this fault id")]
-        public void WhenIPerformAFindForThisFaultId()
+        [Then(@"an InvalidOperationException should be thrown")]
+        public void ThenAnInvalidOperationExceptionShouldBeThrown()
         {
             var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            var faultId = new Guid(param.GivenFaultId);
-
-            var fault = param.Service.Find(faultId);
-
-            param.ResultsCollection = new[] {fault};
+            Assert.IsTrue(param.InvalidOperationThrown);
         }
+
+        [Then(@"an ArgumentException should be thrown")]
+        public void ThenAnArgumentExceptionShouldBeThrown()
+        {
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            Assert.IsTrue(param.ArgumentExceptionThrown);
+        }
+
     }
 }

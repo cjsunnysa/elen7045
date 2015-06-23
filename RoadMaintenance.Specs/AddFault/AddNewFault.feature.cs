@@ -87,9 +87,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 13
  testRunner.When("I press the Create button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then("result should contain these details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I perform a find for this fault id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.And("the result has a new unique identifier", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("result should contain these details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 16
  testRunner.And("the result has \'Pending Investigation\' as the status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden

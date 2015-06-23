@@ -10,7 +10,7 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         public static FaultDetailsView ToResponse(this FaultTest testData)
         {
             var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
-            var gps = (testData.Longitude == null || testData.Latitude == null)
+            var gps = (string.IsNullOrEmpty(testData.Longitude) || string.IsNullOrEmpty(testData.Latitude)) 
                       ? null
                       : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
 

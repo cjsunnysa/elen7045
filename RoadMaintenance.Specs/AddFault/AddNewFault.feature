@@ -11,6 +11,6 @@ Scenario: Add a new fault
 	And I enter 'Sandton' as the suburb name
 	And I select 'Pothole' as the fault type
 	When I press the Create button
+	And I perform a find for this fault id
 	Then result should contain these details
-	And the result has a new unique identifier
 	And the result has 'Pending Investigation' as the status
