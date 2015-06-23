@@ -9,27 +9,32 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
     {
         public static FaultSearchResponse ToResponse(this FaultTest testData)
         {
+            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
+
+
             return new FaultSearchResponse(
                 testData.Id,
                 (Type)testData.TypeId, 
                 (Status)testData.StatusId,
-                Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode),
+                Location.Create(address),
                 testData.EstimatedCompletionDate,
                 testData.DateCompleted);
         }
 
         public static Fault ToDomainModel(this FaultTest testData)
         {
-            return Fault.Create(
+            var fault = Fault.Create(
                 testData.Id, 
                 (Type) testData.TypeId, 
                 (Status) testData.StatusId,
-                testData.Street, 
-                testData.CrossStreet, 
-                testData.Suburb,
-                testData.PostCode,
                 testData.DateCompleted, 
                 testData.EstimatedCompletionDate);
+
+            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
+
+            fault.UpdateAddress(address);
+
+            return fault;
         }
     }
 }

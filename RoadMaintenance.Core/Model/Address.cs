@@ -1,4 +1,5 @@
-﻿using RoadMaintenance.SharedKernel.Core.Interfaces;
+﻿using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
 {
@@ -11,6 +12,8 @@ namespace RoadMaintenance.FaultLogging.Core.Model
 
         private Address(string street, string crossStreet, string suburb, string postCode)
         {
+            Guard.ForNullOrEmpty(street, "street");
+
             Street = street;
             CrossStreet = crossStreet;
             Suburb = suburb;

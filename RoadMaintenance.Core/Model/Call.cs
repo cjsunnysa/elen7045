@@ -1,4 +1,5 @@
 ﻿using System;
+using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
@@ -11,6 +12,8 @@ namespace RoadMaintenance.FaultLogging.Core.Model
 
         private Call(string referenceNum, int operatorId, DateTime callDate) : base(referenceNum)
         {
+            Guard.ForLessEqualToZero(operatorId, "operatorId");
+            
             OperatorId = operatorId;
             TransactionDate = callDate;
         }

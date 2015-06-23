@@ -60,7 +60,7 @@ namespace RoadMaintenance.FaultLogging.Services
             var fault = _repository.Find(id);
             return fault == null
                    ? null
-                   : new FaultSearchResponse(fault.Id, fault.Type, fault.Status, fault.Address,fault.EstimatedCompletionDate, fault.DateCompleted);
+                   : new FaultSearchResponse(fault.Id, fault.Type, fault.Status, fault.Location,fault.EstimatedCompletionDate, fault.DateCompleted);
         }
 
         public IEnumerable<FaultSearchResponse> Search(FaultSearchRequest request)
@@ -80,9 +80,9 @@ namespace RoadMaintenance.FaultLogging.Services
                           : request.Suburb.ToLower();
 
             return from d in _repository.Search()
-                   let s = d.Address.Street.ToLower()
-                   let cs = d.Address.CrossStreet.ToLower()
-                   let sub = d.Address.Suburb.ToLower()
+                   let s = d.Location.Address.Street.ToLower()
+                   let cs = d.Location.Address.CrossStreet.ToLower()
+                   let sub = d.Location.Address.Suburb.ToLower()
                    where
                        (street1 == null || s.Contains(street1) || cs.Contains(street1)) &&
                        (street2 == null || s.Contains(street2) || cs.Contains(street2)) &&
@@ -90,40 +90,43 @@ namespace RoadMaintenance.FaultLogging.Services
                        (request.Type == null || d.Type == request.Type) &&
                        (d.Status != Status.Repaired ||
                             (request.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)request.RepairedPeriodStartDate))
-                   select new FaultSearchResponse(d.Id,d.Type,d.Status,d.Address,d.EstimatedCompletionDate,d.DateCompleted);
+                   select new FaultSearchResponse(d.Id,d.Type,d.Status,d.Location,d.EstimatedCompletionDate,d.DateCompleted);
         }
 
         public CreateFaultResponse CreateFault(CreateFaultRequest request)
         {
-            Guard.ForNullOrEmpty(request.StreetName, "request.StreetName");
-            Guard.ForNullOrEmpty(request.CrossStreet, "request.CrossStreet");
-            Guard.ForNullOrEmpty(request.Suburb, "request.Suburb");
             Guard.ForNull(request.Type, "request.Type");
 
             var faultRec = _repository.Search().SingleOrDefault(f => 
-                f.Address.Street.Equals(request.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
-                f.Address.CrossStreet.Equals(request.CrossStreet, StringComparison.CurrentCultureIgnoreCase) &&
-                f.Address.Suburb.Equals(request.Suburb, StringComparison.CurrentCultureIgnoreCase));
+                f.Location.Address.Street.Equals(request.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
+                f.Location.Address.CrossStreet.Equals(request.CrossStreet, StringComparison.CurrentCultureIgnoreCase) &&
+                f.Location.Address.Suburb.Equals(request.Suburb, StringComparison.CurrentCultureIgnoreCase));
 
             if (faultRec == null)
-                faultRec = Fault.Create(request.Type, request.StreetName, request.CrossStreet, request.Suburb);
+            {
+                faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
+                var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
 
+                faultRec.UpdateAddress(address);
+            }
+
+
+            var call = Call.Create(request.OperatorId, request.CurrentDateTime);
             
-            var reference = faultRec.CreateCall(request.OperatorId, request.CurrentDateTime);
-                
+            faultRec.AddCall(call);
             
             _repository.Save(faultRec);
 
             
             return new CreateFaultResponse(
                 faultRec.Id, 
-                faultRec.Address.Street,
-                faultRec.Address.CrossStreet, 
-                faultRec.Address.Suburb, 
-                faultRec.Address.PostCode,
+                faultRec.Location.Address.Street,
+                faultRec.Location.Address.CrossStreet, 
+                faultRec.Location.Address.Suburb, 
+                faultRec.Location.Address.PostCode,
                 faultRec.Status, 
                 faultRec.Type, 
-                reference.ReferenceNumber);
+                call.ReferenceNumber);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace RoadMaintenance.FaultLogging.Specs.Model
         public string Street1 { get; set; }
         public string Street2 { get; set; }
         public string Suburb { get; set; }
+        public string PostCode { get; set; }
         public DateTime? RepairedPeriodStartDate { get; set; }
         public DateTime? TodayDate { get; set; }
 

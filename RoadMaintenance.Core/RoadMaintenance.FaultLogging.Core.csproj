@@ -44,6 +44,8 @@
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Fault.cs" />
     <Compile Include="Model\Call.cs" />
+    <Compile Include="Model\GPSCoordinates.cs" />
+    <Compile Include="Model\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

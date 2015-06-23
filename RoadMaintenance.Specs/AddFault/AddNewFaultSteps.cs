@@ -29,7 +29,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         {
             var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            _createResponse = param.Service.CreateFault(new CreateFaultRequest(param.Street1, param.Street2, param.Suburb, (Core.Enums.Type) param.Type, 1, DateTime.Now));
+            _createResponse = param.Service.CreateFault(new CreateFaultRequest(param.Street1, param.Street2, param.Suburb, param.PostCode, (Core.Enums.Type) param.Type, 1, DateTime.Now));
         }
 
         [Then(@"result should contain these details")]
