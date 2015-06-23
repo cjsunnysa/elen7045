@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using TechTalk.SpecFlow;
@@ -44,12 +45,19 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
 
             var faultId = new Guid(param.GivenFaultId);
 
-            param.Service.UpdateFaultGpsCoordinates(new UpdateGpsCoordinatesRequest
+            try
             {
-                FaultId = faultId,
-                Latitude = param.Latitude,
-                Longitude = param.Longitude
-            });
+                param.Service.UpdateFaultGpsCoordinates(new UpdateGpsCoordinatesRequest
+                {
+                    FaultId = faultId,
+                    Latitude = param.Latitude,
+                    Longitude = param.Longitude
+                });
+            }
+            catch (InvalidOperationException)
+            {
+                param.InvalidOperationThrown = true;
+            }
         }
 
         [When(@"I perform a find for this fault id")]
@@ -62,6 +70,14 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
             var fault = param.Service.Find(faultId);
 
             param.ResultsCollection = new[] {fault};
+        }
+
+        [Then(@"an InvalidOperationException should be thrown")]
+        public void ThenAnInvalidOperationExceptionShouldBeThrown()
+        {
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            Assert.IsTrue(param.InvalidOperationThrown);
         }
     }
 }

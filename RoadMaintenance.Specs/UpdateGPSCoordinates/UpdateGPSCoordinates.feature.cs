@@ -67,11 +67,11 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Update the GPS coordinates of an open fault: coordinate format spaces")]
-        [NUnit.Framework.CategoryAttribute("greenField")]
+        [NUnit.Framework.CategoryAttribute("greenPath")]
         public virtual void UpdateTheGPSCoordinatesOfAnOpenFaultCoordinateFormatSpaces()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update the GPS coordinates of an open fault: coordinate format spaces", new string[] {
-                        "greenField"});
+                        "greenPath"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -315,6 +315,65 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
 #line 48
  testRunner.Then("The results should be", ((string)(null)), table6, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Update the GPS coordinates of a fault where the status is Closed")]
+        public virtual void UpdateTheGPSCoordinatesOfAFaultWhereTheStatusIsClosed()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update the GPS coordinates of a fault where the status is Closed", ((string[])(null)));
+#line 52
+this.ScenarioSetup(scenarioInfo);
+#line 53
+ testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 54
+ testRunner.And("the fault I am editing has the Id \'46BF992F-B00C-4D76-BDD0-CCB6B993E8EF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 55
+ testRunner.And("I enter \'33/34/35/W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 56
+ testRunner.And("I enter \'56/21/23/S\' as the latitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Id",
+                        "Latitude",
+                        "Longitude",
+                        "Street",
+                        "CrossStreet",
+                        "Suburb",
+                        "PostCode",
+                        "StatusId",
+                        "TypeId",
+                        "DateCompleted"});
+            table7.AddRow(new string[] {
+                        "202947AF-130F-4494-8C50-DB84A93648E1",
+                        "",
+                        "",
+                        "Hill Street",
+                        "Malabongwe Drive",
+                        "Randburg",
+                        "2194",
+                        "1",
+                        "2",
+                        ""});
+            table7.AddRow(new string[] {
+                        "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
+                        "",
+                        "",
+                        "Hill Street",
+                        "Malabongwe Drive",
+                        "Randburg",
+                        "2194",
+                        "4",
+                        "2",
+                        "2015-03-01"});
+#line 57
+ testRunner.And("These faults exist", ((string)(null)), table7, "And ");
+#line 61
+ testRunner.When("I press the Update button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 62
+ testRunner.Then("an InvalidOperationException should be thrown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

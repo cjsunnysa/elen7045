@@ -24,5 +24,6 @@ namespace RoadMaintenance.FaultLogging.Specs.Model
         public FaultService Service { get; set; }
         public Mock<IDataStore<Fault>> MockDataSource { get; set; }
         public IEnumerable<FaultDetailsView> ResultsCollection { get; set; }
+        public bool InvalidOperationThrown { get; set; }
     }
 }
