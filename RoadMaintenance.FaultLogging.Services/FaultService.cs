@@ -6,7 +6,6 @@ using System.Linq;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
-using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Services.Response;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
