@@ -15,18 +15,19 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Longitude = longitude;
         }
 
-        public static GPSCoordinates Create(string latitude, string longitude)
+        public static GPSCoordinates Create(string longitude, string latitude)
         {
             Guard.ForNullOrEmpty(latitude, "latitude");
             Guard.ForNullOrEmpty(longitude, "longitude");
 
-            var regEx = new Regex(@"^([0-9]{2}[^\w\d][0-9]{2}[^\w\d][0-9]{2}[^\w\d][nNsS])");
+            var latRegEx = new Regex(@"^([0-9]{2}[^\w\d][0-9]{2}[^\w\d][0-9]{2}[^\w\d][nNsS])");
+            var longRegEx = new Regex(@"^([0-9]{2}[^\w\d][0-9]{2}[^\w\d][0-9]{2}[^\w\d][eEwW])");
             
-            if (!regEx.IsMatch(latitude))
-                throw new FormatException("latitude must match format degrees-minutes-seconds-hemisphere\ndd-dd-dd-N\ndd dd dd S\ndd/dd/dd/N");
+            if (!latRegEx.IsMatch(latitude))
+                throw new FormatException("latitude must match format degrees-minutes-seconds-[n or s]\ndd-dd-dd-N\ndd dd dd S\ndd/dd/dd/N");
 
-            if (!regEx.IsMatch(longitude))
-                throw new FormatException("longitude must match format degrees-minutes-seconds-east\\west\ndd-dd-dd-E\ndd dd dd W\ndd/dd/dd/W");
+            if (!longRegEx.IsMatch(longitude))
+                throw new FormatException("longitude must match format degrees-minutes-seconds-[e or w]\ndd-dd-dd-E\ndd dd dd W\ndd/dd/dd/W");
 
             var repRegEx = new Regex(@"[^\w\d]");
             var formattedLat = repRegEx.Replace(latitude, @"\s");

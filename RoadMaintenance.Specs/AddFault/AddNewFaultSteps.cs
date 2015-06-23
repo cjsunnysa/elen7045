@@ -19,7 +19,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
     {
         private CreateFaultResponse _createResponse;
 
-        [Given(@"I am on the add fault page")]
+        [Given(@"I am on the Add Fault page")]
         public void GivenIAmOnTheAddFaultPage()
         {
         }

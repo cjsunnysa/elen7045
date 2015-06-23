@@ -102,7 +102,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
                         "10th St",
-                        "null",
+                        "",
                         "Sandton",
                         "2196",
                         "4",
@@ -111,7 +111,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",
@@ -143,7 +143,7 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",
@@ -188,7 +188,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
                         "10th St",
-                        "null",
+                        "",
                         "Sandton",
                         "2196",
                         "4",
@@ -197,7 +197,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",
@@ -229,7 +229,7 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",
@@ -275,7 +275,7 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
                         "10th St",
-                        "null",
+                        "",
                         "Sandton",
                         "2196",
                         "4",
@@ -284,7 +284,7 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",
@@ -316,7 +316,7 @@ this.ScenarioSetup(scenarioInfo);
             table6.AddRow(new string[] {
                         "282A10B0-103E-40F9-8D01-320D002EFF9F",
                         "8th Street",
-                        "null",
+                        "",
                         "Randburg",
                         "2195",
                         "1",

@@ -13,6 +13,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         private Address(string street, string crossStreet, string suburb, string postCode)
         {
             Guard.ForNullOrEmpty(street, "street");
+            Guard.ForNullOrEmpty(suburb, "suburb");
 
             Street = street;
             CrossStreet = crossStreet;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using RoadMaintenance.ApplicationLayer;
@@ -60,7 +61,7 @@ namespace RoadMaintenance.FaultLogging.Services
             var fault = _repository.Find(id);
             return fault == null
                    ? null
-                   : new FaultSearchResponse(fault.Id, fault.Type, fault.Status, fault.Location,fault.EstimatedCompletionDate, fault.DateCompleted);
+                   : new FaultSearchResponse(fault.Id, fault.Type, fault.Status, fault.EstimatedCompletionDate, fault.DateCompleted, fault.Address, fault.GpsCoordinates);
         }
 
         public IEnumerable<FaultSearchResponse> Search(FaultSearchRequest request)
@@ -80,9 +81,9 @@ namespace RoadMaintenance.FaultLogging.Services
                           : request.Suburb.ToLower();
 
             return from d in _repository.Search()
-                   let s = d.Location.Address.Street.ToLower()
-                   let cs = d.Location.Address.CrossStreet.ToLower()
-                   let sub = d.Location.Address.Suburb.ToLower()
+                   let s = d.Address.Street.ToLower()
+                   let cs = d.Address.CrossStreet.ToLower()
+                   let sub = d.Address.Suburb.ToLower()
                    where
                        (street1 == null || s.Contains(street1) || cs.Contains(street1)) &&
                        (street2 == null || s.Contains(street2) || cs.Contains(street2)) &&
@@ -90,29 +91,18 @@ namespace RoadMaintenance.FaultLogging.Services
                        (request.Type == null || d.Type == request.Type) &&
                        (d.Status != Status.Repaired ||
                             (request.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)request.RepairedPeriodStartDate))
-                   select new FaultSearchResponse(d.Id,d.Type,d.Status,d.Location,d.EstimatedCompletionDate,d.DateCompleted);
+                   select new FaultSearchResponse(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
         }
 
         public CreateFaultResponse CreateFault(CreateFaultRequest request)
         {
-            Guard.ForNull(request.Type, "request.Type");
-
-            var faultRec = _repository.Search().SingleOrDefault(f => 
-                f.Location.Address.Street.Equals(request.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
-                f.Location.Address.CrossStreet.Equals(request.CrossStreet, StringComparison.CurrentCultureIgnoreCase) &&
-                f.Location.Address.Suburb.Equals(request.Suburb, StringComparison.CurrentCultureIgnoreCase));
-
-            if (faultRec == null)
-            {
-                faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
-                var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
-
-                faultRec.UpdateAddress(address);
-            }
+            var faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
+            
+            var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
+            faultRec.UpdateAddress(address);
 
 
             var call = Call.Create(request.OperatorId, request.CurrentDateTime);
-            
             faultRec.AddCall(call);
             
             _repository.Save(faultRec);
@@ -120,13 +110,28 @@ namespace RoadMaintenance.FaultLogging.Services
             
             return new CreateFaultResponse(
                 faultRec.Id, 
-                faultRec.Location.Address.Street,
-                faultRec.Location.Address.CrossStreet, 
-                faultRec.Location.Address.Suburb, 
-                faultRec.Location.Address.PostCode,
+                faultRec.Address.Street,
+                faultRec.Address.CrossStreet, 
+                faultRec.Address.Suburb, 
+                faultRec.Address.PostCode,
                 faultRec.Status, 
                 faultRec.Type, 
                 call.ReferenceNumber);
+        }
+
+        public UpdateGpsCoordinatesResponse UpdateFaultGpsCoordinates(UpdateGpsCoordinatesRequest request)
+        {
+            Guard.ForNull(request.FaultId, "request.FaultId");
+
+            var faultRec = _repository.Find(request.FaultId);
+            if (faultRec == null)
+                throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
+
+            var gps = GPSCoordinates.Create(request.Longitude, request.Latitude);
+
+            faultRec.UpdateGPSCoordinates(gps);
+
+            return new UpdateGpsCoordinatesResponse(faultRec.Id, gps.Longitude, gps.Latitude);
         }
     }
 }

@@ -10,29 +10,35 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         public static FaultSearchResponse ToResponse(this FaultTest testData)
         {
             var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
-
+            var gps = (testData.Longitude == null || testData.Latitude == null)
+                      ? null
+                      : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
 
             return new FaultSearchResponse(
                 testData.Id,
                 (Type)testData.TypeId, 
                 (Status)testData.StatusId,
-                Location.Create(address),
                 testData.EstimatedCompletionDate,
-                testData.DateCompleted);
+                testData.DateCompleted,
+                address,
+                gps);
         }
 
         public static Fault ToDomainModel(this FaultTest testData)
         {
+            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
+            var gps = (string.IsNullOrEmpty(testData.Longitude) || string.IsNullOrEmpty(testData.Latitude)) 
+                      ? null
+                      : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
+
             var fault = Fault.Create(
                 testData.Id, 
                 (Type) testData.TypeId, 
                 (Status) testData.StatusId,
                 testData.DateCompleted, 
-                testData.EstimatedCompletionDate);
-
-            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
-
-            fault.UpdateAddress(address);
+                testData.EstimatedCompletionDate,
+                address,
+                gps);
 
             return fault;
         }

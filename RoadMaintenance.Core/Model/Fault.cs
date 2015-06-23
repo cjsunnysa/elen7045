@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
@@ -12,7 +11,8 @@ namespace RoadMaintenance.FaultLogging.Core.Model
     {
         public Type Type { get; private set; }
         public Status Status { get; private set; }
-        public Location Location { get; private set; }
+        public Address Address { get; private set; }
+        public GPSCoordinates GpsCoordinates { get; private set; }
         public DateTime? DateCompleted { get; set; }
         public DateTime? EstimatedCompletionDate { get; private set; }
         
@@ -22,19 +22,24 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             get { return _calls; }
         }
 
-        private Fault(Guid id, Type type, Status status)
-            : base(id)
+        private Fault(Type type, Status status) : base(Guid.NewGuid())
         {
+            Guard.ForNull(type, "type");
+            Guard.ForNull(status, "status");
+
             Type = type;
             Status = status;
             _calls = new List<Call>();
         }
-        
-        private Fault(Type type, Status status) : base(Guid.NewGuid())
+
+        private Fault(Guid id, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate, Address address, GPSCoordinates gps) : base(id)
         {
-            Type = type;
             Status = status;
-            _calls = new List<Call>();
+            Type = type;
+            DateCompleted = dateCompleted;
+            EstimatedCompletionDate = estimatedCompletionDate;
+            Address = address;
+            GpsCoordinates = gps;
         }
 
 
@@ -43,21 +48,13 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             return new Fault(type, status);
         }
 
-        private static Fault Create(Guid faultId, Type type, Status status)
+        public static Fault Create(Guid faultId, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate, Address address, GPSCoordinates gps)
         {
-            return new Fault(faultId, type, status);
-        }
-
-        public static Fault Create(Guid faultId, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate)
-        {
-            var newFault = Create(faultId, type, status);
-
-            newFault.UpdateDateCompleted(dateCompleted);
-            newFault.UpdateEstimatedCompletionDate(estimatedCompletionDate);
-
+            var newFault = new Fault(faultId, type, status, dateCompleted, estimatedCompletionDate, address, gps);
+            
             return newFault;
         }
-
+        
         
         public void AddCall(Call call)
         {
@@ -71,7 +68,10 @@ namespace RoadMaintenance.FaultLogging.Core.Model
 
         public void UpdateAddress(Address address)
         {
-            Location = Location.Create(Location == null ? null : Location.GpsCoordinates, address);
+            if (Status != Status.PendingInvestigation)
+                throw new InvalidOperationException("Can only change the address of a fault when the status is \"Pending Investigation\"");
+
+            Address = address;
         }
 
         public void UpdateDateCompleted(DateTime? dateCompleted)
@@ -86,7 +86,10 @@ namespace RoadMaintenance.FaultLogging.Core.Model
 
         public void UpdateGPSCoordinates(GPSCoordinates gps)
         {
-            Location = Location.Create(gps, Location.Address);
+            if (Status != Status.PendingInvestigation)
+                throw new InvalidOperationException("Can only change the GPS coordinates of a fault when the status is \"Pending Investigation\"");
+
+            GpsCoordinates = gps;
         }
     }
 }
