@@ -78,12 +78,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderCreation.feature</DependentUpon>
     </Compile>
+    <Compile Include="WorkOrderCreation\WorkOrderCreationSteps.cs" />
     <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModified.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderFaultNotModified.feature</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModifiedSteps.cs" />
+    <Compile Include="WorkOrderGetDetails\WorkOrderGetDetails.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkOrderGetDetails.feature</DependentUpon>
+    </Compile>
+    <Compile Include="WorkOrderGetDetails\WorkOrderGetDetailsSteps.cs" />
     <Compile Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +136,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderFaultNotModified.feature.cs</LastGenOutput>
     </None>
+    <None Include="WorkOrderGetDetails\WorkOrderGetDetails.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>WorkOrderGetDetails.feature.cs</LastGenOutput>
+    </None>
     <None Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderGetFaultDetails.feature.cs</LastGenOutput>
@@ -163,6 +174,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

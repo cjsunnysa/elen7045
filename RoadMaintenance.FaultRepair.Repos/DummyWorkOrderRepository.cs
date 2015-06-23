@@ -13,7 +13,15 @@ namespace RoadMaintenance.FaultRepair.Repos
         public DummyWorkOrderRepository()
         {
             dummyData = new List<WorkOrder>();
+        }
 
+        public DummyWorkOrderRepository(IEnumerable<WorkOrder> data)
+        {
+            this.dummyData = data.ToList();
+        }
+
+        public void PopulateDummyData()
+        {
             // Populate the dummy data
 
             var wob = new WorkOrderBuilder("Potholes at West Street, JHB");
@@ -40,12 +48,6 @@ namespace RoadMaintenance.FaultRepair.Repos
             wob.AddTask("Pump water out of drain");
             wob.AddEquipment("Pump", 1);
             dummyData.Add(wob.GetResult());
-
-        }
-
-        public DummyWorkOrderRepository(IEnumerable<WorkOrder> data)
-        {
-            this.dummyData = data.ToList();
         }
 
         public WorkOrder GetWorkOrderByID(string id)
@@ -65,6 +67,11 @@ namespace RoadMaintenance.FaultRepair.Repos
         {
             var results = dummyData.Where(wo => wo.FaultID == faultID);
             return new List<WorkOrder>(results);
+        }
+
+        public List<WorkOrder> GetAllWorkOrders()
+        {
+            return dummyData;
         }
 
         public void InsertWorkOrder(WorkOrder wo)

@@ -1,57 +1,64 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Collections.Generic;
 using TechTalk.SpecFlow;
+using Ninject;
+using NUnit.Framework;
+using RoadMaintenance.FaultRepair.Core;
+using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Services;
 
-namespace RoadMaintenance.FaultRepair.Specs
+namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
 {
     [Binding]
     public class WorkOrderAssignToFaultSteps
     {
-        [Given(@"I have a fault id (.*)")]
-        public void GivenIHaveAFaultId(int p0)
+        [BeforeScenario]
+        public virtual void ScenarioSetUp()
         {
-            ScenarioContext.Current.Pending();
+            StandardKernel kernel = new StandardKernel();
+            var workOrderRepo = new DummyWorkOrderRepository();
+
+            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
+
+            var service = new WorkOrderService(workOrderRepo);
+
+            ScenarioContext.Current.Add("kernel", kernel);
+            ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
+            ScenarioContext.Current.Add("service", service);
+        }
+
+        [Given(@"I have a work order with id ""(.*)""")]
+        public void GivenIHaveAWorkOrderWithId(string p0)
+        {
+            var workOrderID = p0;
+            var workOrder = new WorkOrder(workOrderID);
+            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Add("workOrderID", workOrderID);
         }
         
-        [Given(@"The status of the fault is not Verified")]
-        public void GivenTheStatusOfTheFaultIsNotVerified()
+        [When(@"I assign the work order to fault id (.*)")]
+        public void WhenIAssignTheWorkOrderToFaultId(int p0)
         {
-            ScenarioContext.Current.Pending();
+            var woID = ScenarioContext.Current.Get<string>("workOrderID");
+            ScenarioContext.Current.Get<WorkOrderService>("service").AssignWorkOrderToFault(woID, p0);
         }
         
-        [Given(@"The fault has outstanding work orders assigned to it")]
-        public void GivenTheFaultHasOutstandingWorkOrdersAssignedToIt()
+        [When(@"I search for all work orders related to fault id (.*)")]
+        public void WhenISearchForAllWorkOrdersRelatedToFaultId(int p0)
         {
-            ScenarioContext.Current.Pending();
+            List<WorkOrder> workOrders = ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").GetWorkOrdersByFault(p0);
+            ScenarioContext.Current.Add("workOrders", workOrders);
         }
         
-        [Given(@"I have a fault id (.*) with status Verified")]
-        public void GivenIHaveAFaultIdWithStatusVerified(int p0)
+        [Then(@"The system should return work order ""(.*)""")]
+        public void ThenTheSystemShouldReturnWorkOrder(string p0)
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Given(@"The fault has no outstanding work orders assigned to it")]
-        public void GivenTheFaultHasNoOutstandingWorkOrdersAssignedToIt()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [When(@"I query whether I can assign a work order to this fault")]
-        public void WhenIQueryWhetherICanAssignAWorkOrderToThisFault()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"the result should be false")]
-        public void ThenTheResultShouldBeFalse()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [Then(@"the result should be true")]
-        public void ThenTheResultShouldBeTrue()
-        {
-            ScenarioContext.Current.Pending();
+            var workOrders = ScenarioContext.Current.Get<List<WorkOrder>>("workOrders");
+            Assert.AreEqual(1, workOrders.Count);
+
+            Assert.AreEqual(workOrders[0].ID, p0);
         }
     }
 }
