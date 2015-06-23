@@ -17,12 +17,9 @@ Scenario: Find open and recently closed faults by street name
 	| 4  | Hill Street   | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 5  | Hill Street   |                  | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 6  | Fern Street   | Hill Street      | Randburg | 2194     | 1        | 2      |               |
-	| 7  |               | Hill Street      | Randburg | 2194     | 1        | 2      |               |
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 9  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-01    |
-	| 10 |               | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 11 | Republic Road | Malabongwe Drive | Randburg | 2194     | 1        | 2      |               |
-	| 12 |               | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 13 | Republic Road |                  | Randburg | 2194     | 4        | 2      | 2015-03-01    |
 	When  I press the Search button
 	Then  The results should be
@@ -32,9 +29,7 @@ Scenario: Find open and recently closed faults by street name
 	| 4  | Hill Street   | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 5  | Hill Street   |                  | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 6  | Fern Street   | Hill Street      | Randburg | 2194     | 1        | 2      |               |
-	| 7  |               | Hill Street      | Randburg | 2194     | 1        | 2      |               |
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
-	| 10 |               | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by cross street name
 	Given I am on the Fault Search page
@@ -49,12 +44,9 @@ Scenario: Find open and recently closed faults by cross street name
 	| 4  | Hill Street   | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 5  | Hill Street   |                  | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 6  | Fern Street   | Hill Street      | Randburg | 2194     | 1        | 2      |               |
-	| 7  |               | Hill Street      | Randburg | 2194     | 1        | 2      |               |
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 9  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-01    |
-	| 10 |               | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 11 | Republic Road | Malabongwe Drive | Randburg | 2194     | 1        | 2      |               |
-	| 12 |               | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 13 | Republic Road |                  | Randburg | 2194     | 4        | 2      | 2015-03-01    |
 	When  I press the Search button
 	Then  The results should be
@@ -64,9 +56,7 @@ Scenario: Find open and recently closed faults by cross street name
 	| 4  | Hill Street   | Malabongwe Drive | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 5  | Hill Street   |                  | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 	| 6  | Fern Street   | Hill Street      | Randburg | 2194     | 1        | 2      |               |
-	| 7  |               | Hill Street      | Randburg | 2194     | 1        | 2      |               |
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
-	| 10 |               | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by suburb name
 	Given I am on the Fault Search page
@@ -123,9 +113,7 @@ Scenario: Find open and recently closed faults by street and cross street
 	| 1  | Hill Street | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 2  | Fern Ave    | Hill Street | Randburg | 2194     | 1        | 1      |               |
 	| 3  | Hill Street |             | Randburg | 2194     | 1        | 1      |               |
-	| 4  |             | Hill Street | Randburg | 2194     | 1        | 1      |               |
 	| 5  | Fern Ave    |             | Randburg | 2194     | 1        | 1      |               |
-	| 6  |             | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 7  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-01    |
 	| 8  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-02    |
 	| 9  | Fern Ave    | Hill Street | Randburg | 2194     | 4        | 1      | 2015-03-01    |
@@ -149,9 +137,7 @@ Scenario: Find open and recently closed faults by street and cross street and fa
 	| 1  | Hill Street | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 2  | Fern Ave    | Hill Street | Randburg | 2194     | 1        | 1      |               |
 	| 3  | Hill Street |             | Randburg | 2194     | 1        | 1      |               |
-	| 4  |             | Hill Street | Randburg | 2194     | 1        | 1      |               |
 	| 5  | Fern Ave    |             | Randburg | 2194     | 1        | 1      |               |
-	| 6  |             | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 7  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-01    |
 	| 8  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-02    |
 	| 9  | Fern Ave    | Hill Street | Randburg | 2194     | 4        | 1      | 2015-03-01    |
@@ -182,9 +168,7 @@ Scenario: Find open and recently closed faults by street and cross street and fa
 	| 1  | Hill Street | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 2  | Fern Ave    | Hill Street | Sandton  | 2196     | 1        | 1      |               |
 	| 3  | Hill Street |             | Randburg | 2194     | 1        | 1      |               |
-	| 4  |             | Hill Street | Randburg | 2194     | 1        | 1      |               |
 	| 5  | Fern Ave    |             | Randburg | 2194     | 1        | 1      |               |
-	| 6  |             | Fern Ave    | Randburg | 2194     | 1        | 1      |               |
 	| 7  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-01    |
 	| 8  | Hill Street | Fern Ave    | Randburg | 2194     | 4        | 1      | 2015-03-02    |
 	| 9  | Fern Ave    | Hill Street | Randburg | 2194     | 4        | 1      | 2015-03-01    |

@@ -15,14 +15,12 @@ namespace RoadMaintenance.FaultLogging.Services
 {
     public class FaultService
     {
-        private readonly IFaultFactory _factory;
         private readonly IRepository<Fault,Guid> _repository;
 
         
-        public FaultService(IRepository<Fault, Guid> repository, IFaultFactory factory)
+        public FaultService(IRepository<Fault, Guid> repository)
         {
             _repository = repository;
-            _factory = factory;
         }
 
         public Type GetType(string description)
@@ -102,34 +100,30 @@ namespace RoadMaintenance.FaultLogging.Services
             Guard.ForNullOrEmpty(request.Suburb, "request.Suburb");
             Guard.ForNull(request.Type, "request.Type");
 
-            var reference = _factory.CreateCallReference(request.OperatorId, request.CurrentDateTime);
-
-            var existingRec = _repository.Search().SingleOrDefault(f => 
+            var faultRec = _repository.Search().SingleOrDefault(f => 
                 f.Address.Street.Equals(request.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
                 f.Address.CrossStreet.Equals(request.CrossStreet, StringComparison.CurrentCultureIgnoreCase) &&
                 f.Address.Suburb.Equals(request.Suburb, StringComparison.CurrentCultureIgnoreCase));
 
-            if (existingRec != null)
-            {
-                existingRec.AddCalls(reference);
+            if (faultRec == null)
+                faultRec = Fault.Create(request.Type, request.StreetName, request.CrossStreet, request.Suburb);
+
+            
+            var reference = faultRec.CreateCall(request.OperatorId, request.CurrentDateTime);
                 
-                _repository.Save(existingRec);
-
-                return new CreateFaultResponse(existingRec.Id, existingRec.Address.Street,
-                    existingRec.Address.CrossStreet, existingRec.Address.Suburb, existingRec.Address.PostCode,
-                    existingRec.Status, existingRec.Type, reference.ReferenceNumber);
-            }
-
-            var newFault = _factory.CreateFault(request.StreetName, request.CrossStreet, request.Suburb, request.Type);
             
-            newFault.AddCalls(reference);
-            
-            _repository.Save(newFault);
+            _repository.Save(faultRec);
 
-            return new CreateFaultResponse(newFault.Id, newFault.Address.Street, newFault.Address.CrossStreet,
-                newFault.Address.Suburb, newFault.Address.PostCode, newFault.Status, newFault.Type,
+            
+            return new CreateFaultResponse(
+                faultRec.Id, 
+                faultRec.Address.Street,
+                faultRec.Address.CrossStreet, 
+                faultRec.Address.Suburb, 
+                faultRec.Address.PostCode,
+                faultRec.Status, 
+                faultRec.Type, 
                 reference.ReferenceNumber);
-
         }
     }
 }

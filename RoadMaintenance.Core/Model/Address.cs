@@ -9,12 +9,17 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public string Suburb { get; private set; }
         public string PostCode { get; private set; }
 
-        public Address(string street, string crossStreet, string suburb, string postCode)
+        private Address(string street, string crossStreet, string suburb, string postCode)
         {
             Street = street;
             CrossStreet = crossStreet;
             Suburb = suburb;
             PostCode = postCode;
+        }
+
+        public static Address Create(string street, string crossStreet, string suburb, string postCode)
+        {
+            return new Address(street, crossStreet, suburb, postCode);
         }
     }
 }

@@ -149,15 +149,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         ""});
             table1.AddRow(new string[] {
-                        "7",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "2",
-                        ""});
-            table1.AddRow(new string[] {
                         "8",
                         "Fern Street",
                         "Hill Street",
@@ -176,15 +167,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2015-03-01"});
             table1.AddRow(new string[] {
-                        "10",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
-            table1.AddRow(new string[] {
                         "11",
                         "Republic Road",
                         "Malabongwe Drive",
@@ -193,15 +175,6 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "2",
                         ""});
-            table1.AddRow(new string[] {
-                        "12",
-                        "",
-                        "Malabongwe Drive",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
             table1.AddRow(new string[] {
                         "13",
                         "Republic Road",
@@ -213,7 +186,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2015-03-01"});
 #line 12
  testRunner.And("These faults exist", ((string)(null)), table1, "And ");
-#line 27
+#line 24
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -271,15 +244,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         ""});
             table2.AddRow(new string[] {
-                        "7",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "2",
-                        ""});
-            table2.AddRow(new string[] {
                         "8",
                         "Fern Street",
                         "Hill Street",
@@ -288,16 +252,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2",
                         "2015-03-02"});
-            table2.AddRow(new string[] {
-                        "10",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
-#line 28
+#line 25
  testRunner.Then("The results should be", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -308,15 +263,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindOpenAndRecentlyClosedFaultsByCrossStreetName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by cross street name", ((string[])(null)));
-#line 39
+#line 34
 this.ScenarioSetup(scenarioInfo);
-#line 40
+#line 35
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 41
+#line 36
  testRunner.And("I enter \'Hill Street\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
+#line 37
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
+#line 38
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -383,15 +338,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         ""});
             table3.AddRow(new string[] {
-                        "7",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "2",
-                        ""});
-            table3.AddRow(new string[] {
                         "8",
                         "Fern Street",
                         "Hill Street",
@@ -410,15 +356,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2015-03-01"});
             table3.AddRow(new string[] {
-                        "10",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
-            table3.AddRow(new string[] {
                         "11",
                         "Republic Road",
                         "Malabongwe Drive",
@@ -428,15 +365,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         ""});
             table3.AddRow(new string[] {
-                        "12",
-                        "",
-                        "Malabongwe Drive",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
-            table3.AddRow(new string[] {
                         "13",
                         "Republic Road",
                         "",
@@ -445,9 +373,9 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2",
                         "2015-03-01"});
-#line 44
+#line 39
  testRunner.And("These faults exist", ((string)(null)), table3, "And ");
-#line 59
+#line 51
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -505,15 +433,6 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         ""});
             table4.AddRow(new string[] {
-                        "7",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "2",
-                        ""});
-            table4.AddRow(new string[] {
                         "8",
                         "Fern Street",
                         "Hill Street",
@@ -522,16 +441,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2",
                         "2015-03-02"});
-            table4.AddRow(new string[] {
-                        "10",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "4",
-                        "2",
-                        "2015-03-02"});
-#line 60
+#line 52
  testRunner.Then("The results should be", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -542,15 +452,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindOpenAndRecentlyClosedFaultsBySuburbName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by suburb name", ((string[])(null)));
-#line 71
+#line 61
 this.ScenarioSetup(scenarioInfo);
-#line 72
+#line 62
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 73
+#line 63
  testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 74
+#line 64
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 75
+#line 65
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -625,9 +535,9 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "2",
                         ""});
-#line 76
+#line 66
  testRunner.And("These faults exist", ((string)(null)), table5, "And ");
-#line 85
+#line 75
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -675,7 +585,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2",
                         "2015-03-02"});
-#line 86
+#line 76
  testRunner.Then("The results should be", ((string)(null)), table6, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -686,13 +596,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindOpenAndRecentlyClosedFaultsByFaultType()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by fault type", ((string[])(null)));
-#line 93
+#line 83
 this.ScenarioSetup(scenarioInfo);
-#line 94
+#line 84
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 95
+#line 85
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 96
+#line 86
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -767,11 +677,11 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "2",
                         ""});
-#line 97
+#line 87
  testRunner.And("These faults exist", ((string)(null)), table7, "And ");
-#line 106
+#line 96
  testRunner.And("I select \'Pothole\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 107
+#line 97
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -819,7 +729,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "1",
                         "2015-03-02"});
-#line 108
+#line 98
  testRunner.Then("The results should be", ((string)(null)), table8, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -830,17 +740,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindOpenAndRecentlyClosedFaultsByStreetAndCrossStreet()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by street and cross street", ((string[])(null)));
-#line 115
+#line 105
 this.ScenarioSetup(scenarioInfo);
-#line 116
+#line 106
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 117
+#line 107
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 118
+#line 108
  testRunner.And("I enter \'Fern Ave\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 119
+#line 109
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 120
+#line 110
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -880,27 +790,9 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         ""});
             table9.AddRow(new string[] {
-                        "4",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table9.AddRow(new string[] {
                         "5",
                         "Fern Ave",
                         "",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table9.AddRow(new string[] {
-                        "6",
-                        "",
-                        "Fern Ave",
                         "Randburg",
                         "2194",
                         "1",
@@ -942,9 +834,9 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "1",
                         "2015-03-02"});
-#line 121
+#line 111
  testRunner.And("These faults exist", ((string)(null)), table9, "And ");
-#line 133
+#line 121
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -992,7 +884,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "1",
                         "2015-03-02"});
-#line 134
+#line 122
  testRunner.Then("The results should be", ((string)(null)), table10, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1003,17 +895,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FindOpenAndRecentlyClosedFaultsByStreetAndCrossStreetAndFaultType()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by street and cross street and fault type", ((string[])(null)));
-#line 141
+#line 129
 this.ScenarioSetup(scenarioInfo);
-#line 142
+#line 130
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 143
+#line 131
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 144
+#line 132
  testRunner.And("I enter \'Fern Ave\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 145
+#line 133
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 146
+#line 134
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1053,27 +945,9 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         ""});
             table11.AddRow(new string[] {
-                        "4",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table11.AddRow(new string[] {
                         "5",
                         "Fern Ave",
                         "",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table11.AddRow(new string[] {
-                        "6",
-                        "",
-                        "Fern Ave",
                         "Randburg",
                         "2194",
                         "1",
@@ -1160,11 +1034,11 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "2",
                         ""});
-#line 147
+#line 135
  testRunner.And("These faults exist", ((string)(null)), table11, "And ");
-#line 164
+#line 150
  testRunner.And("I select \'Pothole\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 165
+#line 151
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1212,7 +1086,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "1",
                         "2015-03-02"});
-#line 166
+#line 152
  testRunner.Then("The results should be", ((string)(null)), table12, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -1225,19 +1099,19 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Find open and recently closed faults by street and cross street and fault type an" +
                     "d suburb name", ((string[])(null)));
-#line 173
+#line 159
 this.ScenarioSetup(scenarioInfo);
-#line 174
+#line 160
  testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 175
+#line 161
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 176
+#line 162
  testRunner.And("I enter \'Fern Ave\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 177
+#line 163
  testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 178
+#line 164
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 179
+#line 165
  testRunner.And("The recently closed fault logging search period is \'30\' days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1277,27 +1151,9 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         ""});
             table13.AddRow(new string[] {
-                        "4",
-                        "",
-                        "Hill Street",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table13.AddRow(new string[] {
                         "5",
                         "Fern Ave",
                         "",
-                        "Randburg",
-                        "2194",
-                        "1",
-                        "1",
-                        ""});
-            table13.AddRow(new string[] {
-                        "6",
-                        "",
-                        "Fern Ave",
                         "Randburg",
                         "2194",
                         "1",
@@ -1384,11 +1240,11 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "2",
                         ""});
-#line 180
+#line 166
  testRunner.And("These faults exist", ((string)(null)), table13, "And ");
-#line 197
+#line 181
  testRunner.And("I select \'Pothole\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 198
+#line 182
  testRunner.When("I press the Search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1409,7 +1265,7 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "1",
                         ""});
-#line 199
+#line 183
  testRunner.Then("The results should be", ((string)(null)), table14, "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -25,7 +25,7 @@ namespace RoadMaintenance.FaultLogging.Specs
             var stepParams = new StepParameters
             {
                 MockDataSource = mock,
-                Service = new FaultService(new FaultLoggingRepository(mock.Object), new FaultFactory()),
+                Service = new FaultService(new FaultLoggingRepository(mock.Object)),
             };
 
             ScenarioContext.Current.Add("Params", stepParams);
