@@ -10,7 +10,7 @@ namespace RoadMaintenance.FaultRepair.Services
 {
     public interface IRepairTeamService
     {
-        RepairTeamInfo GetRepairTeam(string id);
+        RepairTeamInfo GetRepairTeam(string id);        
         IEnumerable<RepairTeamInfo> GetRepairTeams();
         bool AssignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime);
         bool UnassignWorkOrder(string workOrderId);
@@ -28,17 +28,20 @@ namespace RoadMaintenance.FaultRepair.Services
             this.workOrderRepo = workOrderRepo;
         }
 
+        [MethodSecurity]
         public RepairTeamInfo GetRepairTeam(string id)
         {
             var repairTeam = repairTeamRepo.Find(id);
             return repairTeam == null ? null : new RepairTeamInfo(repairTeam);
         }
 
+        [MethodSecurity]
         public IEnumerable<RepairTeamInfo> GetRepairTeams()
         {
             return repairTeamRepo.GeRepairTeams().Select(team => new RepairTeamInfo(team));
         }
 
+        [MethodSecurity]
         public bool AssignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
         {
             var workOrder = workOrderRepo.GetWorkOrderByID(workOrderId);
@@ -51,6 +54,7 @@ namespace RoadMaintenance.FaultRepair.Services
             return result;
         }
 
+        [MethodSecurity]
         public bool UnassignWorkOrder(string workOrderId)
         {
             var repairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);
@@ -62,8 +66,9 @@ namespace RoadMaintenance.FaultRepair.Services
                 repairTeamRepo.Save(repairTeam);
 
             return result;
-        }        
-        
+        }
+
+        [MethodSecurity]
         public bool ReassignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
         {
             var oldRepairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);

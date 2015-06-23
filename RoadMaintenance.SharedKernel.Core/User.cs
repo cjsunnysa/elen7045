@@ -5,9 +5,14 @@ using System.Text;
 
 namespace RoadMaintenance.SharedKernel.Core
 {
-    public class User
+    public interface IUser
     {
-        public readonly string Role;
+        string Role { get; }
+    }
+
+    public class User : IUser
+    {
+        public string Role { get; protected set; }
 
         public User(string role)
         {

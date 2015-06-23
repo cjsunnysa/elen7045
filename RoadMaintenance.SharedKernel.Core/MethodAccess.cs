@@ -15,5 +15,9 @@ namespace RoadMaintenance.SharedKernel.Core
             MethodName = methodName;
             Roles = roles;
         }
+
+        public MethodAccess(string methodName, params string[] roles)
+            :this(methodName, (IEnumerable<string>)roles) { }        
+        
     }
 }

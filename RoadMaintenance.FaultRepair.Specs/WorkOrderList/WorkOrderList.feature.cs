@@ -72,6 +72,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderList
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("All work orders are scheduled", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
+#line 7
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -91,11 +93,11 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "4",
                         "scheduled"});
-#line 7
- testRunner.Given("these work orders exist", ((string)(null)), table1, "Given ");
-#line 14
- testRunner.When("I request a list of unscheduled work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+ testRunner.And("these work orders exist", ((string)(null)), table1, "And ");
 #line 15
+ testRunner.When("I request a list of unscheduled work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
  testRunner.Then("I receive no work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -106,8 +108,10 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void AllWorkOrdersAreUnscheduled()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("All work orders are unscheduled", ((string[])(null)));
-#line 17
+#line 18
 this.ScenarioSetup(scenarioInfo);
+#line 19
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -127,9 +131,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "4",
                         "issued"});
-#line 18
- testRunner.Given("these work orders exist", ((string)(null)), table2, "Given ");
-#line 25
+#line 20
+ testRunner.And("these work orders exist", ((string)(null)), table2, "And ");
+#line 27
  testRunner.When("I request a list of unscheduled work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -150,7 +154,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "4",
                         "issued"});
-#line 26
+#line 28
  testRunner.Then("I receive these work orders", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -161,8 +165,10 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void WorkOrdersWithMixedStatuses()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Work orders with mixed statuses", ((string[])(null)));
-#line 34
+#line 36
 this.ScenarioSetup(scenarioInfo);
+#line 37
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
@@ -185,9 +191,9 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "5",
                         "closed"});
-#line 35
- testRunner.Given("these work orders exist", ((string)(null)), table4, "Given ");
-#line 43
+#line 38
+ testRunner.And("these work orders exist", ((string)(null)), table4, "And ");
+#line 46
  testRunner.When("I request a list of unscheduled work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -202,7 +208,7 @@ this.ScenarioSetup(scenarioInfo);
             table5.AddRow(new string[] {
                         "3",
                         "issued"});
-#line 44
+#line 47
  testRunner.Then("I receive these work orders", ((string)(null)), table5, "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -58,6 +58,8 @@
     <Compile Include="DummyLogger.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="AuditLoggingInterceptor.cs" />
+    <Compile Include="MethodSecurityAttribute.cs" />
+    <Compile Include="MethodSecurityInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

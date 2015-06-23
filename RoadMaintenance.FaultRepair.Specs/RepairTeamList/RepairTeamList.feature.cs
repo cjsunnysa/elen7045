@@ -72,6 +72,8 @@ namespace RoadMaintenance.FaultRepair.Specs.RepairTeamList
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Teams with work orders scheduled", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
+#line 8
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -89,8 +91,8 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 8
- testRunner.Given("I have a repair team with id 1 and the following schedule", ((string)(null)), table1, "Given ");
+#line 9
+ testRunner.And("I have a repair team with id 1 and the following schedule", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -116,7 +118,7 @@ this.ScenarioSetup(scenarioInfo);
                         "7",
                         "2014-01-13 08:00",
                         "2014-01-13 13:00"});
-#line 13
+#line 14
  testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table2, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -143,9 +145,9 @@ this.ScenarioSetup(scenarioInfo);
                         "12",
                         "2014-01-09 08:00",
                         "2014-01-13 16:00"});
-#line 20
+#line 21
  testRunner.And("I have a repair team with id 3 and the following schedule", ((string)(null)), table3, "And ");
-#line 27
+#line 28
  testRunner.When("I request a list of repair teams", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -218,7 +220,7 @@ this.ScenarioSetup(scenarioInfo);
                         "12",
                         "2014-01-09 08:00",
                         "2014-01-13 16:00"});
-#line 28
+#line 29
  testRunner.Then("I get a list of repair teams with schedules as below", ((string)(null)), table4, "Then ");
 #line hidden
             this.ScenarioCleanup();

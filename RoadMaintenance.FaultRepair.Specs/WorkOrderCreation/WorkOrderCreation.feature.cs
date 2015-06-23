@@ -32,8 +32,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderCreation", "As an authorised staff member of the transport department\r\nI want to capture a wo" +
-                    "rk order for a logged fault", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderCreation", "As an authorised staff member of the transport department\nI want to capture a wor" +
+                    "k order for a logged fault", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

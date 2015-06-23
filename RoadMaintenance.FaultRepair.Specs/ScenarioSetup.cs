@@ -8,6 +8,8 @@ using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Parameters;
 using RoadMaintenance.FaultRepair.Repos;
 using RoadMaintenance.FaultRepair.Services;
+using RoadMaintenance.SharedKernel.Core;
+using RoadMaintenance.SharedKernel.Repos;
 using RoadMaintenance.SharedKernel.Services;
 using RoadMaintenance.SharedKernel.Specs;
 using TechTalk.SpecFlow;
@@ -24,8 +26,8 @@ namespace RoadMaintenance.FaultRepair.Specs
             var workOrderRepo = new DummyWorkOrderRepository();
             var repairTeamRepo = new DummyRepairTeamRepository();
 
-            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
-            kernel.Bind<IRepairTeamRepository>().ToConstant(repairTeamRepo);
+            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo).InSingletonScope();
+            kernel.Bind<IRepairTeamRepository>().ToConstant(repairTeamRepo).InSingletonScope();
 
             kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
             kernel.Bind<IRepairTeamService>().To<RepairTeamService>();            
@@ -39,6 +41,28 @@ namespace RoadMaintenance.FaultRepair.Specs
             ScenarioContext.Current.Add("repairTeamRepo", repairTeamRepo);
             ScenarioContext.Current.Add("repairTeamService", repairTeamService);
 
+            setupMethodAccessRepo(kernel);
+
         }
+
+        private void setupMethodAccessRepo(StandardKernel kernel)
+        {
+            var methodAccessRepo = kernel.Get<IMethodAccessRepository>();
+
+            methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeam", "Dispatcher", "Supervisor"));
+            methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeams", "Dispatcher", "Supervisor"));
+            methodAccessRepo.Save(new MethodAccess("RepairTeamService.AssignWorkOrder", "Dispatcher", "Supervisor"));
+            methodAccessRepo.Save(new MethodAccess("RepairTeamService.UnassignWorkOrder", "Dispatcher", "Supervisor"));
+            methodAccessRepo.Save(new MethodAccess("RepairTeamService.ReassignWorkOrder", "Dispatcher", "Supervisor"));
+            
+            methodAccessRepo.Save(new MethodAccess("WorkOrderService.GetUnscheduledWorkOrders", "Dispatcher", "Supervisor"));
+        }
+
+        [Given(@"I am a ""(.*)""")]
+        public void GivenIAmA(string p0)
+        {
+            TestKernelBootstrapper.SetupUser(p0);
+        }
+
     }
 }

@@ -72,6 +72,8 @@ namespace RoadMaintenance.FaultRepair.Specs.ReallocateWorkOrder
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reallocate work order to team with no other work orders scheduled", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
+#line 8
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -89,19 +91,19 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 8
- testRunner.Given("I have a repair team with id 1 and the following schedule", ((string)(null)), table1, "Given ");
+#line 9
+ testRunner.And("I have a repair team with id 1 and the following schedule", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
                         "StartTime",
                         "EndTime"});
-#line 13
+#line 14
  testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table2, "And ");
-#line 15
+#line 16
  testRunner.When("I reallocate the work order with id 0 to team with id 2 to start at \"2014-01-06 0" +
                     "8:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 16
+#line 17
  testRunner.Then("the result should be \"successful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -116,7 +118,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 17
+#line 18
  testRunner.And("the following resultant schedule for team with id 1", ((string)(null)), table3, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -127,7 +129,7 @@ this.ScenarioSetup(scenarioInfo);
                         "0",
                         "2014-01-06 08:00",
                         "2014-01-06 14:00"});
-#line 21
+#line 22
  testRunner.And("the following resultant schedule for team with id 2", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -138,8 +140,10 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ReallocateWorkOrderToTeamWithNoConflictingWorkOrdersScheduled()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reallocate work order to team with no conflicting work orders scheduled", ((string[])(null)));
-#line 25
+#line 26
 this.ScenarioSetup(scenarioInfo);
+#line 27
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -157,8 +161,8 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 26
- testRunner.Given("I have a repair team with id 1 and the following schedule", ((string)(null)), table5, "Given ");
+#line 28
+ testRunner.And("I have a repair team with id 1 and the following schedule", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -172,12 +176,12 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 31
+#line 33
  testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table6, "And ");
-#line 35
+#line 37
  testRunner.When("I reallocate the work order with id 0 to team with id 2 to start at \"2014-01-06 0" +
                     "8:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 36
+#line 38
  testRunner.Then("the result should be \"successful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -192,7 +196,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 37
+#line 39
  testRunner.And("the following resultant schedule for team with id 1", ((string)(null)), table7, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -211,7 +215,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 41
+#line 43
  testRunner.And("the following resultant schedule for team with id 2", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -222,8 +226,10 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ReallocateWorkOrderToTeamWithConflictingWorkOrdersScheduled()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reallocate work order to team with conflicting work orders scheduled", ((string[])(null)));
-#line 47
+#line 49
 this.ScenarioSetup(scenarioInfo);
+#line 50
+ testRunner.Given("I am a \"Dispatcher\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -241,8 +247,8 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 48
- testRunner.Given("I have a repair team with id 1 and the following schedule", ((string)(null)), table9, "Given ");
+#line 51
+ testRunner.And("I have a repair team with id 1 and the following schedule", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "WorkOrderID",
@@ -260,12 +266,12 @@ this.ScenarioSetup(scenarioInfo);
                         "5",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 53
+#line 56
  testRunner.And("I have a repair team with id 2 and the following schedule", ((string)(null)), table10, "And ");
-#line 58
+#line 61
  testRunner.When("I reallocate the work order with id 0 to team with id 2 to start at \"2014-01-06 0" +
                     "8:00\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 59
+#line 62
  testRunner.Then("the result should be \"unsuccessful\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -284,7 +290,7 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 60
+#line 63
  testRunner.And("the following resultant schedule for team with id 1", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -303,7 +309,7 @@ this.ScenarioSetup(scenarioInfo);
                         "5",
                         "2014-01-08 14:00",
                         "2014-01-09 13:00"});
-#line 65
+#line 68
  testRunner.And("the following resultant schedule for team with id 2", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();

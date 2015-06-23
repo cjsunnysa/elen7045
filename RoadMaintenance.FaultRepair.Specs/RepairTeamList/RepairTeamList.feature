@@ -5,7 +5,8 @@
 
 
 Scenario: Teams with work orders scheduled
-	Given I have a repair team with id 1 and the following schedule
+	Given I am a "Dispatcher" 
+	And I have a repair team with id 1 and the following schedule
 	| WorkOrderID | StartTime        | EndTime          |
 	| 0           | 2014-01-06 08:00 | 2014-01-06 14:00 |
 	| 1           | 2014-01-07 08:00 | 2014-01-08 12:00 |

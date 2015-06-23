@@ -4,7 +4,8 @@
 	I should be able to assign it a repair team by allocating it to a repair teams schedule and be able to reschedule and unschedule that work order
 
 Scenario: Assign a work order to a repair team with no other work orders scheduled
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 0  | 24       |
 	And I have a repair team with id 1 and the following schedule	
@@ -16,7 +17,8 @@ Scenario: Assign a work order to a repair team with no other work orders schedul
 	| 0           | 2014-01-03 08:00 | 2014-01-07 16:00 |
 
 Scenario: Assign a work order to a repair team with no conflicting work orders scheduled
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 3  | 6        |
 	And I have a repair team with id 1 and the following schedule
@@ -34,7 +36,8 @@ Scenario: Assign a work order to a repair team with no conflicting work orders s
 	| 3           | 2014-01-09 15:00 | 2014-01-10 13:00 |
 
 Scenario: Assign a work order to a repair team with conflicting work orders scheduled
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 3  | 6        |
 	And I have a repair team with id 1 and the following schedule
@@ -51,7 +54,8 @@ Scenario: Assign a work order to a repair team with conflicting work orders sche
 	| 2           | 2014-01-08 14:00 | 2014-01-09 13:00 |
 	
 Scenario: Reschedule a work order allocated to a repair team with no conflicting work orders scheduled
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 0  | 6        |
 	And I have a repair team with id 1 and the following schedule
@@ -68,7 +72,8 @@ Scenario: Reschedule a work order allocated to a repair team with no conflicting
 	| 0           | 2014-01-09 15:00 | 2014-01-10 13:00 |
 
 Scenario: Reschedule a work order allocated to a repair team with conflicting work orders scheduled
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 0  | 6        |
 	And I have a repair team with id 1 and the following schedule
@@ -85,7 +90,8 @@ Scenario: Reschedule a work order allocated to a repair team with conflicting wo
 	| 2           | 2014-01-08 14:00 | 2014-01-09 13:00 |
 
 Scenario: Unassign a work order allocated to a repair team
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 0  | 6        |
 	And I have a repair team with id 1 and the following schedule
@@ -101,7 +107,8 @@ Scenario: Unassign a work order allocated to a repair team
 	| 2           | 2014-01-08 14:00 | 2014-01-09 13:00 |
 
 Scenario: Unassign a work order not allocated to a repair team
-	Given I have a work order
+	Given I am a "Dispatcher" 
+	And I have a work order
 	| Id | Duration |
 	| 3  | 6        |
 	And I have a repair team with id 1 and the following schedule

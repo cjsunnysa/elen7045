@@ -4,7 +4,8 @@
 	I want to be able to get a list of unallocated work orders
 
 Scenario: All work orders are scheduled
-	Given these work orders exist
+	Given I am a "Dispatcher" 
+	And these work orders exist
 	| Id | Status    |
 	| 0  | scheduled |
 	| 1  | scheduled |
@@ -15,7 +16,8 @@ Scenario: All work orders are scheduled
 	Then I receive no work orders
 
 Scenario: All work orders are unscheduled
-	Given these work orders exist
+	Given I am a "Dispatcher" 
+	And these work orders exist
 	| Id | Status |
 	| 0  | issued |
 	| 1  | issued |
@@ -32,7 +34,8 @@ Scenario: All work orders are unscheduled
 	| 4  | issued |
 
 Scenario: Work orders with mixed statuses
-	Given these work orders exist
+	Given I am a "Dispatcher" 
+	And these work orders exist
 	| Id | Status   |
 	| 0  | issued   |
 	| 1  | created  |

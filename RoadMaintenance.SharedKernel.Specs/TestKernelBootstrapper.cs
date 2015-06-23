@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Ninject;
 using Ninject.Extensions.Interception.Infrastructure.Language;
+using RoadMaintenance.SharedKernel.Core;
 using RoadMaintenance.SharedKernel.Repos;
 using RoadMaintenance.SharedKernel.Services;
+using TechTalk.SpecFlow;
 
 namespace RoadMaintenance.SharedKernel.Specs
 {
@@ -19,12 +21,20 @@ namespace RoadMaintenance.SharedKernel.Specs
 
             kernel.Bind<ILogger>().ToConstant(logger);
 
-            kernel.Intercept(context => context.Binding.Service != typeof(ILogger)).With<AuditLoggingInterceptor>();
+            var methodAccessRepo = kernel.Get<DummyMethodAccessRepository>();
+            kernel.Bind<IMethodAccessRepository>().ToConstant(methodAccessRepo);
 
-            var accessRepo = new DummyMethodAccessRepository();
-            kernel.Bind<IMethodAccessRepository>().ToConstant(accessRepo);
+            kernel.Intercept(context => context.Binding.Service != typeof(ILogger)).With<AuditLoggingInterceptor>();            
 
             return kernel;
         }
+        
+        public static void SetupUser(string userName)
+        {
+            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
+            IUser user = new User(userName);
+            kernel.Bind<IUser>().ToConstant(user);
+        }
+        
     }
 }

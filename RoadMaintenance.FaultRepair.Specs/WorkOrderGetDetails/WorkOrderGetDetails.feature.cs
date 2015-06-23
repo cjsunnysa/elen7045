@@ -32,8 +32,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderGetDetails", "As an authorised staff member of the transport department\r\nI want to get the deta" +
-                    "ils of a captured work order\r\nIn order to verify if it was captured correctly", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderGetDetails", "As an authorised staff member of the transport department\nI want to get the detai" +
+                    "ls of a captured work order\nIn order to verify if it was captured correctly", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
