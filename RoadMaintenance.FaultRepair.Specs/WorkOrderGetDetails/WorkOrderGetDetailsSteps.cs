@@ -36,7 +36,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
             var workOrderID = table.Rows[0][0];
             var workOrder = new WorkOrder(workOrderID);
             workOrder.Description = table.Rows[0][1];
-            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
             ScenarioContext.Current.Add("workOrderID", workOrderID);
         }
         

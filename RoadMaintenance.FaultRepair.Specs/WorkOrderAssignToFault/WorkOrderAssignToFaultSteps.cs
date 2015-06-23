@@ -35,7 +35,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
         {
             var workOrderID = p0;
             var workOrder = new WorkOrder(workOrderID);
-            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
             ScenarioContext.Current.Add("workOrderID", workOrderID);
         }
         
@@ -49,7 +49,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
         [When(@"I search for all work orders related to fault id (.*)")]
         public void WhenISearchForAllWorkOrdersRelatedToFaultId(int p0)
         {
-            List<WorkOrder> workOrders = ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").GetWorkOrdersByFault(p0);
+            List<WorkOrder> workOrders = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").GetWorkOrdersByFault(p0);
             ScenarioContext.Current.Add("workOrders", workOrders);
         }
         
