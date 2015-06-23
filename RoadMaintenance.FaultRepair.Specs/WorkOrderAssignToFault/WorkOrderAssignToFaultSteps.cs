@@ -24,6 +24,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
 
             var service = new WorkOrderService(workOrderRepo);
 
+            ScenarioContext.Current.Clear();
             ScenarioContext.Current.Add("kernel", kernel);
             ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
             ScenarioContext.Current.Add("service", service);

@@ -27,7 +27,7 @@ namespace RoadMaintenance.FaultRepair.Core
         private static string GenerateID()
         {
             ++idSequence;
-            string newID = string.Format("WO{1}", idSequence);
+            string newID = string.Format("WO{0}", idSequence);
             return newID;
         }
 

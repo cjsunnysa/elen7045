@@ -79,36 +79,18 @@
       <DependentUpon>WorkOrderCreation.feature</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderCreation\WorkOrderCreationSteps.cs" />
-    <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModified.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkOrderFaultNotModified.feature</DependentUpon>
-    </Compile>
-    <Compile Include="WorkOrderFaultNotModified\WorkOrderFaultNotModifiedSteps.cs" />
     <Compile Include="WorkOrderGetDetails\WorkOrderGetDetails.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderGetDetails.feature</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderGetDetails\WorkOrderGetDetailsSteps.cs" />
-    <Compile Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkOrderGetFaultDetails.feature</DependentUpon>
-    </Compile>
-    <Compile Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetailsSteps.cs" />
     <Compile Include="WorkOrderList\WorkOrderList.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkOrderList.feature</DependentUpon>
     </Compile>
     <Compile Include="WorkOrderList\WorkOrderListSteps.cs" />
-    <Compile Include="WorkOrderViewFaults\WorkOrderViewFaults.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WorkOrderViewFaults.feature</DependentUpon>
-    </Compile>
-    <Compile Include="WorkOrderViewFaults\WorkOrderViewFaultsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -132,25 +114,13 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderCreation.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderFaultNotModified\WorkOrderFaultNotModified.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WorkOrderFaultNotModified.feature.cs</LastGenOutput>
-    </None>
     <None Include="WorkOrderGetDetails\WorkOrderGetDetails.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderGetDetails.feature.cs</LastGenOutput>
     </None>
-    <None Include="WorkOrderGetFaultDetails\WorkOrderGetFaultDetails.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WorkOrderGetFaultDetails.feature.cs</LastGenOutput>
-    </None>
     <None Include="WorkOrderList\WorkOrderList.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>WorkOrderList.feature.cs</LastGenOutput>
-    </None>
-    <None Include="WorkOrderViewFaults\WorkOrderViewFaults.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WorkOrderViewFaults.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

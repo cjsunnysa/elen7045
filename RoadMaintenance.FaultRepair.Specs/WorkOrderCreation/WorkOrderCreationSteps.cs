@@ -21,10 +21,12 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
             StandardKernel kernel = new StandardKernel();
             var workOrderRepo = new DummyWorkOrderRepository();
 
+            // Bind the dummy work order repository to IWorkOrderRepository and inject
             kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
 
             var service = new WorkOrderService(workOrderRepo);
 
+            ScenarioContext.Current.Clear();
             ScenarioContext.Current.Add("kernel", kernel);
             ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
             ScenarioContext.Current.Add("service", service);
@@ -38,8 +40,9 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         [Given(@"I have the following work orders in the system")]
         public void GivenIHaveTheFollowingWorkOrdersInTheSystem(Table table)
         {
-            var workOrder = new WorkOrder(table.Rows[0][0]);
-            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            var workOrder = new WorkOrder("WO1");
+            workOrder.Description = table.Rows[0][0];
+            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
         }
 
         [When(@"I create and add a work order")]
@@ -58,7 +61,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         [Then(@"the work orders in the system should be")]
         public void ThenTheWorkOrdersInTheSystemShouldBe(Table table)
         {
-            List<WorkOrder> systemWorkOrders = ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").GetAllWorkOrders();
+            List<WorkOrder> systemWorkOrders = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").GetAllWorkOrders();
             Assert.AreEqual(systemWorkOrders.Count, 2);
             Assert.AreEqual(table.Rows[0][0], systemWorkOrders[0].Description);
             Assert.AreEqual(table.Rows[1][0], systemWorkOrders[1].Description);
@@ -120,7 +123,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         [Then(@"there should be (.*) work order in the system")]
         public void ThenThereShouldBeWorkOrderInTheSystem(int p0)
         {
-            List<WorkOrder> systemWorkOrders = ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").GetAllWorkOrders();
+            List<WorkOrder> systemWorkOrders = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").GetAllWorkOrders();
             Assert.AreEqual(systemWorkOrders.Count, p0);
         }
     }

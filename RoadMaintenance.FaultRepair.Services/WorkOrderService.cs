@@ -25,22 +25,31 @@ namespace RoadMaintenance.FaultRepair.Services
             WorkOrderBuilder wob = new WorkOrderBuilder(description);
             
             // Set tasks
-            foreach(var task in tasks)
+            if (tasks != null)
             {
-                wob.AddTask(task);
+                foreach (var task in tasks)
+                {
+                    wob.AddTask(task);
+                }
             }
 
             // Set equipment
-            foreach(var tool in equipment)
+            if (equipment != null)
             {
-                wob.AddEquipment(tool.Item1, tool.Item2);
+                foreach (var tool in equipment)
+                {
+                    wob.AddEquipment(tool.Item1, tool.Item2);
+                }
             }
 
             // Set material
-            foreach(var material in materials)
+            if (materials != null)
             {
-                wob.AddMaterial(material.Item1, material.Item2, material.Item3);
-            }            
+                foreach (var material in materials)
+                {
+                    wob.AddMaterial(material.Item1, material.Item2, material.Item3);
+                }
+            }
 
             WorkOrder newWO = wob.GetResult();
 
@@ -62,21 +71,30 @@ namespace RoadMaintenance.FaultRepair.Services
             WorkOrderBuilder wob = new WorkOrderBuilder(wo);
 
             // Set tasks
-            foreach (var task in tasks)
+            if (tasks != null)
             {
-                wob.AddTask(task);
+                foreach (var task in tasks)
+                {
+                    wob.AddTask(task);
+                }
             }
 
             // Set equipment
-            foreach (var tool in equipment)
+            if (equipment != null)
             {
-                wob.AddEquipment(tool.Item1, tool.Item2);
+                foreach (var tool in equipment)
+                {
+                    wob.AddEquipment(tool.Item1, tool.Item2);
+                }
             }
 
             // Set material
-            foreach (var material in materials)
+            if (materials != null)
             {
-                wob.AddMaterial(material.Item1, material.Item2, material.Item3);
+                foreach (var material in materials)
+                {
+                    wob.AddMaterial(material.Item1, material.Item2, material.Item3);
+                }
             }
 
             WorkOrder existingWO = wob.GetResult();
