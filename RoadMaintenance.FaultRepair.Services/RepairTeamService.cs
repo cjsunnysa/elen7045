@@ -4,10 +4,20 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.SharedKernel.Services;
 
 namespace RoadMaintenance.FaultRepair.Services
 {
-    public class RepairTeamService
+    public interface IRepairTeamService
+    {
+        RepairTeamInfo GetRepairTeam(string id);
+        IEnumerable<RepairTeamInfo> GetRepairTeams();
+        bool AssignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime);
+        bool UnassignWorkOrder(string workOrderId);
+        bool ReassignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime);
+    }
+
+    public class RepairTeamService : IRepairTeamService
     {
         private IRepairTeamRepository repairTeamRepo;
         private IWorkOrderRepository workOrderRepo;
@@ -53,7 +63,7 @@ namespace RoadMaintenance.FaultRepair.Services
 
             return result;
         }        
-
+        
         public bool ReassignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
         {
             var oldRepairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);

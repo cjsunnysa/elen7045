@@ -14,22 +14,6 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
     [Binding]
     public class WorkOrderGetDetailsSteps
     {
-        [BeforeScenario]
-        public virtual void ScenarioSetUp()
-        {
-            StandardKernel kernel = new StandardKernel();
-            var workOrderRepo = new DummyWorkOrderRepository();
-
-            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
-
-            var service = new WorkOrderService(workOrderRepo);
-
-            ScenarioContext.Current.Clear();
-            ScenarioContext.Current.Add("kernel", kernel);
-            ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
-            ScenarioContext.Current.Add("service", service);
-        }
-
         [Given(@"The system has a work order")]
         public void GivenTheSystemHasAWorkOrder(Table table)
         {
@@ -49,7 +33,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
             tasks.Add(table.Rows[0][0]);
             tasks.Add(table.Rows[1][0]);
             tasks.Add(table.Rows[2][0]);
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, tasks, null, null);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, tasks, null, null);
 
         }
         
@@ -59,7 +43,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
             var woID = ScenarioContext.Current.Get<string>("workOrderID");
             var equipment = new List<Tuple<string, int>>();
             equipment.Add(new Tuple<string, int>(table.Rows[0][0], int.Parse(table.Rows[0][1])));
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, null, equipment, null);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, null, equipment, null);
         }
         
         [Given(@"the work order has material")]
@@ -69,7 +53,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
             var billOfMaterial = new List<Tuple<string, double, MeasurementType>>();
             billOfMaterial.Add(new Tuple<string, double, MeasurementType>(table.Rows[0][0], double.Parse(table.Rows[0][1]), MeasurementType.Kg));
             billOfMaterial.Add(new Tuple<string, double, MeasurementType>(table.Rows[1][0], double.Parse(table.Rows[1][1]), MeasurementType.Liters));
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, null, null, billOfMaterial);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, null, null, billOfMaterial);
         }
         
         [When(@"I retrieve the work order details by ID ""(.*)""")]
@@ -86,7 +70,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
            List<Tuple<string, int>> equipment;
            List<Tuple<string, double, MeasurementType>> materials;
 
-           ScenarioContext.Current.Get<WorkOrderService>("service").GetWorkOrderDetails(woID, out description, out status, out creationDate, out department, out faultID, out tasks, out equipment, out materials);
+           ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").GetWorkOrderDetails(woID, out description, out status, out creationDate, out department, out faultID, out tasks, out equipment, out materials);
            ScenarioContext.Current.Add("description", description);
            ScenarioContext.Current.Add("tasks", tasks);
            ScenarioContext.Current.Add("equipment", equipment);

@@ -14,22 +14,6 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
     [Binding]
     public class WorkOrderAssignToFaultSteps
     {
-        [BeforeScenario]
-        public virtual void ScenarioSetUp()
-        {
-            StandardKernel kernel = new StandardKernel();
-            var workOrderRepo = new DummyWorkOrderRepository();
-
-            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
-
-            var service = new WorkOrderService(workOrderRepo);
-
-            ScenarioContext.Current.Clear();
-            ScenarioContext.Current.Add("kernel", kernel);
-            ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
-            ScenarioContext.Current.Add("service", service);
-        }
-
         [Given(@"I have a work order with id ""(.*)""")]
         public void GivenIHaveAWorkOrderWithId(string p0)
         {
@@ -43,7 +27,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
         public void WhenIAssignTheWorkOrderToFaultId(int p0)
         {
             var woID = ScenarioContext.Current.Get<string>("workOrderID");
-            ScenarioContext.Current.Get<WorkOrderService>("service").AssignWorkOrderToFault(woID, p0);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AssignWorkOrderToFault(woID, p0);
         }
         
         [When(@"I search for all work orders related to fault id (.*)")]

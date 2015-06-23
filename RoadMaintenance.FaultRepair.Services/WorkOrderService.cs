@@ -7,11 +7,39 @@ using RoadMaintenance.FaultRepair.Core;
 
 namespace RoadMaintenance.FaultRepair.Services
 {
-    public class WorkOrderService
+    public interface IWorkOrderService
+    {
+        string CreateWorkOrder(string       description, 
+            List<string> tasks,
+            List<Tuple<string, int>> equipment,
+            List<Tuple<string, double, MeasurementType>> materials);
+
+        void AmendWorkOrder(string workOrderID,
+            List<string> tasks,
+            List<Tuple<string, int>> equipment,
+            List<Tuple<string, double, MeasurementType>> materials);
+
+        void AssignWorkOrderToFault (string workOrderID, int faultID);
+        void UpdateWorkOrderStatus(string workOrderID, WorkOrderStatus newStatus);
+
+        void GetWorkOrderDetails(string workOrderID,
+            out string description,
+            out WorkOrderStatus status,
+            out DateTime creationDate,
+            out string department,
+            out int faultID,
+            out List<string> tasks,
+            out List<Tuple<string, int>> equipment,
+            out List<Tuple<string, double, MeasurementType>> materials);
+
+        IEnumerable<WorkOrderInfo> GetUnscheduledWorkOrders();
+    }
+
+    public class WorkOrderService : IWorkOrderService
     {
         private readonly IWorkOrderRepository workOrderRepo;
 
-        public WorkOrderService(IWorkOrderRepository workOrderRepo) 
+        public WorkOrderService(IWorkOrderRepository workOrderRepo)
         {
             this.workOrderRepo = workOrderRepo;
         }

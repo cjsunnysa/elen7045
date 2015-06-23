@@ -15,23 +15,6 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
     public class WorkOrderCreationSteps
     {
 
-        [BeforeScenario]
-        public virtual void ScenarioSetUp()
-        {
-            StandardKernel kernel = new StandardKernel();
-            var workOrderRepo = new DummyWorkOrderRepository();
-
-            // Bind the dummy work order repository to IWorkOrderRepository and inject
-            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
-
-            var service = new WorkOrderService(workOrderRepo);
-
-            ScenarioContext.Current.Clear();
-            ScenarioContext.Current.Add("kernel", kernel);
-            ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
-            ScenarioContext.Current.Add("service", service);
-        }
-
         /// <summary>
         /// First scenario
         /// </summary>
@@ -48,7 +31,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         [When(@"I create and add a work order")]
         public void WhenICreateAndAddAWorkOrder(Table table)
         {
-            var newWOID = ScenarioContext.Current.Get<WorkOrderService>("service").CreateWorkOrder(table.Rows[0][0], null, null, null);
+            var newWOID = ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").CreateWorkOrder(table.Rows[0][0], null, null, null);
             ScenarioContext.Current.Add("newWorkOrderID", newWOID);
         }
 
@@ -79,7 +62,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         [When(@"I created a work order as follows")]
         public void WhenICreatedAWorkOrderAsFollows(Table table)
         {
-            var newWOID = ScenarioContext.Current.Get<WorkOrderService>("service").CreateWorkOrder(table.Rows[0][0], null, null, null);
+            var newWOID = ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").CreateWorkOrder(table.Rows[0][0], null, null, null);
             ScenarioContext.Current.Add("newWorkOrderID", newWOID);
         }
 
@@ -91,7 +74,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
             tasks.Add(table.Rows[0][0]);
             tasks.Add(table.Rows[1][0]);
             tasks.Add(table.Rows[2][0]);
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, tasks, null, null);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, tasks, null, null);
         }
 
         [When(@"I add the following equipment")]
@@ -100,7 +83,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
             var woID = ScenarioContext.Current.Get<string>("newWorkOrderID");
             var equipment = new List<Tuple<string, int>>();
             equipment.Add(new Tuple<string, int>(table.Rows[0][0], int.Parse(table.Rows[0][1])));
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, null, equipment, null);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, null, equipment, null);
         }
 
         [When(@"I add the following material")]
@@ -110,7 +93,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
             var billOfMaterial = new List<Tuple<string, double, MeasurementType>>();
             billOfMaterial.Add(new Tuple<string, double, MeasurementType>(table.Rows[0][0], double.Parse(table.Rows[0][1]), MeasurementType.Kg));
             billOfMaterial.Add(new Tuple<string, double, MeasurementType>(table.Rows[1][0], double.Parse(table.Rows[1][1]), MeasurementType.Liters));
-            ScenarioContext.Current.Get<WorkOrderService>("service").AmendWorkOrder(woID, null, null, billOfMaterial);
+            ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").AmendWorkOrder(woID, null, null, billOfMaterial);
         }
 
         [Then(@"the result should be a new work order number created")]

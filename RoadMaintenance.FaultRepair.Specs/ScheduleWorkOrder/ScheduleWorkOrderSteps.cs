@@ -13,24 +13,6 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
     [Binding]
     public class ScheduleWorkOrderSteps
     {
-        [BeforeScenario]
-        public virtual void ScenarioSetUp()
-        {                        
-            StandardKernel kernel = new StandardKernel();
-            var repairTeamRepo = new DummyRepairTeamRepository();
-            var workOrderRepo = new DummyWorkOrderRepository(Enumerable.Empty<WorkOrder>());
-
-            kernel.Bind<IRepairTeamRepository>().ToConstant(repairTeamRepo);
-            kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo);
-
-            var service = kernel.Get<RepairTeamService>();
-
-            ScenarioContext.Current.Add("kernel", kernel);
-            ScenarioContext.Current.Add("repairTeamRepo", repairTeamRepo);
-            ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
-            ScenarioContext.Current.Add("service", service);
-        }
-
         [Given(@"I have a work order")]
         public void GivenIHaveAWorkOrder(Table table)
         {
@@ -65,7 +47,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void WhenIAssignTheWorkOrderToTheTeamWithIdFor(int p0, string p1)
         {
             var workOrder = ScenarioContext.Current.Get<WorkOrder>("workOrder");
-            var result = ScenarioContext.Current.Get<RepairTeamService>("service").AssignWorkOrder(workOrder.ID, p0.ToString(), DateTime.Parse(p1, new DateTimeFormatInfo()));
+            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").AssignWorkOrder(workOrder.ID, p0.ToString(), DateTime.Parse(p1, new DateTimeFormatInfo()));
             ScenarioContext.Current.Add("result", result);
         }               
 
@@ -74,7 +56,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void WhenIUnassignTheWorkOrder()
         {
             var workOrder = ScenarioContext.Current.Get<WorkOrder>("workOrder");
-            var result = ScenarioContext.Current.Get<RepairTeamService>("service").UnassignWorkOrder(workOrder.ID);
+            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").UnassignWorkOrder(workOrder.ID);
             ScenarioContext.Current.Add("result", result);
         }
 
@@ -87,7 +69,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         [Then(@"the following resultant schedule for team with id (.*)")]
         public void ThenTheFollowingResultantScheduleForTeamWithId(int p0, Table table)
         {
-            var repairTeam = ScenarioContext.Current.Get<RepairTeamService>("service").GetRepairTeam(p0.ToString());
+            var repairTeam = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").GetRepairTeam(p0.ToString());
             Assert.NotNull(repairTeam);
 
             var scheduleEntries = repairTeam.Schedule.ToList();
