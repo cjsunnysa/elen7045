@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Services.Request;
+using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using TechTalk.SpecFlow;
 
@@ -13,15 +14,7 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
         public void GivenIAmOnTheAddGPSCoordinatesPage()
         {
         }
-        
-        [Given(@"the fault I am editing has the Id '(.*)'")]
-        public void GivenTheFaultIAmEditingHasTheId(string faultId)
-        {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            param.GivenFaultId = faultId;
-        }
-        
         [Given(@"I enter '(.*)' as the longitude")]
         public void GivenIEnterAsTheLongitude(string longitude)
         {
@@ -47,7 +40,7 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
 
             try
             {
-                param.Service.UpdateFaultGpsCoordinates(new UpdateGpsCoordinatesRequest
+                param.Service.UpdateGpsCoordinates(new UpdateGpsCoordinatesRequest
                 {
                     FaultId = faultId,
                     Latitude = param.Latitude,
@@ -58,18 +51,10 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
             {
                 param.InvalidOperationThrown = true;
             }
-        }
-
-        [When(@"I perform a find for this fault id")]
-        public void WhenIPerformAFindForThisFaultId()
-        {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
-
-            var faultId = new Guid(param.GivenFaultId);
-
-            var fault = param.Service.Find(faultId);
-
-            param.ResultsCollection = new[] {fault};
+            catch (ArgumentException)
+            {
+                param.ArgumentExceptionThrown = true;
+            }
         }
 
         [Then(@"an InvalidOperationException should be thrown")]
@@ -79,5 +64,14 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
 
             Assert.IsTrue(param.InvalidOperationThrown);
         }
+
+        [Then(@"an ArgumentException should be thrown")]
+        public void ThenAnArgumentExceptionShouldBeThrown()
+        {
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            Assert.IsTrue(param.ArgumentExceptionThrown);
+        }
+
     }
 }

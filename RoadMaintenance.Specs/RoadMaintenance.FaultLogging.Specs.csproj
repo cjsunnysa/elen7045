@@ -76,7 +76,7 @@
     <Compile Include="Helpers\TestHelpers.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Model\FaultTest.cs" />
-    <Compile Include="Model\TestDataStore.cs" />
+    <Compile Include="Helpers\TestDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchFaults\SearchFaults.feature.cs">
       <AutoGen>True</AutoGen>
@@ -85,7 +85,13 @@
     </Compile>
     <Compile Include="SearchFaults\SearchFaultsSteps.cs" />
     <Compile Include="SharedSteps.cs" />
-    <Compile Include="Model\StepParameters.cs" />
+    <Compile Include="Helpers\StepParameters.cs" />
+    <Compile Include="UpdateAddress\UpdateAddressOfAFault.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateAddressOfAFault.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAddress\UpdateTheAddressOfAFaultSteps.cs" />
     <Compile Include="UpdateGPSCoordinates\UpdateGPSCoordinates.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +113,10 @@
     <None Include="SearchFaults\SearchFaults.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SearchFaults.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UpdateAddress\UpdateAddressOfAFault.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UpdateAddressOfAFault.feature.cs</LastGenOutput>
     </None>
     <None Include="UpdateGPSCoordinates\UpdateGPSCoordinates.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

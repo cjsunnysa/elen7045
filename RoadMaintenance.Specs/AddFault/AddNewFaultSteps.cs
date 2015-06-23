@@ -8,6 +8,7 @@ using RoadMaintenance.FaultLogging.Repos;
 using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Services.Response;
+using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;
@@ -34,11 +35,9 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
                 param.Street2, 
                 param.Suburb, 
                 param.PostCode,
-                (Core.Enums.Type)param.Type, 
-                operatorId, 
-                DateTime.Now);
+                (Core.Enums.Type)param.Type);
 
-            param.ResultsCollection = new[] {param.Service.CreateFault(request)};
+            param.GivenFaultId = param.Service.CreateFault(request).ToString();
         }
 
         [Then(@"result should contain these details")]
@@ -50,14 +49,6 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
             Assert.AreEqual(param.Street2, param.ResultsCollection.First().CrossStreet);
             Assert.AreEqual(param.Suburb,  param.ResultsCollection.First().Suburb);
             Assert.AreEqual(param.Type,    param.ResultsCollection.First().Type);
-        }
-
-        [Then(@"the result has a new unique identifier")]
-        public void ThenTheResultHasANewUniqueIdentifier()
-        {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
-
-            Assert.IsNotNullOrEmpty(param.ResultsCollection.First().Id.ToString());
         }
 
         [Then(@"the result has '(.*)' as the status")]

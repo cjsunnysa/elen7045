@@ -2,6 +2,7 @@
 using Ninject;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Services;
+using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;

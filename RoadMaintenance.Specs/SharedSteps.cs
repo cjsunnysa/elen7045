@@ -20,15 +20,35 @@ namespace RoadMaintenance.FaultLogging.Specs
         [BeforeScenario]
         public virtual void ScenarioSetUp()
         {
-            var mock = new Mock<IDataStore<Fault>>();
+            var mockDataStore = new TestDataStore();
 
             var stepParams = new StepParameters
             {
-                MockDataSource = mock,
-                Service = new FaultService(new FaultLoggingRepository(mock.Object)),
+                MockDataSource = mockDataStore,
+                Service = new FaultService(new FaultLoggingRepository(mockDataStore)),
             };
 
             ScenarioContext.Current.Add("Params", stepParams);
+        }
+
+        [Given(@"the fault I am editing has the Id '(.*)'")]
+        public void GivenTheFaultIAmEditingHasTheId(string faultId)
+        {
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            param.GivenFaultId = faultId;
+        }
+
+        [When(@"I perform a find for this fault id")]
+        public void WhenIPerformAFindForThisFaultId()
+        {
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            var faultId = new Guid(param.GivenFaultId);
+
+            var fault = param.Service.Find(faultId);
+
+            param.ResultsCollection = new[] { fault };
         }
 
         [Given(@"These faults exist")]
@@ -38,7 +58,7 @@ namespace RoadMaintenance.FaultLogging.Specs
             
             var data = table.CreateSet<FaultTest>().Select(test => test.ToDomainModel()).AsQueryable();
 
-            stepParams.MockDataSource.Setup(m => m.Data).Returns(data);
+            stepParams.MockDataSource.SetData(data.ToList());
         }
         
         [Then(@"The results should be")]
