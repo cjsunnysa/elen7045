@@ -17,8 +17,6 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
     [Binding]
     public class AddNewFaultSteps
     {
-        private CreateFaultResponse _createResponse;
-
         [Given(@"I am on the Add Fault page")]
         public void GivenIAmOnTheAddFaultPage()
         {
@@ -29,7 +27,18 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         {
             var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            _createResponse = param.Service.CreateFault(new CreateFaultRequest(param.Street1, param.Street2, param.Suburb, param.PostCode, (Core.Enums.Type) param.Type, 1, DateTime.Now));
+            var operatorId = 1;
+
+            var request = new CreateFaultRequest(
+                param.Street1, 
+                param.Street2, 
+                param.Suburb, 
+                param.PostCode,
+                (Core.Enums.Type)param.Type, 
+                operatorId, 
+                DateTime.Now);
+
+            param.ResultsCollection = new[] {param.Service.CreateFault(request)};
         }
 
         [Then(@"result should contain these details")]
@@ -37,16 +46,18 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         {
             var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            Assert.AreEqual(param.Street1, _createResponse.StreetName);
-            Assert.AreEqual(param.Street2, _createResponse.CrossStreet);
-            Assert.AreEqual(param.Suburb, _createResponse.Suburb);
-            Assert.AreEqual(param.Type, _createResponse.Type);
+            Assert.AreEqual(param.Street1, param.ResultsCollection.First().StreetName);
+            Assert.AreEqual(param.Street2, param.ResultsCollection.First().CrossStreet);
+            Assert.AreEqual(param.Suburb,  param.ResultsCollection.First().Suburb);
+            Assert.AreEqual(param.Type,    param.ResultsCollection.First().Type);
         }
 
         [Then(@"the result has a new unique identifier")]
         public void ThenTheResultHasANewUniqueIdentifier()
         {
-            Assert.IsNotNullOrEmpty(_createResponse.Id.ToString());
+            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+
+            Assert.IsNotNullOrEmpty(param.ResultsCollection.First().Id.ToString());
         }
 
         [Then(@"the result has '(.*)' as the status")]
@@ -54,7 +65,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         {
             var param = ScenarioContext.Current.Get<StepParameters>("Params");
 
-            var description = param.Service.GetStatusDescription(_createResponse.Status);
+            var description = param.Service.GetStatusDescription(param.ResultsCollection.First().Status);
 
             Assert.AreEqual(status, description);
         }

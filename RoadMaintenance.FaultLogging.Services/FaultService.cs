@@ -17,12 +17,12 @@ namespace RoadMaintenance.FaultLogging.Services
     public class FaultService
     {
         private readonly IRepository<Fault,Guid> _repository;
-
         
         public FaultService(IRepository<Fault, Guid> repository)
         {
             _repository = repository;
         }
+
 
         public Type GetType(string description)
         {
@@ -56,15 +56,15 @@ namespace RoadMaintenance.FaultLogging.Services
             }
         }
 
-        public FaultSearchResponse Find(Guid id)
+        public FaultDetailsView Find(Guid id)
         {
             var fault = _repository.Find(id);
             return fault == null
                    ? null
-                   : new FaultSearchResponse(fault.Id, fault.Type, fault.Status, fault.EstimatedCompletionDate, fault.DateCompleted, fault.Address, fault.GpsCoordinates);
+                   : new FaultDetailsView(fault.Id, fault.Type, fault.Status, fault.EstimatedCompletionDate, fault.DateCompleted, fault.Address, fault.GpsCoordinates);
         }
 
-        public IEnumerable<FaultSearchResponse> Search(FaultSearchRequest request)
+        public IEnumerable<FaultDetailsView> Search(FaultSearchRequest request)
         {
             Guard.ForAllPropertiesNullOrEmpty(request, "searchRequest");
 
@@ -91,10 +91,10 @@ namespace RoadMaintenance.FaultLogging.Services
                        (request.Type == null || d.Type == request.Type) &&
                        (d.Status != Status.Repaired ||
                             (request.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)request.RepairedPeriodStartDate))
-                   select new FaultSearchResponse(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
+                   select new FaultDetailsView(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
         }
 
-        public CreateFaultResponse CreateFault(CreateFaultRequest request)
+        public FaultDetailsView CreateFault(CreateFaultRequest request)
         {
             var faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
             
@@ -108,18 +108,17 @@ namespace RoadMaintenance.FaultLogging.Services
             _repository.Save(faultRec);
 
             
-            return new CreateFaultResponse(
-                faultRec.Id, 
-                faultRec.Address.Street,
-                faultRec.Address.CrossStreet, 
-                faultRec.Address.Suburb, 
-                faultRec.Address.PostCode,
-                faultRec.Status, 
-                faultRec.Type, 
-                call.ReferenceNumber);
+            return new FaultDetailsView(
+                faultRec.Id,
+                faultRec.Type,
+                faultRec.Status,
+                faultRec.EstimatedCompletionDate,
+                faultRec.DateCompleted,
+                faultRec.Address,
+                faultRec.GpsCoordinates);
         }
 
-        public UpdateGpsCoordinatesResponse UpdateFaultGpsCoordinates(UpdateGpsCoordinatesRequest request)
+        public FaultDetailsView UpdateFaultGpsCoordinates(UpdateGpsCoordinatesRequest request)
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
 
@@ -131,7 +130,14 @@ namespace RoadMaintenance.FaultLogging.Services
 
             faultRec.UpdateGPSCoordinates(gps);
 
-            return new UpdateGpsCoordinatesResponse(faultRec.Id, gps.Longitude, gps.Latitude);
+            return new FaultDetailsView(
+                faultRec.Id,
+                faultRec.Type,
+                faultRec.Status,
+                faultRec.EstimatedCompletionDate,
+                faultRec.DateCompleted,
+                faultRec.Address,
+                faultRec.GpsCoordinates);
         }
     }
 }

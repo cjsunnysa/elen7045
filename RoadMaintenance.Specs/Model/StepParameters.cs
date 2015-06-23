@@ -23,6 +23,6 @@ namespace RoadMaintenance.FaultLogging.Specs.Model
 
         public FaultService Service { get; set; }
         public Mock<IDataStore<Fault>> MockDataSource { get; set; }
-        public IEnumerable<FaultSearchResponse> ResultsCollection { get; set; }
+        public IEnumerable<FaultDetailsView> ResultsCollection { get; set; }
     }
 }

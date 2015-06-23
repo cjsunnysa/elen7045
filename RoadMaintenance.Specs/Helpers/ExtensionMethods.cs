@@ -7,14 +7,14 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
 {
     public static class ExtensionMethods
     {
-        public static FaultSearchResponse ToResponse(this FaultTest testData)
+        public static FaultDetailsView ToResponse(this FaultTest testData)
         {
             var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
             var gps = (testData.Longitude == null || testData.Latitude == null)
                       ? null
                       : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
 
-            return new FaultSearchResponse(
+            return new FaultDetailsView(
                 testData.Id,
                 (Type)testData.TypeId, 
                 (Status)testData.StatusId,

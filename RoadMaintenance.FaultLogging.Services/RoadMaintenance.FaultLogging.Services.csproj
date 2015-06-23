@@ -40,14 +40,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFaultFactory.cs" />
-    <Compile Include="Response\CreateFaultResponse.cs" />
     <Compile Include="Request\CreateFaultRequest.cs" />
-    <Compile Include="Response\FaultSearchResponse.cs" />
+    <Compile Include="Response\FaultDetailsView.cs" />
     <Compile Include="Request\FaultSearchRequest.cs" />
     <Compile Include="FaultService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\UpdateGpsCoordinatesRequest.cs" />
-    <Compile Include="Response\UpdateGpsCoordinatesResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
