@@ -33,6 +33,13 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net40\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RoadMaintenance.SharedKernel.Specs\bin\Debug\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\RoadMaintenance.SharedKernel.Specs\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -48,11 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InTheField.feature.cs">
+    <Compile Include="DownloadWorkOrders\DownloadWorkOrders.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>InTheField.feature</DependentUpon>
+      <DependentUpon>DownloadWorkOrders.feature</DependentUpon>
     </Compile>
+    <Compile Include="DownloadWorkOrders\DownloadWorkOrdersSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,11 +68,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="InTheField.feature">
+    <None Include="DownloadWorkOrders\DownloadWorkOrders.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>InTheField.feature.cs</LastGenOutput>
+      <LastGenOutput>DownloadWorkOrders.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Repos\RoadMaintenance.FaultRepair.Repos.csproj">
+      <Project>{A7EA58EB-7104-4A5D-A99F-CAFDB56ECBBB}</Project>
+      <Name>RoadMaintenance.FaultRepair.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Specs\RoadMaintenance.SharedKernel.Specs.csproj">
+      <Project>{4c0e5d17-d5ce-4141-885c-554aa1840ad1}</Project>
+      <Name>RoadMaintenance.SharedKernel.Specs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

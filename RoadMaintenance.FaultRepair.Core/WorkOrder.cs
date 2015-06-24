@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
-    public enum WorkOrderStatus {Creating, Created, Issued, Scheduled, Verified, Closed};
+    public enum WorkOrderStatus {Creating, Created, Issued, Scheduled, AwaitingVerification, Verified, Closed};
 
     public class WorkOrder
     {
