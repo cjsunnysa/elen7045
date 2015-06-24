@@ -5,7 +5,7 @@
 
 @greenPath
 Scenario: Update a fault address change street name
-	Given I am on the Update Address page
+	Given I am a 'CallCenterOperator' user role
 	And the fault I am editing has the Id '202947AF-130F-4494-8C50-DB84A93648E1'
 	And I enter 'Fern Street' as the street name
 	And These faults exist
@@ -19,7 +19,7 @@ Scenario: Update a fault address change street name
 	| 202947AF-130F-4494-8C50-DB84A93648E1 |          |           | Fern Street |             | Randburg | 2194     | 1        | 2      |               |
 
 Scenario: Update a fault address change cross street name
-	Given I am on the Update Address page
+	Given I am a 'CallCenterOperator' user role
 	And the fault I am editing has the Id '202947AF-130F-4494-8C50-DB84A93648E1'
 	And I enter 'Fern Street' as the cross street name
 	And These faults exist
@@ -33,7 +33,7 @@ Scenario: Update a fault address change cross street name
 	| 202947AF-130F-4494-8C50-DB84A93648E1 |          |           | Hill Street | Fern Street | Randburg | 2194     | 1        | 2      |               |
 
 Scenario: Update a fault address change suburb name
-	Given I am on the Update Address page
+	Given I am a 'CallCenterOperator' user role
 	And the fault I am editing has the Id '202947AF-130F-4494-8C50-DB84A93648E1'
 	And I enter 'Sandton' as the suburb name
 	And These faults exist
@@ -47,7 +47,7 @@ Scenario: Update a fault address change suburb name
 	| 202947AF-130F-4494-8C50-DB84A93648E1 |          |           | Hill Street |             | Sandton | 2194     | 1        | 2      |               |
 
 Scenario: Update a fault address change post code
-	Given I am on the Update Address page
+	Given I am a 'CallCenterOperator' user role
 	And the fault I am editing has the Id '202947AF-130F-4494-8C50-DB84A93648E1'
 	And I enter '2196' as the post code
 	And These faults exist
@@ -61,7 +61,7 @@ Scenario: Update a fault address change post code
 	| 202947AF-130F-4494-8C50-DB84A93648E1 |          |           | Hill Street |             | Sandton | 2196     | 1        | 2      |               |
 
 Scenario: Update a fault address change all details
-	Given I am on the Update Address page
+	Given I am a 'CallCenterOperator' user role
 	And the fault I am editing has the Id '202947AF-130F-4494-8C50-DB84A93648E1'
 	And I enter 'Rivonia Rd' as the street name
 	And I enter 'Fern Ave' as the cross street name

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IFaultService.cs" />
     <Compile Include="Request\CreateFaultRequest.cs" />
     <Compile Include="Request\UpdateAddressRequest.cs" />
     <Compile Include="Response\FaultDetailsView.cs" />

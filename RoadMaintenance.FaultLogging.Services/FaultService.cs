@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using RoadMaintenance.ApplicationLayer;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
+using RoadMaintenance.FaultLogging.Repos.Interfaces;
+using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Services.Response;
-using RoadMaintenance.SharedKernel.Core.Interfaces;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Services
 {
-    public class FaultService
+    public class FaultService : IFaultService
     {
-        private readonly IRepository<Fault,Guid> _repository;
+        private readonly IFaultRepository _repository;
         
-        public FaultService(IRepository<Fault, Guid> repository)
+        public FaultService(IFaultRepository repository)
         {
             _repository = repository;
         }
-
 
         public Type GetType(string description)
         {

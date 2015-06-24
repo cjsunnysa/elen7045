@@ -5,7 +5,7 @@
 
 @greenPath
 Scenario: Update the GPS coordinates of an open fault: coordinate format spaces
-	Given I am on the Add GPS Coordinates page
+	Given I am a 'CallCenterOperator' user role
 	And I enter '33 34 35 W' as the longitude
 	And I enter '56 21 23 S' as the latitude
 	And These faults exist
@@ -20,7 +20,7 @@ Scenario: Update the GPS coordinates of an open fault: coordinate format spaces
 	| 202947AF-130F-4494-8C50-DB84A93648E1 | 56 21 23 S | 33 34 35 W | Hill Street | Malabongwe Drive | Randburg | 2194     | 1        | 2      |               |
 
 Scenario: Update the GPS coordinates of an open fault: coordinate format dashes
-	Given I am on the Add GPS Coordinates page
+	Given I am a 'CallCenterOperator' user role
 	And I enter '33-34-35-W' as the longitude
 	And I enter '56-21-23-S' as the latitude
 	And These faults exist
@@ -35,7 +35,7 @@ Scenario: Update the GPS coordinates of an open fault: coordinate format dashes
 	| 202947AF-130F-4494-8C50-DB84A93648E1 | 56 21 23 S | 33 34 35 W | Hill Street | Malabongwe Drive | Randburg | 2194     | 1        | 2      |               |
 
 Scenario: Update the GPS coordinates of an open fault: coordinate format backslashes
-	Given I am on the Add GPS Coordinates page
+	Given I am a 'CallCenterOperator' user role
 	And I enter '33/34/35/W' as the longitude
 	And I enter '56/21/23/S' as the latitude
 	And These faults exist
@@ -50,7 +50,7 @@ Scenario: Update the GPS coordinates of an open fault: coordinate format backsla
 	| 202947AF-130F-4494-8C50-DB84A93648E1 | 56 21 23 S | 33 34 35 W | Hill Street | Malabongwe Drive | Randburg | 2194     | 1        | 2      |               |
 
 Scenario: Update the GPS coordinates of a fault where the status is Closed
-	Given I am on the Add GPS Coordinates page
+	Given I am a 'CallCenterOperator' user role
 	And I enter '33/34/35/W' as the longitude
 	And I enter '56/21/23/S' as the latitude
 	And These faults exist
@@ -62,7 +62,7 @@ Scenario: Update the GPS coordinates of a fault where the status is Closed
 	Then an InvalidOperationException should be thrown
 
 Scenario: Update the GPS coordinates of a fault that does not exist
-	Given I am on the Add GPS Coordinates page
+	Given I am a 'CallCenterOperator' user role
 	And I enter '33/34/35/W' as the longitude
 	And I enter '56/21/23/S' as the latitude
 	And These faults exist

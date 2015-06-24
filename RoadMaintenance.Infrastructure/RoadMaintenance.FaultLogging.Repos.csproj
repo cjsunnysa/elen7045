@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FaultLoggingRepository.cs" />
+    <Compile Include="FaultRepository.cs" />
+    <Compile Include="Interfaces\IFaultRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

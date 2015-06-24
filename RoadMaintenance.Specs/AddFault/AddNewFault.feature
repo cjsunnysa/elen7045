@@ -5,7 +5,7 @@
 
 @mytag
 Scenario: Add a new fault
-	Given I am on the Add Fault page
+	Given I am a 'CallCenterOperator' user role
 	And I enter 'Rivonia Rd' as the street name
 	And I enter 'Sandton Drive' as the cross street name
 	And I enter 'Sandton' as the suburb name

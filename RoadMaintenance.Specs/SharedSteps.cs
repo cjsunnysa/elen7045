@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Linq;
-using Moq;
 using Ninject;
 using NUnit.Framework;
-using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos;
+using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.FaultLogging.Services;
+using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using RoadMaintenance.FaultLogging.Specs.Model;
-using RoadMaintenance.SharedKernel.Core.Interfaces;
+using RoadMaintenance.SharedKernel.Core;
+using RoadMaintenance.SharedKernel.Repos;
+using RoadMaintenance.SharedKernel.Specs;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -20,21 +22,39 @@ namespace RoadMaintenance.FaultLogging.Specs
         [BeforeScenario]
         public virtual void ScenarioSetUp()
         {
-            var mockDataStore = new TestDataStore();
+            var kernel = TestKernelBootstrapper.InitialiseKernel();
+            var scenarioParams = new ScenarioParameters();
+            var repo = new DummyFaultRepository();
 
-            var stepParams = new StepParameters
-            {
-                MockDataSource = mockDataStore,
-                Service = new FaultService(new FaultLoggingRepository(mockDataStore)),
-            };
+            kernel.Bind<IFaultService>().To<FaultService>();
+            kernel.Bind<IFaultRepository>().ToConstant(repo).InSingletonScope();
+            kernel.Bind<DummyFaultRepository>().ToConstant(repo).InSingletonScope();
 
-            ScenarioContext.Current.Add("Params", stepParams);
+            SetUpMethodAccessRepo(kernel);
+
+            scenarioParams.FaultService = kernel.Get<IFaultService>();
+
+            ScenarioContext.Current.Add("Params", scenarioParams);
+            ScenarioContext.Current.Add("kernel", kernel);
+        }
+
+        private void SetUpMethodAccessRepo(StandardKernel kernel)
+        {
+            var methodAccessRepo = kernel.Get<IMethodAccessRepository>();
+
+            methodAccessRepo.Save(new MethodAccess("FaultService.GetType", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.GetStatusDescription", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.Find", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.Search", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.CreateFault", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.UpdateGpsCoordinates", "Dispatcher", "CallCenterOperator"));
+            methodAccessRepo.Save(new MethodAccess("FaultService.UpdateAddress", "Dispatcher", "CallCenterOperator"));
         }
 
         [Given(@"the fault I am editing has the Id '(.*)'")]
         public void GivenTheFaultIAmEditingHasTheId(string faultId)
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             param.GivenFaultId = faultId;
         }
@@ -42,11 +62,11 @@ namespace RoadMaintenance.FaultLogging.Specs
         [When(@"I perform a find for this fault id")]
         public void WhenIPerformAFindForThisFaultId()
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             var faultId = new Guid(param.GivenFaultId);
-
-            var fault = param.Service.Find(faultId);
+            
+            var fault = param.FaultService.Find(faultId);
 
             param.ResultsCollection = new[] { fault };
         }
@@ -54,23 +74,29 @@ namespace RoadMaintenance.FaultLogging.Specs
         [Given(@"These faults exist")]
         public void GivenTheseFaultsExist(Table table)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
-            
+            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
+
             var data = table.CreateSet<FaultTest>().Select(test => test.ToDomainModel()).AsQueryable();
 
-            stepParams.MockDataSource.SetData(data.ToList());
+            kernel.Get<DummyFaultRepository>().SetData(data.ToList());
         }
         
         [Then(@"The results should be")]
         public void ThenTheResultsShouldBe(Table table)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
             
             var testSet = table.CreateSet<FaultTest>()
                                 .Select(t => t.ToResponse());
 
-
-            CollectionAssert.AreEquivalent(testSet, stepParams.ResultsCollection);
+            CollectionAssert.AreEquivalent(testSet, param.ResultsCollection);
         }
+
+        [Given(@"I am a '(.*)' user role")]
+        public void GivenIAmAUser(string userRole)
+        {
+            TestKernelBootstrapper.SetupUser(userRole);
+        }
+
     }
 }

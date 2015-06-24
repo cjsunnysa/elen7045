@@ -5,7 +5,7 @@
 
 @GreenPath
 Scenario: Retrieve a fault by fault identification number: correct dash format
-	Given I am on the Find Fault page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter '282A10B0-103E-40F9-8D01-320D002EFF9F' as the fault identification number
 	And   These faults exist
 	| Id                                   | Street      | CrossStreet | Suburb   | PostCode | StatusId | TypeId | EstimatedCompletionDate |
@@ -19,7 +19,7 @@ Scenario: Retrieve a fault by fault identification number: correct dash format
 	| 282A10B0-103E-40F9-8D01-320D002EFF9F | 8th Street |             | Randburg | 2195     | 1        | 3      | 2015-03-01              |
 
 Scenario: Retrieve a fault by fault identification number: no format
-	Given I am on the Find Fault page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter '282A10B0103E40F98D01320D002EFF9F' as the fault identification number
 	And   These faults exist
 	| Id                                   | Street      | CrossStreet | Suburb   | PostCode | StatusId | TypeId | EstimatedCompletionDate |
@@ -33,7 +33,7 @@ Scenario: Retrieve a fault by fault identification number: no format
 	| 282A10B0-103E-40F9-8D01-320D002EFF9F | 8th Street |             | Randburg | 2195     | 1        | 3      | 2015-03-01              |
 
 Scenario: Retrieve a fault by fault identification number: lower case letters
-	Given I am on the Find Fault page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter '282a10b0-103e-40f9-8d01-320d002eff9f' as the fault identification number
 	And   These faults exist
 	| Id                                   | Street      | CrossStreet | Suburb   | PostCode | StatusId | TypeId | EstimatedCompletionDate |

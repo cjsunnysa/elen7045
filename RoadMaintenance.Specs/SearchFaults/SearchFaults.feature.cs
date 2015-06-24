@@ -77,7 +77,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
@@ -266,7 +266,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 34
 this.ScenarioSetup(scenarioInfo);
 #line 35
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 36
  testRunner.And("I enter \'Hill Street\' as the cross street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 37
@@ -455,7 +455,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 61
 this.ScenarioSetup(scenarioInfo);
 #line 62
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 63
  testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 64
@@ -599,7 +599,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 83
 this.ScenarioSetup(scenarioInfo);
 #line 84
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 85
  testRunner.And("The date today is \'2015-04-01\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 86
@@ -743,7 +743,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 105
 this.ScenarioSetup(scenarioInfo);
 #line 106
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 107
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 108
@@ -898,7 +898,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 129
 this.ScenarioSetup(scenarioInfo);
 #line 130
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 131
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 132
@@ -1102,7 +1102,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 159
 this.ScenarioSetup(scenarioInfo);
 #line 160
- testRunner.Given("I am on the Fault Search page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 161
  testRunner.And("I enter \'Hill Street\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 162

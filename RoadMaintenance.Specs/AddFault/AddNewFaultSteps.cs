@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Moq;
 using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultLogging.Core.Model;
@@ -18,15 +17,10 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
     [Binding]
     public class AddNewFaultSteps
     {
-        [Given(@"I am on the Add Fault page")]
-        public void GivenIAmOnTheAddFaultPage()
-        {
-        }
-        
         [When(@"I press the Create button")]
         public void WhenIPressTheCreateButton()
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             var operatorId = 1;
 
@@ -37,13 +31,13 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
                 param.PostCode,
                 (Core.Enums.Type)param.Type);
 
-            param.GivenFaultId = param.Service.CreateFault(request).ToString();
+            param.GivenFaultId = param.FaultService.CreateFault(request).ToString();
         }
 
         [Then(@"result should contain these details")]
         public void ThenResultShouldContainTheseDetails()
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             Assert.AreEqual(param.Street1, param.ResultsCollection.First().StreetName);
             Assert.AreEqual(param.Street2, param.ResultsCollection.First().CrossStreet);
@@ -54,9 +48,9 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         [Then(@"the result has '(.*)' as the status")]
         public void ThenTheResultHasAsTheStatus(string status)
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
-            var description = param.Service.GetStatusDescription(param.ResultsCollection.First().Status);
+            var description = param.FaultService.GetStatusDescription(param.ResultsCollection.First().Status);
 
             Assert.AreEqual(status, description);
         }

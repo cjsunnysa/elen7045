@@ -76,7 +76,7 @@ namespace RoadMaintenance.FaultLogging.Specs.FindFault
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I am on the Find Fault page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.And("I enter \'282A10B0-103E-40F9-8D01-320D002EFF9F\' as the fault identification number" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -163,7 +163,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
 this.ScenarioSetup(scenarioInfo);
 #line 22
- testRunner.Given("I am on the Find Fault page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
  testRunner.And("I enter \'282A10B0103E40F98D01320D002EFF9F\' as the fault identification number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -249,7 +249,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 35
 this.ScenarioSetup(scenarioInfo);
 #line 36
- testRunner.Given("I am on the Find Fault page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 37
  testRunner.And("I enter \'282a10b0-103e-40f9-8d01-320d002eff9f\' as the fault identification number" +
                     "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

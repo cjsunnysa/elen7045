@@ -5,7 +5,7 @@
 
 @GreenPath
 Scenario: Find open and recently closed faults by street name
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Hill Street' as the street name
 	And   The date today is '2015-04-01'
 	And   The recently closed fault logging search period is '30' days
@@ -32,7 +32,7 @@ Scenario: Find open and recently closed faults by street name
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by cross street name
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Hill Street' as the cross street name
 	And   The date today is '2015-04-01'
 	And   The recently closed fault logging search period is '30' days
@@ -59,7 +59,7 @@ Scenario: Find open and recently closed faults by cross street name
 	| 8  | Fern Street   | Hill Street      | Randburg | 2194     | 4        | 2      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by suburb name
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Sandton' as the suburb name
 	And   The date today is '2015-04-01'
 	And   The recently closed fault logging search period is '30' days
@@ -81,7 +81,7 @@ Scenario: Find open and recently closed faults by suburb name
 	| 1  | Hill Street | Malabongwe Drive | Sandton  | 2196     | 4        | 2      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by fault type
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   The date today is '2015-04-01'
 	And   The recently closed fault logging search period is '30' days
 	And   These faults exist
@@ -103,7 +103,7 @@ Scenario: Find open and recently closed faults by fault type
 	| 5  | Hill Street | Malabongwe Drive | Sandton  | 2196     | 4        | 1      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by street and cross street
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Hill Street' as the street name
 	And   I enter 'Fern Ave' as the cross street name
 	And   The date today is '2015-04-01'
@@ -127,7 +127,7 @@ Scenario: Find open and recently closed faults by street and cross street
 	| 10 | Fern Ave    | Hill Street | Randburg | 2194     | 4        | 1      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by street and cross street and fault type
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Hill Street' as the street name
 	And   I enter 'Fern Ave' as the cross street name
 	And   The date today is '2015-04-01'
@@ -157,7 +157,7 @@ Scenario: Find open and recently closed faults by street and cross street and fa
 	| 10 | Fern Ave    | Hill Street | Randburg | 2194     | 4        | 1      | 2015-03-02    |
 
 Scenario: Find open and recently closed faults by street and cross street and fault type and suburb name
-	Given I am on the Fault Search page
+	Given I am a 'CallCenterOperator' user role
 	And   I enter 'Hill Street' as the street name
 	And   I enter 'Fern Ave' as the cross street name
 	And   I enter 'Sandton' as the suburb name

@@ -14,15 +14,10 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
     [Binding]
     public class SearchFaultsSteps
     {
-        [Given(@"I am on the Fault Search page")]
-        public void GivenIAmOnTheFaultSearchPage()
-        {
-        }
-
         [Given(@"I enter '(.*)' as the street name")]
         public void GivenIEnterAsTheStreetName(string streetName)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             stepParams.Street1 = streetName;
         }
@@ -30,7 +25,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"I enter '(.*)' as the cross street name")]
         public void GivenIEnterAsTheCrossStreetName(string crossStreetName)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             stepParams.Street2 = crossStreetName;
         }
@@ -38,7 +33,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"I enter '(.*)' as the suburb name")]
         public void GivenIEnterAsTheSuburbName(string suburb)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
             
             stepParams.Suburb = suburb;
         }
@@ -46,9 +41,9 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"I select '(.*)' as the fault type")]
         public void GivenIEnterAsTheFaultType(string faultTypeDescription)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
-            var faultType = stepParams.Service.GetType(faultTypeDescription);
+            var faultType = stepParams.FaultService.GetType(faultTypeDescription);
 
             stepParams.Type = faultType;
         }
@@ -56,7 +51,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"The date today is '(.*)'")]
         public void GivenTheDateTodayIs(string todayDate)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
             
             stepParams.TodayDate = todayDate.AsDateTime();
         }
@@ -64,7 +59,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [Given(@"The recently closed fault logging search period is '(.*)' days")]
         public void GivenTheRecentlyClosedFaultLoggingSearchPeriodIsDays(int days)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             Assert.NotNull(stepParams.TodayDate);
 
@@ -74,7 +69,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
         [When(@"I press the Search button")]
         public void WhenIPressTheSearchButton()
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
             
             var searchRequest = new FaultSearchRequest
             {
@@ -86,7 +81,7 @@ namespace RoadMaintenance.FaultLogging.Specs.SearchFaults
                 TodayDate = stepParams.TodayDate
             };
 
-            var results = stepParams.Service.Search(searchRequest);
+            var results = stepParams.FaultService.Search(searchRequest);
 
             stepParams.ResultsCollection = results;
         }

@@ -10,15 +10,10 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateAddress
     [Binding]
     public class UpdateTheAddressOfAFaultSteps
     {
-        [Given(@"I am on the Update Address page")]
-        public void GivenIAmOnTheUpdateAddressPage()
-        {
-        }
-
         [Given(@"I enter '(.*)' as the post code")]
         public void GivenIEnterAsThePostCode(string postCode)
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             param.PostCode = postCode;
         }
@@ -27,9 +22,9 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateAddress
         [When(@"I press the Update Address button")]
         public void WhenIPressTheUpdateAddressButton()
         {
-            var param = ScenarioContext.Current.Get<StepParameters>("Params");
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
-            var fault = param.Service.Find(new Guid(param.GivenFaultId));
+            var fault = param.FaultService.Find(new Guid(param.GivenFaultId));
 
             param.Street1 = string.IsNullOrEmpty(param.Street1) ? fault.StreetName : param.Street1;
             param.Street2 = string.IsNullOrEmpty(param.Street2) ? fault.CrossStreet : param.Street2;
@@ -39,7 +34,7 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateAddress
 
             var request = new UpdateAddressRequest(new Guid(param.GivenFaultId), param.Street1, param.Street2, param.Suburb, param.PostCode);
 
-            param.Service.UpdateAddress(request);
+            param.FaultService.UpdateAddress(request);
         }
     }
 }

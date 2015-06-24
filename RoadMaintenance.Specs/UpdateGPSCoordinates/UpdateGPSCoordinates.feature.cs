@@ -75,7 +75,7 @@ namespace RoadMaintenance.FaultLogging.Specs.UpdateGPSCoordinates
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.And("I enter \'33 34 35 W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
@@ -159,7 +159,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 22
 this.ScenarioSetup(scenarioInfo);
 #line 23
- testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
  testRunner.And("I enter \'33-34-35-W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 25
@@ -243,7 +243,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 37
 this.ScenarioSetup(scenarioInfo);
 #line 38
- testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 39
  testRunner.And("I enter \'33/34/35/W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 40
@@ -327,7 +327,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 52
 this.ScenarioSetup(scenarioInfo);
 #line 53
- testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 54
  testRunner.And("I enter \'33/34/35/W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 55
@@ -386,7 +386,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 64
 this.ScenarioSetup(scenarioInfo);
 #line 65
- testRunner.Given("I am on the Add GPS Coordinates page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 66
  testRunner.And("I enter \'33/34/35/W\' as the longitude", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 67

@@ -75,7 +75,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("I am on the Add Fault page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am a \'CallCenterOperator\' user role", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
  testRunner.And("I enter \'Rivonia Rd\' as the street name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10

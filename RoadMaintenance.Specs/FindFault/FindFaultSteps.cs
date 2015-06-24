@@ -12,15 +12,10 @@ namespace RoadMaintenance.FaultLogging.Specs.FindFault
     [Binding]
     public class FindFaultSteps
     {
-        [Given(@"I am on the Find Fault page")]
-        public void GivenIAmOnTheFindFaultPage()
-        {
-        }
-
         [Given(@"I enter '(.*)' as the fault identification number")]
         public void GivenIEnterAsTheFaultIdentificationNumber(string faultIdentificationNumber)
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             stepParams.GivenFaultId = faultIdentificationNumber;
         }
@@ -28,9 +23,9 @@ namespace RoadMaintenance.FaultLogging.Specs.FindFault
         [When(@"I press the Find button")]
         public void WhenIPressTheFindButton()
         {
-            var stepParams = ScenarioContext.Current.Get<StepParameters>("Params");
+            var stepParams = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
-            var findResult = stepParams.Service.Find(new Guid(stepParams.GivenFaultId));
+            var findResult = stepParams.FaultService.Find(new Guid(stepParams.GivenFaultId));
 
             stepParams.ResultsCollection = new[] {findResult};
         }
