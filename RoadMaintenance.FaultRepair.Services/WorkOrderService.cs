@@ -176,8 +176,22 @@ namespace RoadMaintenance.FaultRepair.Services
             faultID = wo.FaultID;
 
             tasks = new List<string>();
+            foreach(WorkOrderTask wot in wo.Tasks)
+            {
+                tasks.Add(wot.Description);
+            }
+
             equipment = new List<Tuple<string, int>>();
+            foreach(Equipment e in wo.Equipment)
+            {
+                equipment.Add(new Tuple<string, int>(e.Description, e.Quantity));
+            }
+
             materials = new List<Tuple<string, double, MeasurementType>>();
+            foreach(BillOfMaterialsItem item in wo.BillOfMaterials)
+            {
+                materials.Add(new Tuple<string, double, MeasurementType>(item.Description, item.Quantity, item.QuantityType));
+            }
         }
 
         public IEnumerable<WorkOrderInfo> GetUnscheduledWorkOrders()
