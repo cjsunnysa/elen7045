@@ -20,7 +20,7 @@ namespace RoadMaintenance.FaultLogging.Specs
     public class SharedSteps
     {
         [BeforeScenario]
-        public virtual void ScenarioSetUp()
+        public void ScenarioSetUp()
         {
             var kernel = TestKernelBootstrapper.InitialiseKernel();
             var scenarioParams = new ScenarioParameters();
@@ -36,6 +36,14 @@ namespace RoadMaintenance.FaultLogging.Specs
 
             ScenarioContext.Current.Add("Params", scenarioParams);
             ScenarioContext.Current.Add("kernel", kernel);
+        }
+
+        [AfterScenario]
+        public void ScenarioTearDown()
+        {
+            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
+
+            kernel.Dispose();
         }
 
         private void SetUpMethodAccessRepo(StandardKernel kernel)
