@@ -1,10 +1,11 @@
 using System;
 using System.Text.RegularExpressions;
 using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
 {
-    public class GPSCoordinates
+    public class GPSCoordinates : ValueObject<GPSCoordinates>
     {
         public string Latitude { get; set; }
         public string Longitude { get; set; }
