@@ -8,6 +8,7 @@ using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Services.Response;
+using RoadMaintenance.SharedKernel.Services;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Services
@@ -21,6 +22,7 @@ namespace RoadMaintenance.FaultLogging.Services
             _repository = repository;
         }
 
+        [MethodSecurity]
         public Type GetType(string description)
         {
             switch (description)
@@ -32,6 +34,7 @@ namespace RoadMaintenance.FaultLogging.Services
             }
         }
 
+        [MethodSecurity]
         public string GetStatusDescription(Status status)
         {
             switch (status)
@@ -53,6 +56,7 @@ namespace RoadMaintenance.FaultLogging.Services
             }
         }
 
+        [MethodSecurity]
         public FaultDetailsView Find(Guid id)
         {
             var fault = _repository.Find(id);
@@ -61,6 +65,7 @@ namespace RoadMaintenance.FaultLogging.Services
                    : new FaultDetailsView(fault.Id, fault.Type, fault.Status, fault.EstimatedCompletionDate, fault.DateCompleted, fault.Address, fault.GpsCoordinates);
         }
 
+        [MethodSecurity]
         public IEnumerable<FaultDetailsView> Search(FaultSearchRequest request)
         {
             Guard.ForAllPropertiesNullOrEmpty(request, "searchRequest");
@@ -91,6 +96,7 @@ namespace RoadMaintenance.FaultLogging.Services
                    select new FaultDetailsView(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
         }
 
+        [MethodSecurity]
         public Guid CreateFault(CreateFaultRequest request)
         {
             var faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
@@ -104,6 +110,7 @@ namespace RoadMaintenance.FaultLogging.Services
             return faultRec.Id;
         }
 
+        [MethodSecurity]
         public void UpdateGpsCoordinates(UpdateGpsCoordinatesRequest request)
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
@@ -119,6 +126,7 @@ namespace RoadMaintenance.FaultLogging.Services
             _repository.Save(faultRec);
         }
 
+        [MethodSecurity]
         public void UpdateAddress(UpdateAddressRequest request)
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
