@@ -97,7 +97,20 @@ namespace RoadMaintenance.FaultLogging.Specs
             var testSet = table.CreateSet<FaultTest>()
                                 .Select(t => t.ToResponse());
 
-            CollectionAssert.AreEquivalent(testSet, param.ResultsCollection);
+            foreach (var expected in testSet)
+            {
+                var actual = param.ResultsCollection.SingleOrDefault(f => f.Id.Equals(expected.Id));
+
+                Assert.IsNotNull(actual);
+                Assert.AreEqual(expected.StreetName, actual.StreetName);
+                Assert.AreEqual(expected.CrossStreet, actual.CrossStreet);
+                Assert.AreEqual(expected.Suburb, actual.Suburb);
+                Assert.AreEqual(expected.PostCode, actual.PostCode);
+                Assert.AreEqual(expected.Latitude, actual.Latitude);
+                Assert.AreEqual(expected.Longitude, actual.Longitude);
+                Assert.AreEqual(expected.EstimatedCompletionDate, actual.EstimatedCompletionDate);
+                Assert.AreEqual(expected.DateCompleted, actual.DateCompleted);
+            }
         }
 
         [Given(@"I am a '(.*)' user role")]

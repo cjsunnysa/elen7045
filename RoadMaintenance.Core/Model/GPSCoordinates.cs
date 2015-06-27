@@ -1,6 +1,6 @@
 using System;
 using System.Text.RegularExpressions;
-using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.Common;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
@@ -16,7 +16,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Longitude = longitude;
         }
 
-        public static GPSCoordinates Create(string longitude, string latitude)
+        internal static GPSCoordinates Create(string longitude, string latitude)
         {
             Guard.ForNullOrEmpty(latitude, "latitude");
             Guard.ForNullOrEmpty(longitude, "longitude");
@@ -31,8 +31,8 @@ namespace RoadMaintenance.FaultLogging.Core.Model
                 throw new FormatException("longitude must match format degrees-minutes-seconds-[e or w]\ndd-dd-dd-E\ndd dd dd W\ndd/dd/dd/W");
 
             var repRegEx = new Regex(@"[^\w\d]");
-            var formattedLat = repRegEx.Replace(latitude, @"\s");
-            var formattedLong = repRegEx.Replace(longitude, @"\s");
+            var formattedLat = repRegEx.Replace(latitude, @" ");
+            var formattedLong = repRegEx.Replace(longitude, @" ");
             
             return new GPSCoordinates(formattedLat, formattedLong);
         }

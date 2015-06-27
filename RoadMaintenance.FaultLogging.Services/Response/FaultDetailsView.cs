@@ -19,17 +19,17 @@ namespace RoadMaintenance.FaultLogging.Services.Response
         public DateTime? EstimatedCompletionDate { get; private set; }
         public DateTime? DateCompleted { get; private set; }
 
-        public FaultDetailsView(Guid id,Type type,Status status, DateTime? estCompletionDate, DateTime? dateCompleted, Address address, GPSCoordinates gps)
+        public FaultDetailsView(Guid id,Type type,Status status, DateTime? estCompletionDate, DateTime? dateCompleted, string street, string crossStreet, string suburb, string postCode, string latitude, string longitude)
         {
             Id = id;
             Type = type;
             Status = status;
-            Longitude = gps == null ? null : gps.Longitude;
-            Latitude  = gps == null ? null : gps.Latitude;
-            StreetName = address.Street;
-            CrossStreet = address.CrossStreet;
-            Suburb = address.Suburb;
-            PostCode = address.PostCode;
+            Longitude = longitude;
+            Latitude  = latitude;
+            StreetName = street;
+            CrossStreet = crossStreet;
+            Suburb = suburb;
+            PostCode = postCode;
             EstimatedCompletionDate = estCompletionDate;
             DateCompleted = dateCompleted;
         }

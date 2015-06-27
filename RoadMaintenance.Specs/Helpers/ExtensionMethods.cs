@@ -11,36 +11,34 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
     {
         public static FaultDetailsView ToResponse(this FaultTest testData)
         {
-            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
-            var gps = (string.IsNullOrEmpty(testData.Longitude) || string.IsNullOrEmpty(testData.Latitude)) 
-                      ? null
-                      : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
-
             return new FaultDetailsView(
                 testData.Id,
                 (Type)testData.TypeId, 
                 (Status)testData.StatusId,
                 testData.EstimatedCompletionDate,
                 testData.DateCompleted,
-                address,
-                gps);
+                testData.Street,
+                testData.CrossStreet,
+                testData.Suburb,
+                testData.PostCode,
+                testData.Latitude,
+                testData.Longitude);
         }
 
         public static Fault ToDomainModel(this FaultTest testData)
         {
-            var address = Address.Create(testData.Street, testData.CrossStreet, testData.Suburb, testData.PostCode);
-            var gps = (string.IsNullOrEmpty(testData.Longitude) || string.IsNullOrEmpty(testData.Latitude)) 
-                      ? null
-                      : GPSCoordinates.Create(testData.Longitude, testData.Latitude);
-
             var fault = Fault.Create(
                 testData.Id, 
                 (Type) testData.TypeId, 
                 (Status) testData.StatusId,
                 testData.DateCompleted, 
                 testData.EstimatedCompletionDate,
-                address,
-                gps);
+                testData.Street, 
+                testData.CrossStreet, 
+                testData.Suburb, 
+                testData.PostCode,
+                testData.Latitude, 
+                testData.Longitude);
 
             return fault;
         }

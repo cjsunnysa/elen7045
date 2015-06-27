@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
-      <Project>{7c04bf02-7227-426a-8e1c-32bd7444047e}</Project>
-      <Name>RoadMaintenance.ApplicationLayer</Name>
+    <ProjectReference Include="..\RoadMaintenance.Common\RoadMaintenance.Common.csproj">
+      <Project>{E2FB85FF-FB54-47E4-82A4-BBFAD0AA56C2}</Project>
+      <Name>RoadMaintenance.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
       <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>

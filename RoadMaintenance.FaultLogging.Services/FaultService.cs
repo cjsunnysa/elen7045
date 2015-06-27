@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
-using RoadMaintenance.ApplicationLayer;
+using RoadMaintenance.Common;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
@@ -62,7 +63,18 @@ namespace RoadMaintenance.FaultLogging.Services
             var fault = _repository.Find(id);
             return fault == null
                    ? null
-                   : new FaultDetailsView(fault.Id, fault.Type, fault.Status, fault.EstimatedCompletionDate, fault.DateCompleted, fault.Address, fault.GpsCoordinates);
+                   : new FaultDetailsView(
+                       fault.Id, 
+                       fault.Type, 
+                       fault.Status, 
+                       fault.EstimatedCompletionDate, 
+                       fault.DateCompleted, 
+                       fault.Address.Street,
+                       fault.Address.CrossStreet,
+                       fault.Address.Suburb,
+                       fault.Address.PostCode,
+                       fault.GpsCoordinates == null ? null : fault.GpsCoordinates.Latitude,
+                       fault.GpsCoordinates == null ? null : fault.GpsCoordinates.Longitude);
         }
 
         [MethodSecurity]
@@ -93,21 +105,31 @@ namespace RoadMaintenance.FaultLogging.Services
                        (request.Type == null || d.Type == request.Type) &&
                        (d.Status != Status.Repaired ||
                             (request.RepairedPeriodStartDate != null && d.DateCompleted != null && d.DateCompleted >= (DateTime)request.RepairedPeriodStartDate))
-                   select new FaultDetailsView(d.Id,d.Type,d.Status,d.EstimatedCompletionDate,d.DateCompleted,d.Address,d.GpsCoordinates);
+                   select new FaultDetailsView(
+                       d.Id,
+                       d.Type,
+                       d.Status,
+                       d.EstimatedCompletionDate,
+                       d.DateCompleted,
+                       d.Address.Street,
+                       d.Address.CrossStreet,
+                       d.Address.Suburb,
+                       d.Address.PostCode,
+                       d.GpsCoordinates == null ? null : d.GpsCoordinates.Latitude,
+                       d.GpsCoordinates == null ? null : d.GpsCoordinates.Longitude);
         }
 
         [MethodSecurity]
         public Guid CreateFault(CreateFaultRequest request)
         {
-            var faultRec = Fault.Create(request.Type, Status.PendingInvestigation);
+            var fault = Fault.Create(request.Type, Status.PendingInvestigation);
             
-            var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
-            faultRec.UpdateAddress(address);
+            fault.CreateAddress(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
 
-            _repository.Save(faultRec);
+            _repository.Save(fault);
 
             
-            return faultRec.Id;
+            return fault.Id;
         }
 
         [MethodSecurity]
@@ -115,15 +137,13 @@ namespace RoadMaintenance.FaultLogging.Services
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
 
-            var faultRec = _repository.Find(request.FaultId);
-            if (faultRec == null)
+            var fault = _repository.Find(request.FaultId);
+            if (fault == null)
                 throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
 
-            var gps = GPSCoordinates.Create(request.Longitude, request.Latitude);
+            fault.CreateGPSCoordinates(request.Longitude, request.Latitude);
 
-            faultRec.UpdateGPSCoordinates(gps);
-
-            _repository.Save(faultRec);
+            _repository.Save(fault);
         }
 
         [MethodSecurity]
@@ -131,15 +151,25 @@ namespace RoadMaintenance.FaultLogging.Services
         {
             Guard.ForNull(request.FaultId, "request.FaultId");
 
-            var faultRec = _repository.Find(request.FaultId);
-            if (faultRec == null)
+            var fault = _repository.Find(request.FaultId);
+            if (fault == null)
                 throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
 
-            var address = Address.Create(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
+            fault.CreateAddress(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
 
-            faultRec.UpdateAddress(address);
+            _repository.Save(fault);
+        }
 
-            _repository.Save(faultRec);
+        [MethodSecurity]
+        public string GetNewCallReference(CreateCallRequest request)
+        {
+            var fault = _repository.Find(request.FaultId);
+            if (fault == null)
+                throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request.FaultId");
+
+            var callReference = fault.CreateCall(request.OperatorId, request.CallDateTime);
+
+            return callReference;
         }
     }
 }

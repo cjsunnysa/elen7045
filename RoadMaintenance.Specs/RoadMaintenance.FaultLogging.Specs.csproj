@@ -72,6 +72,12 @@
       <DependentUpon>AddNewFault.feature</DependentUpon>
     </Compile>
     <Compile Include="AddFault\AddNewFaultSteps.cs" />
+    <Compile Include="CreateCallReference\CreateACallReferenceNumberSteps.cs" />
+    <Compile Include="CreateCallReference\CreateCallReference.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateCallReference.feature</DependentUpon>
+    </Compile>
     <Compile Include="FindFault\FindFault.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +114,10 @@
       <LastGenOutput>AddNewFault.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="CreateCallReference\CreateCallReference.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateCallReference.feature.cs</LastGenOutput>
+    </None>
     <None Include="FindFault\FindFault.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FindFault.feature.cs</LastGenOutput>

@@ -83,8 +83,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -94,8 +92,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table1.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -105,8 +101,6 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table1.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -123,8 +117,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -134,8 +126,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table2.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Fern Street",
                         "",
                         "Randburg",
@@ -165,8 +155,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -176,8 +164,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table3.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -187,8 +173,6 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table3.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -205,8 +189,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -216,8 +198,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table4.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "Fern Street",
                         "Randburg",
@@ -247,8 +227,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -258,8 +236,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table5.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -269,8 +245,6 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table5.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -287,8 +261,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -298,8 +270,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table6.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Sandton",
@@ -329,8 +299,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -340,8 +308,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table7.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Sandton",
@@ -351,8 +317,6 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table7.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -369,8 +333,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -380,8 +342,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table8.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Sandton",
@@ -417,8 +377,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -428,8 +386,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table9.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Sandton",
@@ -439,8 +395,6 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table9.AddRow(new string[] {
                         "46BF992F-B00C-4D76-BDD0-CCB6B993E8EF",
-                        "",
-                        "",
                         "Hill Street",
                         "",
                         "Randburg",
@@ -457,8 +411,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Id",
-                        "Latitude",
-                        "Longitude",
                         "Street",
                         "CrossStreet",
                         "Suburb",
@@ -468,8 +420,6 @@ this.ScenarioSetup(scenarioInfo);
                         "DateCompleted"});
             table10.AddRow(new string[] {
                         "202947AF-130F-4494-8C50-DB84A93648E1",
-                        "",
-                        "",
                         "Rivonia Rd",
                         "Fern Ave",
                         "Midrand",

@@ -24,5 +24,6 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         public IEnumerable<FaultDetailsView> ResultsCollection { get; set; }
         public bool InvalidOperationThrown { get; set; }
         public bool ArgumentExceptionThrown { get; set; }
+        public string CallReferenceNumber { get; set; }
     }
 }

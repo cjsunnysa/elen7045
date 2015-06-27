@@ -40,16 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\Entity.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ValueObject.cs" />
     <Compile Include="MethodAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
-      <Project>{7C04BF02-7227-426A-8E1C-32BD7444047E}</Project>
-      <Name>RoadMaintenance.ApplicationLayer</Name>
+    <ProjectReference Include="..\RoadMaintenance.Common\RoadMaintenance.Common.csproj">
+      <Project>{E2FB85FF-FB54-47E4-82A4-BBFAD0AA56C2}</Project>
+      <Name>RoadMaintenance.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

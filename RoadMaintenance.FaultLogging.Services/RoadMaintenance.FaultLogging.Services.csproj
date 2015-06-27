@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Request\CreateCallRequest.cs" />
     <Compile Include="Interfaces\IFaultService.cs" />
     <Compile Include="Request\CreateFaultRequest.cs" />
     <Compile Include="Request\UpdateAddressRequest.cs" />
@@ -52,9 +53,9 @@
     <Compile Include="Request\UpdateGpsCoordinatesRequest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
-      <Project>{7c04bf02-7227-426a-8e1c-32bd7444047e}</Project>
-      <Name>RoadMaintenance.ApplicationLayer</Name>
+    <ProjectReference Include="..\RoadMaintenance.Common\RoadMaintenance.Common.csproj">
+      <Project>{E2FB85FF-FB54-47E4-82A4-BBFAD0AA56C2}</Project>
+      <Name>RoadMaintenance.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{d08cb96d-d6c6-4cf2-b8a9-344000d7a41a}</Project>
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
       <Project>{14116858-6F1D-4662-B241-B81ACE3A1682}</Project>
       <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3C2375E2-CB74-4309-8943-4B32C5D4F30B}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Services\RoadMaintenance.SharedKernel.Services.csproj">
       <Project>{A704F286-7AA0-4451-9F64-9103A23F729E}</Project>

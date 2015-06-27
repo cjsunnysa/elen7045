@@ -44,10 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.ApplicationLayer\RoadMaintenance.ApplicationLayer.csproj">
-      <Project>{7C04BF02-7227-426A-8E1C-32BD7444047E}</Project>
-      <Name>RoadMaintenance.ApplicationLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
       <Project>{d08cb96d-d6c6-4cf2-b8a9-344000d7a41a}</Project>
       <Name>RoadMaintenance.FaultLogging.Core</Name>

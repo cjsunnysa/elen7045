@@ -1,4 +1,4 @@
-﻿using RoadMaintenance.ApplicationLayer;
+﻿using RoadMaintenance.Common;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultLogging.Core.Model
@@ -21,7 +21,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             PostCode = postCode;
         }
 
-        public static Address Create(string street, string crossStreet, string suburb, string postCode)
+        internal static Address Create(string street, string crossStreet, string suburb, string postCode)
         {
             return new Address(street, crossStreet, suburb, postCode);
         }

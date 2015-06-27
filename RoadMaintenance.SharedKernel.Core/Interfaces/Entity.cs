@@ -1,4 +1,4 @@
-﻿using RoadMaintenance.ApplicationLayer;
+﻿using RoadMaintenance.Common;
 
 namespace RoadMaintenance.SharedKernel.Core.Interfaces
 {

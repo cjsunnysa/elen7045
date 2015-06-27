@@ -22,5 +22,7 @@ namespace RoadMaintenance.FaultLogging.Services.Interfaces
         void UpdateGpsCoordinates(UpdateGpsCoordinatesRequest request);
 
         void UpdateAddress(UpdateAddressRequest request);
+
+        string GetNewCallReference(CreateCallRequest request);
     }
 }
