@@ -1,6 +1,4 @@
-﻿using RoadMaintenance.ApplicationLayer;
-
-namespace RoadMaintenance.SharedKernel.Core.Interfaces
+﻿namespace RoadMaintenance.SharedKernel.Core.Interfaces
 {
     public abstract class Entity<TId>
     {
@@ -8,7 +6,7 @@ namespace RoadMaintenance.SharedKernel.Core.Interfaces
 
         protected Entity(TId id)
         {
-            Guard.ForNull(id, "id");
+            //Guard.ForNull(id, "id");
 
             Id = id;
         }

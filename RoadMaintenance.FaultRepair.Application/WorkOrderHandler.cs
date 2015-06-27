@@ -8,6 +8,7 @@ using RoadMaintenance.FaultRepair.Services;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
 using Ninject;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 
 namespace RoadMaintenance.FaultRepair.Application
 {
@@ -29,6 +30,7 @@ namespace RoadMaintenance.FaultRepair.Application
             IKernel kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
             IWorkOrderRepository woRepo = kernel.Get<IWorkOrderRepository>();
+
             WorkOrderService wos = new WorkOrderService(woRepo);
 
             return wos.CreateWorkOrder(description, tasks, equipment, materials);

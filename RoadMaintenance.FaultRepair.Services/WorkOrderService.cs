@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Repos;
 using RoadMaintenance.FaultRepair.Core;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.SharedKernel.Services;
 
 namespace RoadMaintenance.FaultRepair.Services
@@ -85,9 +86,9 @@ namespace RoadMaintenance.FaultRepair.Services
 
             // Insert new work order into repo
 
-            workOrderRepo.InsertWorkOrder(newWO);
+            workOrderRepo.Save(newWO);
 
-            return newWO.ID;
+            return newWO.Id;
         }
 
         [MethodSecurity]
@@ -97,7 +98,7 @@ namespace RoadMaintenance.FaultRepair.Services
                                    List<Tuple<string, double, MeasurementType>> materials)
         {
             // Get existing work order from repository
-            WorkOrder wo = workOrderRepo.GetWorkOrderByID(workOrderID);
+            WorkOrder wo = workOrderRepo.Find(workOrderID);
 
             WorkOrderBuilder wob = new WorkOrderBuilder(wo);
 
@@ -132,33 +133,33 @@ namespace RoadMaintenance.FaultRepair.Services
 
             // Update work order in repo
 
-            workOrderRepo.UpdateWorkOrder(existingWO);
+            workOrderRepo.Save(existingWO);
         }
 
         [MethodSecurity]
         public void AssignWorkOrderToFault (string workOrderID, int faultID)
         {
             // Get existing work order from repository
-            WorkOrder wo = workOrderRepo.GetWorkOrderByID(workOrderID);
+            WorkOrder wo = workOrderRepo.Find(workOrderID);
 
             // Assign fault
             wo.FaultID = faultID;
 
             // Update repo with new details
-            workOrderRepo.UpdateWorkOrder(wo);
+            workOrderRepo.Save(wo);
         }
 
         [MethodSecurity]
         public void UpdateWorkOrderStatus(string workOrderID, WorkOrderStatus newStatus)
         {
             // Get existing work order from repository
-            WorkOrder wo = workOrderRepo.GetWorkOrderByID(workOrderID);
+            WorkOrder wo = workOrderRepo.Find(workOrderID);
 
             // Update the status
             wo.Status = newStatus;
 
             // Update repo with new details
-            workOrderRepo.UpdateWorkOrder(wo);
+            workOrderRepo.Save(wo);
         }
 
         public void GetWorkOrderDetails(string workOrderID,
@@ -172,7 +173,7 @@ namespace RoadMaintenance.FaultRepair.Services
                                         out List<Tuple<string, double, MeasurementType>> materials)
         {
             // Get existing work order from repository
-            WorkOrder wo = workOrderRepo.GetWorkOrderByID(workOrderID);
+            WorkOrder wo = workOrderRepo.Find(workOrderID);
 
             description = wo.Description;
             status = wo.Status;

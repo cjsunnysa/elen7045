@@ -6,6 +6,7 @@ using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.FaultRepair.Services;
 using RoadMaintenance.SharedKernel.Specs;
 using TechTalk.SpecFlow;
@@ -19,7 +20,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderList
         public void GivenTheseWorkOrdersExist(Table table)
         {            
             var workOrderRepo = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo");
-            table.Rows.ForEach(row => workOrderRepo.InsertWorkOrder(new WorkOrder(row[0]) { Status = (WorkOrderStatus)Enum.Parse(typeof(WorkOrderStatus), row[1], true) }));
+            table.Rows.ForEach(row => workOrderRepo.Save(new WorkOrder(row[0]) { Status = (WorkOrderStatus)Enum.Parse(typeof(WorkOrderStatus), row[1], true) }));
         }
         
         [When(@"I request a list of unscheduled work orders")]

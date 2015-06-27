@@ -63,14 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.Core\RoadMaintenance.FaultLogging.Core.csproj">
-      <Project>{D08CB96D-D6C6-4CF2-B8A9-344000D7A41A}</Project>
-      <Name>RoadMaintenance.FaultLogging.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RoadMaintenance.Infrastructure\RoadMaintenance.FaultLogging.Repos.csproj">
-      <Project>{73FD3A8C-3E87-4D47-A4F6-ACF3F880B71B}</Project>
-      <Name>RoadMaintenance.FaultLogging.Repos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
       <Project>{14116858-6F1D-4662-B241-B81ACE3A1682}</Project>
       <Name>RoadMaintenance.SharedKernel.Core</Name>

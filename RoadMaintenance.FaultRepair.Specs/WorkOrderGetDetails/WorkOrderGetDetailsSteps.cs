@@ -7,6 +7,7 @@ using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.FaultRepair.Services;
 using RoadMaintenance.SharedKernel.Specs;
 
@@ -23,7 +24,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
             var workOrderID = table.Rows[0][0];
             var workOrder = new WorkOrder(workOrderID);
             workOrder.Description = table.Rows[0][1];
-            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").Save(workOrder);
             ScenarioContext.Current.Add("workOrderID", workOrderID);
         }
         

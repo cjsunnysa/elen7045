@@ -7,6 +7,7 @@ using Ninject.Extensions.Interception;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Parameters;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.FaultRepair.Services;
 using RoadMaintenance.SharedKernel.Core;
 using RoadMaintenance.SharedKernel.Repos;
@@ -66,6 +67,14 @@ namespace RoadMaintenance.FaultRepair.Specs
         public void GivenIAmA(string p0)
         {
             TestKernelBootstrapper.SetupUser(p0);
+        }
+
+        [AfterScenario]
+        public void ScenarioTearDown()
+        {
+            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
+
+            kernel.Dispose();
         }
 
     }

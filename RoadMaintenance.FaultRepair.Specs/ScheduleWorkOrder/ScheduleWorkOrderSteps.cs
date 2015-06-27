@@ -17,7 +17,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void GivenIHaveAWorkOrder(Table table)
         {
             var workOrder = new WorkOrder(table.Rows[0][0]) { Duration = int.Parse(table.Rows[0][1])};
-            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo").Save(workOrder);
             ScenarioContext.Current.Add("workOrder", workOrder);
 
         }
@@ -26,8 +26,8 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void GivenIHaveARepairTeamWithIdAndTheFollowingSchedule(int p0, Table table)
         {
             var workorderRepo = ScenarioContext.Current.Get<DummyWorkOrderRepository>("workOrderRepo");
-            var repairTeam = new RepairTeam() { Id = p0.ToString() };
-            repairTeam.Schedule =
+            var repairTeam = new RepairTeam(
+                p0.ToString(),
                 table.Rows.Select(
                     row =>
                     {
@@ -35,10 +35,10 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
                             DateTime.Parse(row[2], new DateTimeFormatInfo()));
 
                         var workOrder = new WorkOrder(entry.WorkOrderId) {Duration = entry.Duration};
-                        workorderRepo.InsertWorkOrder(workOrder);
+                        workorderRepo.Save(workOrder);
 
                         return entry;
-                    }).ToList();
+                    }));
 
             ScenarioContext.Current.Get<DummyRepairTeamRepository>("repairTeamRepo").Save(repairTeam);
         }
@@ -47,7 +47,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void WhenIAssignTheWorkOrderToTheTeamWithIdFor(int p0, string p1)
         {
             var workOrder = ScenarioContext.Current.Get<WorkOrder>("workOrder");
-            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").AssignWorkOrder(workOrder.ID, p0.ToString(), DateTime.Parse(p1, new DateTimeFormatInfo()));
+            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").AssignWorkOrder(workOrder.Id, p0.ToString(), DateTime.Parse(p1, new DateTimeFormatInfo()));
             ScenarioContext.Current.Add("result", result);
         }               
 
@@ -56,7 +56,7 @@ namespace RoadMaintenance.FaultRepair.Specs.ScheduleWorkOrder
         public void WhenIUnassignTheWorkOrder()
         {
             var workOrder = ScenarioContext.Current.Get<WorkOrder>("workOrder");
-            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").UnassignWorkOrder(workOrder.ID);
+            var result = ScenarioContext.Current.Get<IRepairTeamService>("repairTeamService").UnassignWorkOrder(workOrder.Id);
             ScenarioContext.Current.Add("result", result);
         }
 

@@ -20,7 +20,7 @@ namespace RoadMaintenance.FaultRepair.Services
 
         public WorkOrderInfo(WorkOrder workOrder)
         {
-            this.Id = workOrder.ID;
+            this.Id = workOrder.Id;
             this.Description = workOrder.Description;
             this.Status = workOrder.Status;
             this.CreationDate = workOrder.CreationDate;
