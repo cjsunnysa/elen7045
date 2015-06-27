@@ -42,9 +42,12 @@
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\Type.cs" />
     <Compile Include="Model\Address.cs" />
+    <Compile Include="DTO\AddressDTO.cs" />
+    <Compile Include="DTO\CallDTO.cs" />
     <Compile Include="Model\Fault.cs" />
     <Compile Include="Model\Call.cs" />
     <Compile Include="Model\GPSCoordinates.cs" />
+    <Compile Include="DTO\GpsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

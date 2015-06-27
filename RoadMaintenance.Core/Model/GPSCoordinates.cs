@@ -16,7 +16,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Longitude = longitude;
         }
 
-        internal static GPSCoordinates Create(string longitude, string latitude)
+        internal static GPSCoordinates Create(string latitude, string longitude)
         {
             Guard.ForNullOrEmpty(latitude, "latitude");
             Guard.ForNullOrEmpty(longitude, "longitude");

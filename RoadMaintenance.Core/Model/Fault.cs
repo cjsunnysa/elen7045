@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using RoadMaintenance.Common;
+using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
@@ -34,51 +35,48 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             _calls = new List<Call>();
         }
 
-        private Fault(Guid id, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate) : base(id)
+        private Fault(Guid id, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate, AddressDTO address, GpsDTO gps) : base(id)
         {
             Status = status;
             Type = type;
             DateCompleted = dateCompleted;
             EstimatedCompletionDate = estimatedCompletionDate;
 
+            if (address != null)
+                Address = Address.Create(address.StreetName, address.CrossStreet, address.Suburb, address.PostCode);
+
+            if (gps != null)
+                GpsCoordinates = GPSCoordinates.Create(gps.Latitude, gps.Longitude);
+
             _calls = new List<Call>();
         }
-
 
         public static Fault Create(Type type, Status status)
         {
             return new Fault(type, status);
         }
 
-        public static Fault Create(Guid faultId, Type type, Status status, DateTime? dateCompleted,
-            DateTime? estimatedCompletionDate, string street, string crossStreet, string suburb, string postCode,
-            string latitude, string longitude)
+        public static Fault Create(Guid id, Type type, Status status, DateTime? dateCompleted,
+            DateTime? estimatedDateTime, AddressDTO address, GpsDTO gps)
         {
-            var fault = new Fault(faultId, type, status, dateCompleted, estimatedCompletionDate)
-            {
-                Address = Model.Address.Create(street, crossStreet, suburb, postCode),
-                GpsCoordinates = string.IsNullOrEmpty(longitude) || string.IsNullOrEmpty(latitude)
-                                 ? null 
-                                 : GPSCoordinates.Create(longitude, latitude)
-            };
-
-            return fault;
+            return new Fault(id,type,status,dateCompleted,estimatedDateTime,address,gps);
         }
 
-        public void CreateAddress(string streetName, string crossStreet, string suburb, string postCode)
+
+        public void UpdateAddress(AddressDTO address)
         {
             if (Status != Status.PendingInvestigation)
                 throw new InvalidOperationException("Can only change the address of a fault when the status is \"Pending Investigation\"");
 
-            Address = Address.Create(streetName, crossStreet, suburb, postCode);
+            Address = Address.Create(address.StreetName, address.CrossStreet, address.Suburb, address.PostCode);
         }
 
-        public void CreateGPSCoordinates(string longitude, string latitude)
+        public void UpdateGPSCoordinates(GpsDTO gps)
         {
             if (Status != Status.PendingInvestigation)
                 throw new InvalidOperationException("Can only change the GPS coordinates of a fault when the status is \"Pending Investigation\"");
 
-            GpsCoordinates = GPSCoordinates.Create(longitude, latitude);
+            GpsCoordinates = GPSCoordinates.Create(gps.Latitude, gps.Longitude);
         }
         
         public string CreateCall(int operatorId, DateTime callDate)
@@ -90,9 +88,9 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             return call.ReferenceNumber;
         }
 
-        public void AddCall(string referenceNumber, int operatorId, DateTime callDate)
+        public void AddCall(CallDTO call)
         {
-            _calls.Add(Call.Create(referenceNumber, operatorId, callDate));
+            _calls.Add(Call.Create(call.ReferenceNumber, call.OperatorId, call.CallDate));
         }
         
 

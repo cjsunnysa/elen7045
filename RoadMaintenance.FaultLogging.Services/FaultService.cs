@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using RoadMaintenance.Common;
+using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
@@ -123,8 +124,16 @@ namespace RoadMaintenance.FaultLogging.Services
         public Guid CreateFault(CreateFaultRequest request)
         {
             var fault = Fault.Create(request.Type, Status.PendingInvestigation);
-            
-            fault.CreateAddress(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
+
+            var address = new AddressDTO
+            {
+                StreetName = request.StreetName,
+                CrossStreet = request.CrossStreet,
+                Suburb = request.Suburb,
+                PostCode = request.PostCode
+            };
+
+            fault.UpdateAddress(address);
 
             _repository.Save(fault);
 
@@ -141,7 +150,13 @@ namespace RoadMaintenance.FaultLogging.Services
             if (fault == null)
                 throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
 
-            fault.CreateGPSCoordinates(request.Longitude, request.Latitude);
+            var gps = new GpsDTO
+            {
+                Latitude = request.Latitude,
+                Longitude = request.Longitude
+            };
+
+            fault.UpdateGPSCoordinates(gps);
 
             _repository.Save(fault);
         }
@@ -155,7 +170,16 @@ namespace RoadMaintenance.FaultLogging.Services
             if (fault == null)
                 throw new ArgumentException(string.Format("Fault Id {0} does not exist", request.FaultId), "request");
 
-            fault.CreateAddress(request.StreetName, request.CrossStreet, request.Suburb, request.PostCode);
+            var address = new AddressDTO
+            {
+                StreetName = request.StreetName,
+                CrossStreet = request.CrossStreet,
+                Suburb = request.Suburb,
+                PostCode = request.PostCode
+
+            };
+            
+            fault.UpdateAddress(address);
 
             _repository.Save(fault);
         }

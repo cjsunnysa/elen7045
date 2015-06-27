@@ -1,4 +1,5 @@
 ﻿using System;
+using RoadMaintenance.FaultLogging.Core.DTO;
 using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Services.Response;
@@ -28,17 +29,21 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         public static Fault ToDomainModel(this FaultTest testData)
         {
             var fault = Fault.Create(
-                testData.Id, 
-                (Type) testData.TypeId, 
+                testData.Id,
+                (Type) testData.TypeId,
                 (Status) testData.StatusId,
-                testData.DateCompleted, 
+                testData.DateCompleted,
                 testData.EstimatedCompletionDate,
-                testData.Street, 
-                testData.CrossStreet, 
-                testData.Suburb, 
-                testData.PostCode,
-                testData.Latitude, 
-                testData.Longitude);
+                new AddressDTO
+                {
+                    StreetName = testData.Street,
+                    CrossStreet = testData.CrossStreet,
+                    Suburb = testData.Suburb,
+                    PostCode = testData.PostCode,
+                },
+                string.IsNullOrEmpty(testData.Latitude)
+                ? null
+                : new GpsDTO {Latitude = testData.Latitude, Longitude = testData.Longitude});
 
             return fault;
         }
