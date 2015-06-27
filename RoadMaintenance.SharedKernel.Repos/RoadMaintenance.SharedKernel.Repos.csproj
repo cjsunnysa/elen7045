@@ -42,6 +42,7 @@
     <Compile Include="DummyRepo.cs" />
     <Compile Include="IMethodAccessRepository.cs" />
     <Compile Include="DummyMethodAccessRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

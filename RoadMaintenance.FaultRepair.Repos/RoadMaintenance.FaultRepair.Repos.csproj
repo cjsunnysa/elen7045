@@ -41,14 +41,22 @@
   <ItemGroup>
     <Compile Include="DummyRepairTeamRepository.cs" />
     <Compile Include="DummyWorkOrderRepository.cs" />
-    <Compile Include="IRepairTeamRepository.cs" />
-    <Compile Include="IWorkOrderRepository.cs" />
+    <Compile Include="Interfaces\IRepairTeamRepository.cs" />
+    <Compile Include="Interfaces\IWorkOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoadMaintenance.FaultRepair.Core\RoadMaintenance.FaultRepair.Core.csproj">
       <Project>{e35c6087-300a-47a0-8d28-b50c17f84b1b}</Project>
       <Name>RoadMaintenance.FaultRepair.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

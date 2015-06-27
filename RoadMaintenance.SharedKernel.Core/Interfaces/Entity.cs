@@ -4,7 +4,7 @@ namespace RoadMaintenance.SharedKernel.Core.Interfaces
 {
     public abstract class Entity<TId>
     {
-        public TId Id { get; internal set; }
+        public readonly TId Id;
 
         protected Entity(TId id)
         {

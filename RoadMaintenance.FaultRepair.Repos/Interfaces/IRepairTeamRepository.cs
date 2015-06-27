@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Core;
 
-namespace RoadMaintenance.FaultRepair.Repos
+namespace RoadMaintenance.FaultRepair.Repos.Interfaces
 {
     public interface IRepairTeamRepository
     {

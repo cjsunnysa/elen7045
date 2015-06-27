@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.FaultRepair.Core
 {
     public enum WorkOrderStatus {Created, Issued, Scheduled, AwaitingVerification, Verified, Closed};
 
-    public class WorkOrder
+    public class WorkOrder : Entity<string>
     {
         // Private members
 
@@ -32,14 +33,6 @@ namespace RoadMaintenance.FaultRepair.Core
         }
 
         // Properties
-        public string ID
-        {
-            get
-            {
-                return id;
-            }
-        }
-
         public string Description
         {
             get
@@ -127,8 +120,8 @@ namespace RoadMaintenance.FaultRepair.Core
         public int Duration { get; set; }
 
         public WorkOrder(string id)
-        {
-            this.id           = id;
+            :base(id)
+        {            
             description  = string.Empty;
             status       = WorkOrderStatus.Created;
             creationDate = DateTime.Now;

@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\Entity.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ValueObject.cs" />
     <Compile Include="MethodAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

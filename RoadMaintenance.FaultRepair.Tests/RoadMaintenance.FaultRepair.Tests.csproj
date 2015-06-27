@@ -54,6 +54,10 @@
       <Project>{e35c6087-300a-47a0-8d28-b50c17f84b1b}</Project>
       <Name>RoadMaintenance.FaultRepair.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
