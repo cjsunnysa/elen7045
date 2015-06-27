@@ -8,6 +8,7 @@ using NUnit.Framework;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
 using RoadMaintenance.FaultRepair.Services;
+using RoadMaintenance.SharedKernel.Specs;
 
 namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
 {
@@ -17,6 +18,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderGetDetails
         [Given(@"The system has a work order")]
         public void GivenTheSystemHasAWorkOrder(Table table)
         {
+            TestKernelBootstrapper.SetupUser("WorkOrderCreationRole");
+
             var workOrderID = table.Rows[0][0];
             var workOrder = new WorkOrder(workOrderID);
             workOrder.Description = table.Rows[0][1];

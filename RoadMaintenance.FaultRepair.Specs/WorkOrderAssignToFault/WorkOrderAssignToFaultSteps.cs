@@ -8,6 +8,7 @@ using NUnit.Framework;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
 using RoadMaintenance.FaultRepair.Services;
+using RoadMaintenance.SharedKernel.Specs;
 
 namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
 {
@@ -17,6 +18,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderAssignToFault
         [Given(@"I have a work order with id ""(.*)""")]
         public void GivenIHaveAWorkOrderWithId(string p0)
         {
+            TestKernelBootstrapper.SetupUser("WorkOrderCreationRole");
+
             var workOrderID = p0;
             var workOrder = new WorkOrder(workOrderID);
             ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);

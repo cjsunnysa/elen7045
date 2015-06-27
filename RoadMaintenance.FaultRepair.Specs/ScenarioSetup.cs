@@ -56,6 +56,10 @@ namespace RoadMaintenance.FaultRepair.Specs
             methodAccessRepo.Save(new MethodAccess("RepairTeamService.ReassignWorkOrder", "Dispatcher", "Supervisor"));
             
             methodAccessRepo.Save(new MethodAccess("WorkOrderService.GetUnscheduledWorkOrders", "Dispatcher", "Supervisor"));
+            methodAccessRepo.Save(new MethodAccess("WorkOrderService.CreateWorkOrder", "WorkOrderCreationRole"));
+            methodAccessRepo.Save(new MethodAccess("WorkOrderService.AmendWorkOrder", "WorkOrderCreationRole"));
+            methodAccessRepo.Save(new MethodAccess("WorkOrderService.AssignWorkOrderToFault", "WorkOrderCreationRole"));
+            methodAccessRepo.Save(new MethodAccess("WorkOrderService.UpdateWorkOrderStatus", "WorkOrderCreationRole"));
         }
 
         [Given(@"I am a ""(.*)""")]

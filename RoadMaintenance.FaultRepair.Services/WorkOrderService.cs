@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Repos;
 using RoadMaintenance.FaultRepair.Core;
+using RoadMaintenance.SharedKernel.Services;
 
 namespace RoadMaintenance.FaultRepair.Services
 {
@@ -44,6 +45,7 @@ namespace RoadMaintenance.FaultRepair.Services
             this.workOrderRepo = workOrderRepo;
         }
 
+        [MethodSecurity]
         public string CreateWorkOrder(string       description, 
                                       List<string> tasks,
                                       List<Tuple<string, int>> equipment,
@@ -88,6 +90,7 @@ namespace RoadMaintenance.FaultRepair.Services
             return newWO.ID;
         }
 
+        [MethodSecurity]
         public void AmendWorkOrder(string workOrderID,
                                    List<string> tasks,
                                    List<Tuple<string, int>> equipment,
@@ -132,6 +135,7 @@ namespace RoadMaintenance.FaultRepair.Services
             workOrderRepo.UpdateWorkOrder(existingWO);
         }
 
+        [MethodSecurity]
         public void AssignWorkOrderToFault (string workOrderID, int faultID)
         {
             // Get existing work order from repository
@@ -144,6 +148,7 @@ namespace RoadMaintenance.FaultRepair.Services
             workOrderRepo.UpdateWorkOrder(wo);
         }
 
+        [MethodSecurity]
         public void UpdateWorkOrderStatus(string workOrderID, WorkOrderStatus newStatus)
         {
             // Get existing work order from repository

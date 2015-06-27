@@ -32,8 +32,8 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderCreation", "As an authorised staff member of the transport department\nI want to capture a wor" +
-                    "k order for a logged fault", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "WorkOrderCreation", "As an authorised staff member of the transport department\r\nI want to capture a wo" +
+                    "rk order for a logged fault", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -158,6 +158,28 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("the result should be a new work order number created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 37
  testRunner.And("there should be 1 work order in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("An UnAuthorised person try to create work order")]
+        public virtual void AnUnAuthorisedPersonTryToCreateWorkOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("An UnAuthorised person try to create work order", ((string[])(null)));
+#line 39
+this.ScenarioSetup(scenarioInfo);
+#line 40
+ testRunner.Given("My user has \"Role 1\" as a role, but not \"WorkOrderCreationRole\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Description"});
+            table8.AddRow(new string[] {
+                        "Work Order 2"});
+#line 41
+ testRunner.When("I try and create a work order", ((string)(null)), table8, "When ");
+#line 44
+ testRunner.Then("the result should be access denied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

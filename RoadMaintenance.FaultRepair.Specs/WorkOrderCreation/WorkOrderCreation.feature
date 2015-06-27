@@ -36,4 +36,11 @@ Scenario: Create a complex work order with tasks, equipment and materials
 	Then the result should be a new work order number created
 	And there should be 1 work order in the system
 
+Scenario: An UnAuthorised person try to create work order
+	Given My user has "Role 1" as a role, but not "WorkOrderCreationRole"
+	When I try and create a work order 
+	| Description  |
+	| Work Order 2 |
+	Then the result should be access denied
+
 
