@@ -3,12 +3,8 @@
 	As an inspector
 	I want to get scheduled inspections when I login
 
-@GreenPath
 Scenario: Scheduled Inspections Received on Successfull Login
-Given the following user data
-| Id | Role               | Username | Password  |
-| 1  | Inspector          | LuisD    | myPass    |
-| 2  | CallCenterOperator | ChrisJ   | chrisPass |
+Given I am a "Inspector"
 And the following work orders
 | Id | Status               | FaultId | Priority |
 | 1  | AwaitingVerification | 10      | Low      |
@@ -23,8 +19,7 @@ And the following work orders
 | 10 | AwaitingVerification | 19      | Normal   |
 | 11 | AwaitingVerification | 20      | Normal   |
 | 12 | AwaitingVerification | 21      | Normal   |
-When I successfully login as user 'Username'
-And get the top ten work orders
+When I get the top ten work orders
 Then the result in ascending order is
 | Id | Status               | FaultId | Priority |
 | 2  | AwaitingVerification | 11      | High     |
