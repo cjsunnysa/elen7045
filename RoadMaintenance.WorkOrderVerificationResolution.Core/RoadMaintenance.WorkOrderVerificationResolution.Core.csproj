@@ -40,6 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkOrder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

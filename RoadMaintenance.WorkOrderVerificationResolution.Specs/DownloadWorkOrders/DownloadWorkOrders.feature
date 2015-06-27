@@ -33,7 +33,6 @@ Then the result in ascending order is
 | 11 | AwaitingVerification | 20      | Normal   |
 | 12 | AwaitingVerification | 21      | Normal   |
 
-
 #If there are high priority faults, only these should be displayed at first.
 #Lower priority faults will appear once the priority faults have been dealt with.
 #Ideally, the faults should be sorted based on optimising the inspector’s route so that the distance that needs to be travelled is minimised.

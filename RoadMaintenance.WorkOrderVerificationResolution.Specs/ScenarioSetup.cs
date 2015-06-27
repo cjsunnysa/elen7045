@@ -11,6 +11,8 @@ using RoadMaintenance.SharedKernel.Repos;
 using RoadMaintenance.SharedKernel.Services;
 using RoadMaintenance.SharedKernel.Specs;
 using TechTalk.SpecFlow;
+using RoadMaintenance.WorkOrderVerificationResolution.Repos;
+using RoadMaintenance.WorkOrderVerificationResolution.Services;
 
 namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
 {
@@ -21,21 +23,21 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
             public virtual void ScenarioSetUp()
             {
                 var kernel = TestKernelBootstrapper.InitialiseKernel();
-                //var workOrderRepo = new DummyWorkOrderRepository();
-                //var repairTeamRepo = new DummyRepairTeamRepository();
+                var workOrderRepo = new DummyWorkOrderRepository();
+                //var taskRepo = new DummyTaskRepository();
 
-                //kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo).InSingletonScope();
+                kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo).InSingletonScope();
                 //kernel.Bind<IRepairTeamRepository>().ToConstant(repairTeamRepo).InSingletonScope();
 
-                //kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
+                kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
                 //kernel.Bind<IRepairTeamService>().To<RepairTeamService>();
 
-                //var workOrderService = kernel.Get<IWorkOrderService>();
+                var workOrderService = kernel.Get<IWorkOrderService>();
                 //var repairTeamService = kernel.Get<IRepairTeamService>();
 
-                //ScenarioContext.Current.Add("kernel", kernel);
-                //ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
-                //ScenarioContext.Current.Add("workOrderService", workOrderService);
+                ScenarioContext.Current.Add("kernel", kernel);
+                ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
+                ScenarioContext.Current.Add("workOrderService", workOrderService);
                 //ScenarioContext.Current.Add("repairTeamRepo", repairTeamRepo);
                 //ScenarioContext.Current.Add("repairTeamService", repairTeamService);
                 /////////////////////////////////////////////////////////////////
@@ -51,21 +53,22 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
                 //ScenarioContext.Current.Add("kernel", kernel);
                 //ScenarioContext.Current.Add("workOrderRepo", repo);
 
-                //setupMethodAccessRepo(kernel);
+                setupMethodAccessRepo(kernel);
 
             }
+            [AfterScenario]
+            public void ScenarioTearDown()
+            {
+                var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
 
+                kernel.Dispose();
+            }
             private void setupMethodAccessRepo(StandardKernel kernel)
             {
                 var methodAccessRepo = kernel.Get<IMethodAccessRepository>();
 
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeam", "Dispatcher", "Supervisor"));
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeams", "Dispatcher", "Supervisor"));
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.AssignWorkOrder", "Dispatcher", "Supervisor"));
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.UnassignWorkOrder", "Dispatcher", "Supervisor"));
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.ReassignWorkOrder", "Dispatcher", "Supervisor"));
-
-                methodAccessRepo.Save(new MethodAccess("WorkOrderService.GetUnscheduledWorkOrders", "Dispatcher", "Supervisor"));
+                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeam", "Dispatcher", "Inspector"));
+                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetWorkOrder", "Dispatcher", "Inspector"));
             }
 
             [Given(@"I am a ""(.*)""")]
