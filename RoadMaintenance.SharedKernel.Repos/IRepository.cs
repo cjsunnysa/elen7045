@@ -3,11 +3,10 @@ using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.SharedKernel.Repos
 {
-    public interface IRepository<TDataType, in TIdDataType>
-        where TDataType : Entity<TIdDataType>
+    public interface IRepository<in TId, TEntity>
+        where TEntity: class
     {
-        TDataType Find(TIdDataType id);
-        IQueryable<TDataType> Search();
-        void Save(TDataType entity);
+        TEntity Find(TId id);
+        void Save(TEntity entity);
     }
 }

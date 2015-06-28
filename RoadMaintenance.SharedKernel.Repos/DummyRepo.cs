@@ -5,7 +5,8 @@ using System.Text;
 
 namespace RoadMaintenance.SharedKernel.Repos
 {
-    public abstract class DummyRepo<TId, TEntity> where TEntity : class 
+    public abstract class DummyRepo<TId, TEntity>: IRepository<TId, TEntity>
+        where TEntity : class
     {
         protected abstract Func<TEntity, TId> getId { get; }
         protected Dictionary<TId, TEntity> entityMap;
