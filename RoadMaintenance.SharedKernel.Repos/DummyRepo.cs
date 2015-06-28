@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.SharedKernel.Repos
 {
-    public abstract class DummyRepo<TId, TEntity>: IRepository<TId, TEntity>
-        where TEntity : class
-    {
-        protected abstract Func<TEntity, TId> getId { get; }
+    public abstract class DummyRepo<TId, TEntity> : IRepository<TId, TEntity> where TEntity : Entity<TId>
+    {        
         protected Dictionary<TId, TEntity> entityMap;
 
         protected DummyRepo()
@@ -18,8 +17,9 @@ namespace RoadMaintenance.SharedKernel.Repos
 
         protected DummyRepo(IEnumerable<TEntity> initialEntities)
         {
-            entityMap = initialEntities.ToDictionary(entity => getId(entity));
+            entityMap = initialEntities.ToDictionary(entity => entity.Id);
         }
+        
 
         public TEntity Find(TId id)
         {
@@ -31,7 +31,7 @@ namespace RoadMaintenance.SharedKernel.Repos
 
         public void Save(TEntity entity)
         {
-            entityMap[getId(entity)] = entity;
+            entityMap[entity.Id] = entity;
         }
     }
 }

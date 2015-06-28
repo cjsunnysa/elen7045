@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Core;
+using RoadMaintenance.SharedKernel.Repos;
 
-namespace RoadMaintenance.FaultRepair.Repos
+namespace RoadMaintenance.FaultRepair.Repos.Interfaces
 {
-    public interface IWorkOrderRepository
-    {
-        WorkOrder GetWorkOrderByID(string id);
+    public interface IWorkOrderRepository : IRepository<string, WorkOrder>
+    {        
         List<WorkOrder> GetWorkOrdersByStatus(WorkOrderStatus status);
         List<WorkOrder> GetWorkOrdersByFault(int faultID);
         List<WorkOrder> GetAllWorkOrders();
-
-        void InsertWorkOrder(WorkOrder wo);
-        void UpdateWorkOrder(WorkOrder wo);
-        void DeleteWorkOrder(WorkOrder wo);
     }
 }

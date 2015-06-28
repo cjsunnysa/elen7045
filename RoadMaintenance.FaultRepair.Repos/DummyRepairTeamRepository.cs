@@ -1,47 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using RoadMaintenance.FaultRepair.Core;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
+using RoadMaintenance.SharedKernel.Repos;
 
 namespace RoadMaintenance.FaultRepair.Repos
 {
-    public class DummyRepairTeamRepository : IRepairTeamRepository
-    {
-        private List<RepairTeam> dummyData;
+    public class DummyRepairTeamRepository : DummyRepo<string, RepairTeam>, IRepairTeamRepository
+    {        
         public DummyRepairTeamRepository()
-        {
-            dummyData = new List<RepairTeam>();
+            : base()
+        {            
         }
         public DummyRepairTeamRepository(IEnumerable<RepairTeam> data)
-        {
-            dummyData = data.ToList();
-        }
-
-        public RepairTeam Find(string id)
-        {
-            return dummyData.FirstOrDefault(repairTeam => repairTeam.Id == id);
-        }
-
-        public void Save(RepairTeam repairTeam)
-        {
-            var index = dummyData.IndexOf(repairTeam);
-            if (index == -1)
-                dummyData.Add(repairTeam);
-            else
-                dummyData[index] = repairTeam;
-        }
+            :base(data)
+        {            
+        }       
 
         public IEnumerable<RepairTeam> GeRepairTeams()
         {
-            return dummyData;
+            return this.entityMap.Values;
         }
 
 
         public RepairTeam GetRepairTeamForWorkOrder(string workOrderId)
         {
             return
-                dummyData.FirstOrDefault(
+                entityMap.Values.FirstOrDefault(
                     repairTeam => repairTeam.Schedule.Any(entry => entry.WorkOrderId == workOrderId));
         }
     }

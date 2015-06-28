@@ -1,62 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Ninject;
-using NUnit.Framework;
-using RoadMaintenance.SharedKernel.Specs;
+﻿using RoadMaintenance.WorkOrderVerificationResolution.Core;
+using RoadMaintenance.WorkOrderVerificationResolution.Repos;
+using Castle.Core.Internal;
+using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using System.Linq;
+using RoadMaintenance.WorkOrderVerificationResolution.Services;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrders
 {
     [Binding]
     public class DownloadWorkOrdersSteps
     {
-        [BeforeScenario]
-        public void SetUp()
-        {
-            var kernel = TestKernelBootstrapper.InitialiseKernel();
-
-            var repo = new DummyWorkOrderRepository();
-            var service = new WorkOrderService(repo);
-
-            kernel.Bind<IWorkOrderRepository>().ToConstant(repo).InSingletonScope();
-            kernel.Bind<IWorkOrderService>().ToConstant(service).InSingletonScope();
-            
-            ScenarioContext.Current.Add("kernel", kernel);
-            ScenarioContext.Current.Add("repo", repo);
-        }
-
-        [Given(@"the following user data")]
-        public void GivenTheFollowingUserData(Table table)
-        {
-            var userData = table.CreateSet<User>();
-            
-            ScenarioContext.Current.Add("userdata", userData);
-        }
-        
         [Given(@"the following work orders")]
         public void GivenTheFollowingWorkOrders(Table table)
         {
-            var repo = ScenarioContext.Current.Get<DummyWorkOrderRepository>("repo");
+            var workOrderRepo = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo");
 
-            var workOrderData = table.CreateSet<WorkOrder>();
-
-            repo.SetData(workOrderData.ToList());
+            table.Rows.ForEach(row => workOrderRepo.Save(new WorkOrder(row[0]) { Status = (Status)Enum.Parse(typeof(Status), row[1], true), FaultId = row[2], Priority = (Priority)Enum.Parse(typeof(Priority), row[3], true) }));                        
         }
         
-        [When(@"I successfully login as user '(.*)'")]
-        public void WhenISuccessfullyLoginAsUser(string user)
+        [When(@"I get the top ten work orders")]
+        public void WhenIGetTheTopTenWorkOrders()
         {
-            TestKernelBootstrapper.SetupUser(user);
-        }
-        
-        [When(@"get the top ten work orders")]
-        public void WhenGetTheTopTenWorkOrders()
-        {
-            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
+            //var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
 
-            var service = kernel.Get<IWorkOrderService>();
+            var service = ScenarioContext.Current.Get<IWorkOrderService>("workOrderService");
 
             var results = service.GetTopWorkOrders();
 
@@ -66,128 +37,29 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
         [Then(@"the result in ascending order is")]
         public void ThenTheResultInAscendingOrderIs(Table table)
         {
-            var expectedData = table.CreateSet<WorkOrder>().ToArray();
+            //var expectedData = table.CreateSet<WorkOrder>().ToArray();
 
-            var actualData = ScenarioContext.Current.Get<IEnumerable<WorkOrder>>("serviceresults").ToArray();
+            var actualData = ScenarioContext.Current.Get<IEnumerable<WorkOrder>>("serviceresults");
+            var enumerator = actualData.GetEnumerator();
 
-            for(var index = 0; index <= expectedData.Count(); index++)
-            {
-                var expectedRec = expectedData[index];
-                var actualRec = actualData[index];
+            Assert.True(table.Rows.Select((row) =>
+                {
+                    enumerator.MoveNext();
+                    var workOrder = enumerator.Current;
+                    return workOrder.Id == row[0] 
+                        && workOrder.Status == (Status)Enum.Parse(typeof(Status), row[1], true)
+                        && workOrder.FaultId == row[2]
+                        && workOrder.Priority == (Priority)Enum.Parse(typeof(Priority), row[3], true);
+                }).All(b => b));                        
 
-                Assert.AreEqual(expectedRec.Id, actualRec.Id);
-                Assert.AreEqual(expectedRec.Priority, actualRec.Priority);
-            }
-        }
-    }
+            //for (var index = 0; index <= expectedData.Count(); index++)
+            //{
+            //    var expectedRec = expectedData[index];
+            //    var actualRec = actualData[index];
 
-    public class WorkOrderService : IWorkOrderService
-    {
-        private readonly IWorkOrderRepository _repo;
-
-        public WorkOrderService(IWorkOrderRepository repo)
-        {
-            _repo = repo;
-        }
-
-        public IEnumerable<WorkOrder> GetTopWorkOrders()
-        {
-            return (from d in _repo.Data
-                    where
-                        d.Status.Equals(Status.AwaitingVerification)
-                    orderby d.Priority, d.Id
-                    select d).Take(10);
-        }
-    }
-
-    public interface IWorkOrderService
-    {
-        IEnumerable<WorkOrder> GetTopWorkOrders();
-    }
-
-    public interface IWorkOrderRepository
-    {
-        IQueryable<WorkOrder> Data { get; }
-    }
-
-    public class DummyWorkOrderRepository : IWorkOrderRepository
-    {
-        private List<WorkOrder> _data;
-        
-        IQueryable<WorkOrder> IWorkOrderRepository.Data
-        {
-            get { return _data.AsQueryable(); }
-        }
-
-        public DummyWorkOrderRepository()
-        {
-            _data = new List<WorkOrder>();
-        }
-
-        public void SetData(List<WorkOrder> data)
-        {
-            _data = data;
-        }
-
-    }
-
-    public class WorkOrder
-    {
-        public string Id { get; set; }
-        public Status Status { get; set; }
-        public Guid FaultId { get; set; }
-        public Priority Priority { get; set; }
-
-        public WorkOrder()
-        {
-            
-        }
-
-        public WorkOrder(string id, Status status, Guid faultId, Priority priority)
-        {
-            Id = id;
-            Status = status;
-            FaultId = faultId;
-            Priority = priority;
-        }
-    }
-
-    public enum Priority
-    {
-        Low = 1,
-        Normal = 2,
-        High = 3,
-    }
-
-    public enum Status
-    {
-        Creating, 
-        Created, 
-        Issued, 
-        Scheduled, 
-        AwaitingVerification, 
-        Verified, 
-        Closed
-    };
-
-    public class User
-    {
-        public int Id { get; set; }
-        public string Role { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-
-        public User()
-        {
-            
-        }
-        
-        public User(int id, string role, string username, string password)
-        {
-            Id = id;
-            Role = role;
-            Username = username;
-            Password = password;
+            //    Assert.AreEqual(expectedRec.Id, actualRec.Id);
+            //    Assert.AreEqual(expectedRec.Priority, actualRec.Priority);
+            //}
         }
     }
 }

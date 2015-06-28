@@ -7,7 +7,9 @@ using Ninject;
 using NUnit.Framework;
 using RoadMaintenance.FaultRepair.Core;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.FaultRepair.Services;
+using RoadMaintenance.SharedKernel.Specs;
 
 namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
 {
@@ -16,16 +18,18 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
     {
 
         /// <summary>
-        /// First scenario
+        /// Create a basic work order
         /// </summary>
 
 
         [Given(@"I have the following work orders in the system")]
         public void GivenIHaveTheFollowingWorkOrdersInTheSystem(Table table)
         {
+            TestKernelBootstrapper.SetupUser("WorkOrderCreationRole");
+
             var workOrder = new WorkOrder("WO1");
             workOrder.Description = table.Rows[0][0];
-            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").InsertWorkOrder(workOrder);
+            ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").Save(workOrder);
         }
 
         [When(@"I create and add a work order")]
@@ -51,12 +55,13 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         }
 
         /// <summary>
-        /// Second scenario
+        /// Create a complex work order with tasks, equipment and materials
         /// </summary>
 
         [Given(@"I have no work orders in the system")]
         public void GivenIHaveNoWorkOrdersInTheSystem()
         {
+            TestKernelBootstrapper.SetupUser("WorkOrderCreationRole");
         }
 
         [When(@"I created a work order as follows")]
@@ -108,6 +113,39 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         {
             List<WorkOrder> systemWorkOrders = ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").GetAllWorkOrders();
             Assert.AreEqual(systemWorkOrders.Count, p0);
+        }
+
+        /// <summary>
+        /// An UnAuthorised person try to create work order
+        /// </summary>
+
+        [Given(@"My user has ""(.*)"" as a role, but not ""(.*)""")]
+        public void GivenMyUserHasAsARoleButNot(string p0, string p1)
+        {
+            TestKernelBootstrapper.SetupUser(p0);
+        }
+
+        [When(@"I try and create a work order")]
+        public void WhenITryAndCreateAWorkOrder(Table table)
+        {
+            string result = "AccessGranted";
+            try
+            {
+                var newWOID = ScenarioContext.Current.Get<IWorkOrderService>("workOrderService").CreateWorkOrder(table.Rows[0][0], null, null, null);
+            }
+            catch (MethodAccessException e)
+            {
+                result = "AccessDenied";
+            }
+
+            ScenarioContext.Current.Add("securityResult", result);
+        }
+
+        [Then(@"the result should be access denied")]
+        public void ThenTheResultShouldBeAccessDenied()
+        {
+            var result = ScenarioContext.Current.Get<string>("securityResult");
+            Assert.AreEqual("AccessDenied", result);
         }
     }
 }

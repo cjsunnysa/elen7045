@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.SharedKernel.Repos
 {

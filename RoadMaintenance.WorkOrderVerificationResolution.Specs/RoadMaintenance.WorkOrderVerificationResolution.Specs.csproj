@@ -30,15 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net40\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Interception, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\RoadMaintenance.SharedKernel.Specs\bin\Debug\Ninject.Extensions.Interception.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net40\Ninject.Extensions.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
-      <HintPath>..\RoadMaintenance.SharedKernel.Specs\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net40\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
@@ -62,6 +64,7 @@
     </Compile>
     <Compile Include="DownloadWorkOrders\DownloadWorkOrdersSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioSetup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -75,13 +78,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoadMaintenance.FaultRepair.Repos\RoadMaintenance.FaultRepair.Repos.csproj">
-      <Project>{A7EA58EB-7104-4A5D-A99F-CAFDB56ECBBB}</Project>
-      <Name>RoadMaintenance.FaultRepair.Repos</Name>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Services\RoadMaintenance.SharedKernel.Services.csproj">
+      <Project>{a704f286-7aa0-4451-9f64-9103a23f729e}</Project>
+      <Name>RoadMaintenance.SharedKernel.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoadMaintenance.SharedKernel.Specs\RoadMaintenance.SharedKernel.Specs.csproj">
       <Project>{4c0e5d17-d5ce-4141-885c-554aa1840ad1}</Project>
       <Name>RoadMaintenance.SharedKernel.Specs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.WorkOrderVerificationResolution.Core\RoadMaintenance.WorkOrderVerificationResolution.Core.csproj">
+      <Project>{51f30e0d-79dc-4f78-89ad-5968cbb84ffd}</Project>
+      <Name>RoadMaintenance.WorkOrderVerificationResolution.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.WorkOrderVerificationResolution.Repos\RoadMaintenance.WorkOrderVerificationResolution.Repos.csproj">
+      <Project>{d3f764fb-63a0-4379-a023-485c03994ef3}</Project>
+      <Name>RoadMaintenance.WorkOrderVerificationResolution.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.WorkOrderVerificationResolution.Services\RoadMaintenance.WorkOrderVerificationResolution.Services.csproj">
+      <Project>{80089df3-948c-47ed-8682-2008d9a7dc91}</Project>
+      <Name>RoadMaintenance.WorkOrderVerificationResolution.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

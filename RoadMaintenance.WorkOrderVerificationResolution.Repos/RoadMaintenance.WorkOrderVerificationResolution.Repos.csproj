@@ -39,7 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyWorkOrderRepository.cs" />
+    <Compile Include="Interfaces\IWorkOrderRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.WorkOrderVerificationResolution.Core\RoadMaintenance.WorkOrderVerificationResolution.Core.csproj">
+      <Project>{51f30e0d-79dc-4f78-89ad-5968cbb84ffd}</Project>
+      <Name>RoadMaintenance.WorkOrderVerificationResolution.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using RoadMaintenance.FaultRepair.Repos;
+using RoadMaintenance.FaultRepair.Repos.Interfaces;
 using RoadMaintenance.SharedKernel.Services;
 
 namespace RoadMaintenance.FaultRepair.Services
@@ -44,7 +45,7 @@ namespace RoadMaintenance.FaultRepair.Services
         [MethodSecurity]
         public bool AssignWorkOrder(string workOrderId, string repairTeamId, DateTime workOrderStartTime)
         {
-            var workOrder = workOrderRepo.GetWorkOrderByID(workOrderId);
+            var workOrder = workOrderRepo.Find(workOrderId);
             var repairTeam = repairTeamRepo.Find(repairTeamId);
 
             var result = repairTeam.Assign(workOrder, workOrderStartTime);
@@ -73,7 +74,7 @@ namespace RoadMaintenance.FaultRepair.Services
         {
             var oldRepairTeam = repairTeamRepo.GetRepairTeamForWorkOrder(workOrderId);
 
-            var workOrder = workOrderRepo.GetWorkOrderByID(workOrderId);
+            var workOrder = workOrderRepo.Find(workOrderId);
             var repairTeam = repairTeamRepo.Find(repairTeamId);
 
             var result = repairTeam.Assign(workOrder, workOrderStartTime);

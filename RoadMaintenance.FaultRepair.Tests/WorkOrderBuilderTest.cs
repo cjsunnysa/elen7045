@@ -22,7 +22,7 @@ namespace RoadMaintenance.FaultRepair.Tests
             WorkOrder wo = wob.GetResult();
 
             Assert.AreEqual(wo.Description, "Basic Work Order");
-            Assert.AreEqual(wo.Status, WorkOrderStatus.Creating);
+            Assert.AreEqual(wo.Status, WorkOrderStatus.Created);
             Assert.AreEqual(wo.BillOfMaterials.Count, 0);
             Assert.AreEqual(wo.Tasks.Count, 0);
             Assert.AreEqual(wo.Equipment.Count, 0);
@@ -76,7 +76,7 @@ namespace RoadMaintenance.FaultRepair.Tests
 
             Assert.AreEqual(wo.Description, "Work Order With Equipment");
             Assert.AreEqual(wo.Equipment.Count, 2);
-            Assert.AreEqual(wo.Equipment[1].Description, "Tool 1");
+            Assert.AreEqual(wo.Equipment[1].Description, "Tool 2");
             Assert.AreEqual(wo.Equipment[1].Quantity, 100);
         }
 
@@ -98,7 +98,7 @@ namespace RoadMaintenance.FaultRepair.Tests
             WorkOrder wo = wob.GetResult();
 
             Assert.AreEqual(wo.Description, "Complex Work Order");
-            Assert.AreEqual(wo.Tasks, 3);
+            Assert.AreEqual(wo.Tasks.Count, 3);
             Assert.AreEqual(wo.BillOfMaterials.Count, 2);
             Assert.AreEqual(wo.Equipment.Count, 4);
         }
