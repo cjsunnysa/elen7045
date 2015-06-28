@@ -3,7 +3,7 @@
 	As an inspector
 	I want to get scheduled inspections when I login
 
-Scenario: Scheduled Inspections Received on Successfull Login
+Scenario: Scheduled Inspections Received on Successful Login
 Given I am a "Inspector"
 And the following work orders
 | Id | Status               | FaultId | Priority |

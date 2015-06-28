@@ -66,10 +66,10 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Scheduled Inspections Received on Successfull Login")]
-        public virtual void ScheduledInspectionsReceivedOnSuccessfullLogin()
+        [NUnit.Framework.DescriptionAttribute("Scheduled Inspections Received on Successful Login")]
+        public virtual void ScheduledInspectionsReceivedOnSuccessfulLogin()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scheduled Inspections Received on Successfull Login", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scheduled Inspections Received on Successful Login", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
@@ -85,16 +85,6 @@ testRunner.Given("I am a \"Inspector\"", ((string)(null)), ((TechTalk.SpecFlow.T
                         "AwaitingVerification",
                         "20",
                         "Low"});
-            table1.AddRow(new string[] {
-                        "5",
-                        "AwaitingVerification",
-                        "14",
-                        "Normal"});
-            table1.AddRow(new string[] {
-                        "8",
-                        "AwaitingVerification",
-                        "17",
-                        "Normal"});
             table1.AddRow(new string[] {
                         "2",
                         "AwaitingVerification",
@@ -116,13 +106,23 @@ testRunner.Given("I am a \"Inspector\"", ((string)(null)), ((TechTalk.SpecFlow.T
                         "12",
                         "Normal"});
             table1.AddRow(new string[] {
+                        "5",
+                        "AwaitingVerification",
+                        "14",
+                        "Normal"});
+            table1.AddRow(new string[] {
+                        "8",
+                        "AwaitingVerification",
+                        "17",
+                        "Normal"});
+            table1.AddRow(new string[] {
                         "10",
                         "AwaitingVerification",
                         "19",
                         "Normal"});
 #line 8
 testRunner.And("the following work orders", ((string)(null)), table1, "And ");
-#line 19
+#line 20
 testRunner.When("I get the top ten work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -170,7 +170,7 @@ testRunner.When("I get the top ten work orders", ((string)(null)), ((TechTalk.Sp
                         "AwaitingVerification",
                         "20",
                         "Low"});
-#line 20
+#line 21
 testRunner.Then("the result in ascending order is", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
