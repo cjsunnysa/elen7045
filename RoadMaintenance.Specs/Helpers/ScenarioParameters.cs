@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ninject;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Services.Interfaces;
 using RoadMaintenance.FaultLogging.Services.Response;
@@ -26,5 +27,6 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
         public bool InvalidOperationThrown { get; set; }
         public bool ArgumentExceptionThrown { get; set; }
         public string CallReferenceNumber { get; set; }
+        public Priority Priority { get; set; }
     }
 }

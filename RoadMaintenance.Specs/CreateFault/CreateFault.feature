@@ -10,6 +10,7 @@ Scenario: Add a new fault
 	And I enter 'Sandton Drive' as the cross street name
 	And I enter 'Sandton' as the suburb name
 	And I enter 'Pothole formed with water spewing onto the road.' as the description
+	And I select 'Normal' as the fault priority
 	And I select 'Pothole' as the fault type
 	When I press the Create button
 	And I perform a find for this fault id

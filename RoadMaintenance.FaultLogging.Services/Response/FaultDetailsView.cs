@@ -10,7 +10,8 @@ namespace RoadMaintenance.FaultLogging.Services.Response
         public Guid Id { get; private set; }
         public Type Type { get; private set; }
         public Status Status { get; private set; }
-        public string Description { get; set; }
+        public string Description { get; private set; }
+        public Priority Priority { get; private set; }
         public string Latitude { get; private set; }
         public string Longitude { get; private set; }
         public string StreetName { get; private set; }
@@ -20,12 +21,13 @@ namespace RoadMaintenance.FaultLogging.Services.Response
         public DateTime? EstimatedCompletionDate { get; private set; }
         public DateTime? DateCompleted { get; private set; }
 
-        public FaultDetailsView(Guid id,Type type,Status status, string description, DateTime? estCompletionDate, DateTime? dateCompleted, string street, string crossStreet, string suburb, string postCode, string latitude, string longitude)
+        public FaultDetailsView(Guid id,Type type,Status status, string description, Priority priority, DateTime? estCompletionDate, DateTime? dateCompleted, string street, string crossStreet, string suburb, string postCode, string latitude, string longitude)
         {
             Id = id;
             Type = type;
             Status = status;
             Description = description;
+            Priority = priority;
             Longitude = longitude;
             Latitude  = latitude;
             StreetName = street;
@@ -42,6 +44,7 @@ namespace RoadMaintenance.FaultLogging.Services.Response
                 Id.Equals(other.Id) &&
                 Type.Equals(other.Type) &&
                 Status.Equals(other.Status) &&
+                Priority.Equals(other.Priority) &&
                 StreetName.Equals(other.StreetName, StringComparison.CurrentCultureIgnoreCase) &&
                 Suburb.Equals(other.Suburb, StringComparison.CurrentCultureIgnoreCase) &&
                 (Longitude == null                 ? other.Longitude == null                 : Longitude.Equals(other.Longitude) ) &&
@@ -49,7 +52,8 @@ namespace RoadMaintenance.FaultLogging.Services.Response
                 (DateCompleted == null             ? other.DateCompleted == null             : DateCompleted.Equals(other.DateCompleted) ) &&
                 (EstimatedCompletionDate == null   ? other.EstimatedCompletionDate == null   : EstimatedCompletionDate.Equals(other.EstimatedCompletionDate) ) &&
                 (string.IsNullOrEmpty(CrossStreet) ? string.IsNullOrEmpty(other.CrossStreet) : CrossStreet.Equals(other.CrossStreet, StringComparison.CurrentCultureIgnoreCase) ) &&
-                (string.IsNullOrEmpty(PostCode)    ? string.IsNullOrEmpty(other.PostCode)    : PostCode.Equals(other.PostCode, StringComparison.CurrentCultureIgnoreCase) );
+                (string.IsNullOrEmpty(PostCode)    ? string.IsNullOrEmpty(other.PostCode)    : PostCode.Equals(other.PostCode, StringComparison.CurrentCultureIgnoreCase) ) &&
+                (string.IsNullOrEmpty(Description) ? string.IsNullOrEmpty(other.Description) : Description.Equals(other.Description, StringComparison.CurrentCultureIgnoreCase) );
         }
     }
 }

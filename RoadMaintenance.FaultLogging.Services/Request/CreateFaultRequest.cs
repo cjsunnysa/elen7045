@@ -1,4 +1,5 @@
 using System;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Services.Request
@@ -11,8 +12,9 @@ namespace RoadMaintenance.FaultLogging.Services.Request
         public string PostCode { get; set; }
         public Type Type { get; set; }
         public string Description { get; set; }
+        public Priority Priority { get; set; }
 
-        public CreateFaultRequest(string street1, string street2, string suburb, string postCode, Type type, string description)
+        public CreateFaultRequest(string street1, string street2, string suburb, string postCode, Type type, string description, Priority priority)
         {
             StreetName = street1;
             CrossStreet = street2;
@@ -20,6 +22,7 @@ namespace RoadMaintenance.FaultLogging.Services.Request
             PostCode = postCode;
             Type = type;
             Description = description;
+            Priority = priority;
         }
     }
 }

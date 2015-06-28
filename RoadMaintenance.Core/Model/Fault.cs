@@ -15,6 +15,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
         public Type Type { get; private set; }
         public Status Status { get; private set; }
         public string Description { get; private set; }
+        public Priority Priority { get; set; }
         public Address Address { get; private set; }
         public GPSCoordinates GpsCoordinates { get; private set; }
         public DateTime? DateCompleted { get; private set; }
@@ -26,11 +27,11 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             get { return _calls; }
         }
 
-        private Fault(Type type, Status status, string description) : base(Guid.NewGuid())
+        private Fault(Type type, Status status, string description, Priority priority) : base(Guid.NewGuid())
         {
             Guard.ForNull(type, "type");
             Guard.ForNull(status, "status");
-            Guard.ForNullOrEmpty(description, "description");
+            Guard.ForNull(priority, "priority");
 
             Type = type;
             Status = status;
@@ -38,11 +39,13 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             _calls = new List<Call>();
         }
 
-        private Fault(Guid id, Type type, Status status, string description, DateTime? dateCompleted, DateTime? estimatedCompletionDate, AddressDTO address, GpsDTO gps) : base(id)
+        private Fault(Guid id, Type type, Status status, string description, Priority priority, DateTime? dateCompleted, DateTime? estimatedCompletionDate, AddressDTO address, GpsDTO gps)
+            : base(id)
         {
             Status = status;
             Type = type;
             Description = description;
+            Priority = priority;
             DateCompleted = dateCompleted;
             EstimatedCompletionDate = estimatedCompletionDate;
 
@@ -55,15 +58,15 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             _calls = new List<Call>();
         }
 
-        public static Fault Create(Type type, Status status, string description)
+        public static Fault Create(Type type, Status status, string description, Priority priority)
         {
-            return new Fault(type, status, description);
+            return new Fault(type, status, description, priority);
         }
 
-        public static Fault Create(Guid id, Type type, Status status, string description, DateTime? dateCompleted,
+        public static Fault Create(Guid id, Type type, Status status, string description, Priority priority, DateTime? dateCompleted,
             DateTime? estimatedDateTime, AddressDTO address, GpsDTO gps)
         {
-            return new Fault(id,type,status,description,dateCompleted,estimatedDateTime,address,gps);
+            return new Fault(id, type, status, description, priority, dateCompleted, estimatedDateTime, address, gps);
         }
 
 

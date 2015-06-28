@@ -69,6 +69,7 @@ namespace RoadMaintenance.FaultLogging.Services
                        fault.Type, 
                        fault.Status, 
                        fault.Description,
+                       fault.Priority,
                        fault.EstimatedCompletionDate, 
                        fault.DateCompleted, 
                        fault.Address.Street,
@@ -90,6 +91,7 @@ namespace RoadMaintenance.FaultLogging.Services
                         fault.Type,
                         fault.Status,
                         fault.Description,
+                        fault.Priority,
                         fault.EstimatedCompletionDate,
                         fault.DateCompleted,
                         fault.Address.Street,
@@ -104,7 +106,7 @@ namespace RoadMaintenance.FaultLogging.Services
         [MethodSecurity]
         public Guid CreateFault(CreateFaultRequest request)
         {
-            var fault = Fault.Create(request.Type, Status.PendingInvestigation, request.Description);
+            var fault = Fault.Create(request.Type, Status.PendingInvestigation, request.Description, request.Priority);
 
             var address = new AddressDTO
             {

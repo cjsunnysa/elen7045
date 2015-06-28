@@ -110,6 +110,8 @@ namespace RoadMaintenance.FaultLogging.Specs
                 Assert.AreEqual(expected.Longitude, actual.Longitude);
                 Assert.AreEqual(expected.EstimatedCompletionDate, actual.EstimatedCompletionDate);
                 Assert.AreEqual(expected.DateCompleted, actual.DateCompleted);
+                Assert.AreEqual(expected.Description, actual.Description);
+                Assert.AreEqual(expected.Priority, actual.Priority);
             }
         }
 

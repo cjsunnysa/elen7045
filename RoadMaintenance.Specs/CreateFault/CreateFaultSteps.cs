@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NUnit.Framework;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Services.Request;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
 using TechTalk.SpecFlow;
@@ -17,6 +19,29 @@ namespace RoadMaintenance.FaultLogging.Specs.CreateFault
             param.Description = description;
         }
 
+        [Given(@"I select '(.*)' as the fault priority")]
+        public void GivenISelectAsTheFaultPriority(string priority)
+        {
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
+
+            switch (priority)
+            {
+                case "High" :
+                    param.Priority = Priority.High;
+                    break;
+                case "Normal" :
+                    param.Priority = Priority.Normal;
+                    break;
+                case "Low" :
+                    param.Priority = Priority.Low;
+                    break;
+                default :
+                    throw new ArgumentOutOfRangeException("priority");
+            }
+
+        }
+
+
         [When(@"I press the Create button")]
         public void WhenIPressTheCreateButton()
         {
@@ -30,7 +55,8 @@ namespace RoadMaintenance.FaultLogging.Specs.CreateFault
                 param.Suburb, 
                 param.PostCode,
                 (Core.Enums.Type)param.Type,
-                param.Description);
+                param.Description,
+                param.Priority);
 
             param.GivenFaultId = param.FaultService.CreateFault(request).ToString();
         }
@@ -41,6 +67,7 @@ namespace RoadMaintenance.FaultLogging.Specs.CreateFault
             var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
             Assert.AreEqual(param.Description, param.ResultsCollection.First().Description);
+            Assert.AreEqual(param.Priority, param.ResultsCollection.First().Priority);
             Assert.AreEqual(param.Street1, param.ResultsCollection.First().StreetName);
             Assert.AreEqual(param.Street2, param.ResultsCollection.First().CrossStreet);
             Assert.AreEqual(param.Suburb,  param.ResultsCollection.First().Suburb);
