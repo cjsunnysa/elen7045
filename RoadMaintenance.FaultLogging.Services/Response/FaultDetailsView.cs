@@ -10,8 +10,9 @@ namespace RoadMaintenance.FaultLogging.Services.Response
         public Guid Id { get; private set; }
         public Type Type { get; private set; }
         public Status Status { get; private set; }
-        public string Longitude { get; private set; }
+        public string Description { get; set; }
         public string Latitude { get; private set; }
+        public string Longitude { get; private set; }
         public string StreetName { get; private set; }
         public string CrossStreet { get; private set; }
         public string Suburb { get; private set; }
@@ -19,11 +20,12 @@ namespace RoadMaintenance.FaultLogging.Services.Response
         public DateTime? EstimatedCompletionDate { get; private set; }
         public DateTime? DateCompleted { get; private set; }
 
-        public FaultDetailsView(Guid id,Type type,Status status, DateTime? estCompletionDate, DateTime? dateCompleted, string street, string crossStreet, string suburb, string postCode, string latitude, string longitude)
+        public FaultDetailsView(Guid id,Type type,Status status, string description, DateTime? estCompletionDate, DateTime? dateCompleted, string street, string crossStreet, string suburb, string postCode, string latitude, string longitude)
         {
             Id = id;
             Type = type;
             Status = status;
+            Description = description;
             Longitude = longitude;
             Latitude  = latitude;
             StreetName = street;

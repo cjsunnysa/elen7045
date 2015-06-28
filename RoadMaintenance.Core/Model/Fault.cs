@@ -14,6 +14,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
     {
         public Type Type { get; private set; }
         public Status Status { get; private set; }
+        public string Description { get; private set; }
         public Address Address { get; private set; }
         public GPSCoordinates GpsCoordinates { get; private set; }
         public DateTime? DateCompleted { get; private set; }
@@ -25,20 +26,23 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             get { return _calls; }
         }
 
-        private Fault(Type type, Status status) : base(Guid.NewGuid())
+        private Fault(Type type, Status status, string description) : base(Guid.NewGuid())
         {
             Guard.ForNull(type, "type");
             Guard.ForNull(status, "status");
+            Guard.ForNullOrEmpty(description, "description");
 
             Type = type;
             Status = status;
+            Description = description;
             _calls = new List<Call>();
         }
 
-        private Fault(Guid id, Type type, Status status, DateTime? dateCompleted, DateTime? estimatedCompletionDate, AddressDTO address, GpsDTO gps) : base(id)
+        private Fault(Guid id, Type type, Status status, string description, DateTime? dateCompleted, DateTime? estimatedCompletionDate, AddressDTO address, GpsDTO gps) : base(id)
         {
             Status = status;
             Type = type;
+            Description = description;
             DateCompleted = dateCompleted;
             EstimatedCompletionDate = estimatedCompletionDate;
 
@@ -51,15 +55,15 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             _calls = new List<Call>();
         }
 
-        public static Fault Create(Type type, Status status)
+        public static Fault Create(Type type, Status status, string description)
         {
-            return new Fault(type, status);
+            return new Fault(type, status, description);
         }
 
-        public static Fault Create(Guid id, Type type, Status status, DateTime? dateCompleted,
+        public static Fault Create(Guid id, Type type, Status status, string description, DateTime? dateCompleted,
             DateTime? estimatedDateTime, AddressDTO address, GpsDTO gps)
         {
-            return new Fault(id,type,status,dateCompleted,estimatedDateTime,address,gps);
+            return new Fault(id,type,status,description,dateCompleted,estimatedDateTime,address,gps);
         }
 
 

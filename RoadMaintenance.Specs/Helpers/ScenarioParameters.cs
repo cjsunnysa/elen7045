@@ -11,6 +11,7 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
     {
         public string GivenFaultId { get; set; }
         public Core.Enums.Type? Type { get; set; }
+        public string Description { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
         public string Street1 { get; set; }

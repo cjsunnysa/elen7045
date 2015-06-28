@@ -6,7 +6,8 @@ namespace RoadMaintenance.FaultLogging.Core.Enums
         PendingTeamDispatch = 2,
         InProgress = 3,
         Repaired = 4,
-        OnHold = 5,
-        Rejected = 6,
+        PendingRepairVerification = 5,
+        OnHold = 6,
+        Rejected = 7,
     }
 }

@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace RoadMaintenance.FaultLogging.Specs.AddFault
+namespace RoadMaintenance.FaultLogging.Specs.CreateFault
 {
     using TechTalk.SpecFlow;
     
@@ -25,7 +25,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "AddNewFault.feature"
+#line 1 "CreateFault.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
@@ -83,14 +83,16 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.And("I enter \'Sandton\' as the suburb name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("I select \'Pothole\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter \'Pothole formed with water spewing onto the road.\' as the description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 13
- testRunner.When("I press the Create button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I select \'Pothole\' as the fault type", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And("I perform a find for this fault id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I press the Create button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
- testRunner.Then("result should contain these details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I perform a find for this fault id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
+ testRunner.Then("result should contain these details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 17
  testRunner.And("the result has \'Pending Investigation\' as the status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

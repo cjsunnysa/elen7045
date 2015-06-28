@@ -15,5 +15,6 @@ namespace RoadMaintenance.FaultLogging.Specs.Model
         public int TypeId { get; set; }
         public DateTime? EstimatedCompletionDate { get; set; }
         public DateTime? DateCompleted { get; set; }
+        public string Description { get; set; }
     }
 }

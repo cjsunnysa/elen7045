@@ -1,22 +1,22 @@
-﻿using System;
-using System.Linq;
-using Ninject;
+﻿using System.Linq;
 using NUnit.Framework;
-using RoadMaintenance.FaultLogging.Core.Model;
-using RoadMaintenance.FaultLogging.Repos;
-using RoadMaintenance.FaultLogging.Services;
 using RoadMaintenance.FaultLogging.Services.Request;
-using RoadMaintenance.FaultLogging.Services.Response;
 using RoadMaintenance.FaultLogging.Specs.Helpers;
-using RoadMaintenance.FaultLogging.Specs.Model;
-using RoadMaintenance.SharedKernel.Core.Interfaces;
 using TechTalk.SpecFlow;
 
-namespace RoadMaintenance.FaultLogging.Specs.AddFault
+namespace RoadMaintenance.FaultLogging.Specs.CreateFault
 {
     [Binding]
-    public class AddNewFaultSteps
+    public class CreateFaultSteps
     {
+        [Given(@"I enter '(.*)' as the description")]
+        public void GivenIEnterAsTheDescription(string description)
+        {
+            var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
+
+            param.Description = description;
+        }
+
         [When(@"I press the Create button")]
         public void WhenIPressTheCreateButton()
         {
@@ -29,7 +29,8 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
                 param.Street2, 
                 param.Suburb, 
                 param.PostCode,
-                (Core.Enums.Type)param.Type);
+                (Core.Enums.Type)param.Type,
+                param.Description);
 
             param.GivenFaultId = param.FaultService.CreateFault(request).ToString();
         }
@@ -39,6 +40,7 @@ namespace RoadMaintenance.FaultLogging.Specs.AddFault
         {
             var param = ScenarioContext.Current.Get<ScenarioParameters>("Params");
 
+            Assert.AreEqual(param.Description, param.ResultsCollection.First().Description);
             Assert.AreEqual(param.Street1, param.ResultsCollection.First().StreetName);
             Assert.AreEqual(param.Street2, param.ResultsCollection.First().CrossStreet);
             Assert.AreEqual(param.Suburb,  param.ResultsCollection.First().Suburb);
