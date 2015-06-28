@@ -16,6 +16,8 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
                 testData.Id,
                 (Type)testData.TypeId, 
                 (Status)testData.StatusId,
+                testData.Description,
+                testData.Priority,
                 testData.EstimatedCompletionDate,
                 testData.DateCompleted,
                 testData.Street,
@@ -32,6 +34,8 @@ namespace RoadMaintenance.FaultLogging.Specs.Helpers
                 testData.Id,
                 (Type) testData.TypeId,
                 (Status) testData.StatusId,
+                testData.Description,
+                testData.Priority,
                 testData.DateCompleted,
                 testData.EstimatedCompletionDate,
                 new AddressDTO

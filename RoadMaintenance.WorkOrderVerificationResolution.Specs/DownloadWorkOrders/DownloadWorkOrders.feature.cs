@@ -66,10 +66,10 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Scheduled Inspections Received on Successfull Login")]
-        public virtual void ScheduledInspectionsReceivedOnSuccessfullLogin()
+        [NUnit.Framework.DescriptionAttribute("Scheduled Inspections Received on Successful Login")]
+        public virtual void ScheduledInspectionsReceivedOnSuccessfulLogin()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scheduled Inspections Received on Successfull Login", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Scheduled Inspections Received on Successful Login", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7

@@ -66,12 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFault\AddNewFault.feature.cs">
+    <Compile Include="CreateFault\CreateFault.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AddNewFault.feature</DependentUpon>
+      <DependentUpon>CreateFault.feature</DependentUpon>
     </Compile>
-    <Compile Include="AddFault\AddNewFaultSteps.cs" />
+    <Compile Include="CreateFault\CreateFaultSteps.cs" />
     <Compile Include="CreateCallReference\CreateACallReferenceNumberSteps.cs" />
     <Compile Include="CreateCallReference\CreateCallReference.feature.cs">
       <AutoGen>True</AutoGen>
@@ -109,9 +109,9 @@
     <Compile Include="UpdateGPSCoordinates\UpdateTheGPSCoordinatesForAFaultSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AddFault\AddNewFault.feature">
+    <None Include="CreateFault\CreateFault.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>AddNewFault.feature.cs</LastGenOutput>
+      <LastGenOutput>CreateFault.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
     <None Include="CreateCallReference\CreateCallReference.feature">

@@ -49,8 +49,7 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
             {
                 var methodAccessRepo = kernel.Get<IMethodAccessRepository>();
 
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetRepairTeam", "Dispatcher", "Inspector"));
-                methodAccessRepo.Save(new MethodAccess("RepairTeamService.GetWorkOrder", "Dispatcher", "Inspector"));
+                methodAccessRepo.Save(new MethodAccess("workOrderService.GetTopWorkOrders", "Inspector"));
             }
 
             [Given(@"I am a ""(.*)""")]
