@@ -24,34 +24,16 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
             {
                 var kernel = TestKernelBootstrapper.InitialiseKernel();
                 var workOrderRepo = new DummyWorkOrderRepository();
-                //var taskRepo = new DummyTaskRepository();
 
                 kernel.Bind<IWorkOrderRepository>().ToConstant(workOrderRepo).InSingletonScope();
-                //kernel.Bind<IRepairTeamRepository>().ToConstant(repairTeamRepo).InSingletonScope();
 
                 kernel.Bind<IWorkOrderService>().To<WorkOrderService>();
-                //kernel.Bind<IRepairTeamService>().To<RepairTeamService>();
 
                 var workOrderService = kernel.Get<IWorkOrderService>();
-                //var repairTeamService = kernel.Get<IRepairTeamService>();
 
                 ScenarioContext.Current.Add("kernel", kernel);
                 ScenarioContext.Current.Add("workOrderRepo", workOrderRepo);
                 ScenarioContext.Current.Add("workOrderService", workOrderService);
-                //ScenarioContext.Current.Add("repairTeamRepo", repairTeamRepo);
-                //ScenarioContext.Current.Add("repairTeamService", repairTeamService);
-                /////////////////////////////////////////////////////////////////
-
-                //var kernel = TestKernelBootstrapper.InitialiseKernel();
-
-                //var repo = new DummyWorkOrderRepository();
-                //var service = new WorkOrderService(repo);
-
-                //kernel.Bind<IWorkOrderRepository>().ToConstant(repo).InSingletonScope();
-                //kernel.Bind<IWorkOrderService>().ToConstant(service).InSingletonScope();
-
-                //ScenarioContext.Current.Add("kernel", kernel);
-                //ScenarioContext.Current.Add("workOrderRepo", repo);
 
                 setupMethodAccessRepo(kernel);
 
@@ -76,6 +58,5 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs
             {
                 TestKernelBootstrapper.SetupUser(p0);
             }
-
         }
 }
