@@ -30,17 +30,84 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net40\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net40\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\FaultTestData.cs" />
+    <Compile Include="GetFaultsInJurisdiction\GetFaultsInJurisdictionSteps.cs" />
+    <Compile Include="GetFaultsInJurisdiction\GetFaultsInJurisdiction.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetFaultsInJurisdiction.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\ScenarioParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedSteps.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="GetFaultsInJurisdiction\GetFaultsInJurisdiction.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GetFaultsInJurisdiction.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultVerification.Core\RoadMaintenance.FaultVerification.Core.csproj">
+      <Project>{2d347866-caed-48d0-91d4-0256df7927d0}</Project>
+      <Name>RoadMaintenance.FaultVerification.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultVerification.Repos\RoadMaintenance.FaultVerification.Repos.csproj">
+      <Project>{9362bdf6-8ae3-4dd8-86fd-b431d64e510f}</Project>
+      <Name>RoadMaintenance.FaultVerification.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.FaultVerification.Services\RoadMaintenance.FaultVerification.Services.csproj">
+      <Project>{d2dedd8a-6f37-4a37-9db4-3b64f12c3ce8}</Project>
+      <Name>RoadMaintenance.FaultVerification.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Specs\RoadMaintenance.SharedKernel.Specs.csproj">
+      <Project>{4c0e5d17-d5ce-4141-885c-554aa1840ad1}</Project>
+      <Name>RoadMaintenance.SharedKernel.Specs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

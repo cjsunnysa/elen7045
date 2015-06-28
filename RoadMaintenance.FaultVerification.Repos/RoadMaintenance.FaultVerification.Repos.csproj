@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.2.0.0\lib\net40\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.2.0.0\lib\net40\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +51,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyFaultRepository.cs" />
+    <Compile Include="IFaultRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoadMaintenance.FaultVerification.Core\RoadMaintenance.FaultVerification.Core.csproj">
+      <Project>{2d347866-caed-48d0-91d4-0256df7927d0}</Project>
+      <Name>RoadMaintenance.FaultVerification.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Core\RoadMaintenance.SharedKernel.Core.csproj">
+      <Project>{14116858-6f1d-4662-b241-b81ace3a1682}</Project>
+      <Name>RoadMaintenance.SharedKernel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoadMaintenance.SharedKernel.Repos\RoadMaintenance.SharedKernel.Repos.csproj">
+      <Project>{3c2375e2-cb74-4309-8943-4b32c5d4f30b}</Project>
+      <Name>RoadMaintenance.SharedKernel.Repos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
