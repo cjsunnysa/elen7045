@@ -25,8 +25,6 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
         [When(@"I get the top ten work orders")]
         public void WhenIGetTheTopTenWorkOrders()
         {
-            //var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
-
             var service = ScenarioContext.Current.Get<IWorkOrderService>("workOrderService");
 
             var results = service.GetTopWorkOrders();
@@ -37,8 +35,6 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
         [Then(@"the result in ascending order is")]
         public void ThenTheResultInAscendingOrderIs(Table table)
         {
-            //var expectedData = table.CreateSet<WorkOrder>().ToArray();
-
             var actualData = ScenarioContext.Current.Get<IEnumerable<WorkOrder>>("serviceresults");
             var enumerator = actualData.GetEnumerator();
 
@@ -50,16 +46,7 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Specs.DownloadWorkOrde
                         && workOrder.Status == (Status)Enum.Parse(typeof(Status), row[1], true)
                         && workOrder.FaultId == row[2]
                         && workOrder.Priority == (Priority)Enum.Parse(typeof(Priority), row[3], true);
-                }).All(b => b));                        
-
-            //for (var index = 0; index <= expectedData.Count(); index++)
-            //{
-            //    var expectedRec = expectedData[index];
-            //    var actualRec = actualData[index];
-
-            //    Assert.AreEqual(expectedRec.Id, actualRec.Id);
-            //    Assert.AreEqual(expectedRec.Priority, actualRec.Priority);
-            //}
+                }).All(b => b));
         }
     }
 }

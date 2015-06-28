@@ -36,13 +36,12 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Core
 
     public enum Status
     {
-        Creating, 
-        Created, 
-        Issued, 
-        Scheduled, 
-        AwaitingVerification, 
-        Verified, 
-        Closed
+        Issued,
+        Scheduled,
+        Completed,
+        Satisfactory,
+        Unsatisfactory,
+        AwaitingVerification
     };
 
 }

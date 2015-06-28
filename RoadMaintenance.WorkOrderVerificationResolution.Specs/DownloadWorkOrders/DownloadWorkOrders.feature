@@ -3,35 +3,31 @@
 	As an inspector
 	I want to get scheduled inspections when I login
 
-Scenario: Scheduled Inspections Received on Successfull Login
+Scenario: Scheduled Inspections Received on Successful Login
 Given I am a "Inspector"
 And the following work orders
 | Id | Status               | FaultId | Priority |
-| 1  | AwaitingVerification | 10      | Low      |
+| 11 | AwaitingVerification | 20      | Low      |
 | 2  | AwaitingVerification | 11      | High     |
-| 3  | AwaitingVerification | 12      | Normal   |
-| 4  | Scheduled            | 13      | Normal   |
-| 5  | AwaitingVerification | 14      | Normal   |
 | 6  | AwaitingVerification | 15      | High     |
 | 7  | AwaitingVerification | 16      | High     |
+| 3  | AwaitingVerification | 12      | Normal   |
+| 5  | AwaitingVerification | 14      | Normal   |
 | 8  | AwaitingVerification | 17      | Normal   |
-| 9  | Created              | 18      | High     |
 | 10 | AwaitingVerification | 19      | Normal   |
-| 11 | AwaitingVerification | 20      | Normal   |
-| 12 | AwaitingVerification | 21      | Normal   |
+
+
 When I get the top ten work orders
 Then the result in ascending order is
 | Id | Status               | FaultId | Priority |
 | 2  | AwaitingVerification | 11      | High     |
 | 6  | AwaitingVerification | 15      | High     |
 | 7  | AwaitingVerification | 16      | High     |
-| 1  | AwaitingVerification | 10      | Low      |
 | 3  | AwaitingVerification | 12      | Normal   |
 | 5  | AwaitingVerification | 14      | Normal   |
 | 8  | AwaitingVerification | 17      | Normal   |
 | 10 | AwaitingVerification | 19      | Normal   |
-| 11 | AwaitingVerification | 20      | Normal   |
-| 12 | AwaitingVerification | 21      | Normal   |
+| 11 | AwaitingVerification | 20      | Low      |
 
 #If there are high priority faults, only these should be displayed at first.
 #Lower priority faults will appear once the priority faults have been dealt with.
