@@ -1,51 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RoadMaintenance.FaultLogging.Core.Enums;
 using RoadMaintenance.FaultLogging.Core.Model;
 using RoadMaintenance.FaultLogging.Repos.Interfaces;
 using RoadMaintenance.SharedKernel.Core.Interfaces;
+using RoadMaintenance.SharedKernel.Repos;
+using Type = RoadMaintenance.FaultLogging.Core.Enums.Type;
 
 namespace RoadMaintenance.FaultLogging.Repos
 {
-    public class DummyFaultRepository : IFaultRepository
+    public class DummyFaultRepository : DummyRepo<Guid, Fault>, IFaultRepository
     {
-        private List<Fault> _data;
+        public DummyFaultRepository() : base()
+        { }
 
-        public DummyFaultRepository()
-        {
-            _data = new List<Fault>();
-        }
-
-        public DummyFaultRepository(List<Fault> data)
-        {
-            _data = data;
-        }
+        public DummyFaultRepository(IEnumerable<Fault> data) : base(data)
+        { }
 
         public void SetData(List<Fault> data)
         {
-            _data = data;
+            entityMap = data.ToDictionary(entity => entity.Id);
         }
 
-        public Fault Find(Guid id)
+        public IEnumerable<Fault> SearchForRecentFaults(string street1, string street2, string suburb, Type? type, DateTime? repairedPeriod)
         {
-            return _data.SingleOrDefault(d => d.Id.Equals(id));
-        }
+            var lowerStreet1 = string.IsNullOrEmpty(street1)
+                          ? null
+                          : street1.ToLower();
 
-        public IQueryable<Fault> Search()
-        {
-            return _data.AsQueryable();
-        }
+            var lowerStreet2 = string.IsNullOrEmpty(street2)
+                          ? null
+                          : street2.ToLower();
 
-        public void Save(Fault entity)
-        {
-            var existRec = _data.SingleOrDefault(f => f.Id.Equals(entity.Id));
-            if (existRec == null)
-                _data.Add(entity);
-            else
-            {
-                _data.Remove(entity);
-                _data.Add(entity);
-            }
+            var lowerSuburb = string.IsNullOrEmpty(suburb)
+                          ? null
+                          : suburb.ToLower();
+            
+            return from d in entityMap.AsQueryable()
+                   let s = d.Value.Address.Street.ToLower()
+                   let cs = d.Value.Address.CrossStreet.ToLower()
+                   let sub = d.Value.Address.Suburb.ToLower()
+                   where
+                       (lowerStreet1 == null || s.Contains(lowerStreet1) || cs.Contains(lowerStreet1)) &&
+                       (lowerStreet2 == null || s.Contains(lowerStreet2) || cs.Contains(lowerStreet2)) &&
+                       (lowerSuburb == null || sub.Contains(lowerSuburb)) &&
+                       (type == null || d.Value.Type == type) &&
+                       (d.Value.Status != Status.Repaired ||
+                            (repairedPeriod != null && d.Value.DateCompleted != null && d.Value.DateCompleted >= (DateTime)repairedPeriod))
+                   select d.Value;
         }
     }
 }
