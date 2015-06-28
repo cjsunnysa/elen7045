@@ -14,7 +14,7 @@ namespace RoadMaintenance.WorkOrderVerificationResolution.Repos
             return (from d in entityMap.Values
                     where
                         d.Status.Equals(Status.AwaitingVerification)
-                    orderby d.Priority descending, d.Id
+                    orderby d.Priority descending, int.Parse(d.Id) ascending
                     select d).Take(10);
         }
     }
