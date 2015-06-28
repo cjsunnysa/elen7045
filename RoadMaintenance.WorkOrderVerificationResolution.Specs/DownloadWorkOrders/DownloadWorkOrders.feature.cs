@@ -86,6 +86,16 @@ testRunner.Given("I am a \"Inspector\"", ((string)(null)), ((TechTalk.SpecFlow.T
                         "20",
                         "Low"});
             table1.AddRow(new string[] {
+                        "5",
+                        "AwaitingVerification",
+                        "14",
+                        "Normal"});
+            table1.AddRow(new string[] {
+                        "8",
+                        "AwaitingVerification",
+                        "17",
+                        "Normal"});
+            table1.AddRow(new string[] {
                         "2",
                         "AwaitingVerification",
                         "11",
@@ -106,23 +116,13 @@ testRunner.Given("I am a \"Inspector\"", ((string)(null)), ((TechTalk.SpecFlow.T
                         "12",
                         "Normal"});
             table1.AddRow(new string[] {
-                        "5",
-                        "AwaitingVerification",
-                        "14",
-                        "Normal"});
-            table1.AddRow(new string[] {
-                        "8",
-                        "AwaitingVerification",
-                        "17",
-                        "Normal"});
-            table1.AddRow(new string[] {
                         "10",
                         "AwaitingVerification",
                         "19",
                         "Normal"});
 #line 8
 testRunner.And("the following work orders", ((string)(null)), table1, "And ");
-#line 20
+#line 19
 testRunner.When("I get the top ten work orders", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -170,7 +170,7 @@ testRunner.When("I get the top ten work orders", ((string)(null)), ((TechTalk.Sp
                         "AwaitingVerification",
                         "20",
                         "Low"});
-#line 21
+#line 20
 testRunner.Then("the result in ascending order is", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
