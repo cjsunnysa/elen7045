@@ -14,7 +14,6 @@ namespace RoadMaintenance.FaultRepair.Core
 
         private static int idSequence = 0;
 
-        private string id;        
         private string description;
         private WorkOrderStatus status;
         private DateTime creationDate;

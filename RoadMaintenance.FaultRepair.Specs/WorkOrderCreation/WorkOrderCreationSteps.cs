@@ -27,7 +27,7 @@ namespace RoadMaintenance.FaultRepair.Specs.WorkOrderCreation
         {
             TestKernelBootstrapper.SetupUser("WorkOrderCreationRole");
 
-            var workOrder = new WorkOrder("WO1");
+            var workOrder = new WorkOrder("WO0");
             workOrder.Description = table.Rows[0][0];
             ScenarioContext.Current.Get<IWorkOrderRepository>("workOrderRepo").Save(workOrder);
         }
