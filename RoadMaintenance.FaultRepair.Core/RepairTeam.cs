@@ -17,8 +17,11 @@ namespace RoadMaintenance.FaultRepair.Core
         public RepairTeam(string id, IEnumerable<ScheduleEntry> scheduleEntries )
             :base(id)
         {
-                
+            schedule = scheduleEntries.ToList();                
         }
+
+        public RepairTeam(string id, params ScheduleEntry[] scheduleEntries)            
+            :this(id, (IEnumerable<ScheduleEntry>)scheduleEntries) { }        
 
         public bool Assign(WorkOrder workOrder, DateTime workOrderStartTime)
         {            
