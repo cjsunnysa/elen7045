@@ -36,6 +36,7 @@ namespace RoadMaintenance.FaultLogging.Core.Model
             Type = type;
             Status = status;
             Description = description;
+            Priority = priority;
             _calls = new List<Call>();
         }
 
