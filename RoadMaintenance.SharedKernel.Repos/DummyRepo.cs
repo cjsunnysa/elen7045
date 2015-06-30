@@ -6,7 +6,8 @@ using RoadMaintenance.SharedKernel.Core.Interfaces;
 
 namespace RoadMaintenance.SharedKernel.Repos
 {
-    public abstract class DummyRepo<TId, TEntity> : IRepository<TId, TEntity> where TEntity : Entity<TId>
+    public abstract class DummyRepo<TId, TEntity> : IRepository<TId, TEntity> 
+        where TEntity : Entity<TId>
     {        
         protected Dictionary<TId, TEntity> entityMap;
 

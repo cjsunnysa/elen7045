@@ -66,6 +66,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateFault.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateFault.feature</DependentUpon>
+    </Compile>
     <Compile Include="CreateFault\CreateFault.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,6 +114,10 @@
     <Compile Include="UpdateGPSCoordinates\UpdateTheGPSCoordinatesForAFaultSteps.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CreateFault.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateFault.feature.cs</LastGenOutput>
+    </None>
     <None Include="CreateFault\CreateFault.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateFault.feature.cs</LastGenOutput>

@@ -11,6 +11,11 @@ namespace RoadMaintenance.FaultLogging.Repos.Interfaces
 {
     public interface IFaultRepository : IRepository<Guid, Fault>
     {
-        IEnumerable<Fault> SearchForRecentFaults(string street1, string street2, string suburb, Type? type, DateTime? repairedPeriod);
+        IEnumerable<Fault> SearchForRecentFaults(
+            string street1,
+            string street2, 
+            string suburb, 
+            Type? type, 
+            DateTime? repairedPeriod);
     }
 }
