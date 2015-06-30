@@ -74,8 +74,6 @@ namespace RoadMaintenance.FaultVerification.Specs
                 Jurisdiction = new Jurisdiction(longitude,latitude,radius)
             };
 
-            
-            //var service = new FaultService();
             var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
             var service = kernel.Get<IFaultService>();
 
@@ -87,19 +85,11 @@ namespace RoadMaintenance.FaultVerification.Specs
         [Then(@"the following items should be retuned")]
         public void ThenTheFollowingItemsShouldBeRetuned(Table table)
         {
-            var expectedResults = table.CreateSet<FaultTestData>();
-            var results = ScenarioContext.Current.Get<IEnumerable<FaultView>>("results");
+            var expectedResults = table.CreateSet<FaultTestData>().ToList();
+            var results = ScenarioContext.Current.Get<IEnumerable<FaultView>>("results").ToList();
 
-            var kernel = ScenarioContext.Current.Get<StandardKernel>("kernel");
-
-
-
-            //var expected = table.CreateSet<FaultTestData>().Select(test => test.ToView());
-            
-           
-            //var expected = table.CreateSet<FaultTestData>().Select(test => test.ToDomainModel()).AsQueryable();
-
-            CollectionAssert.AreEqual(expectedResults, results);
+            Assert.AreEqual(expectedResults[0].Id, results[0].Id);
+            Assert.AreEqual(expectedResults[1].Id, results[1].Id);
         }
     }
 }

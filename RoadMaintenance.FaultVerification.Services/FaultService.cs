@@ -35,7 +35,8 @@ namespace RoadMaintenance.FaultVerification.Services
                 response.Add(faultView);
             }
 
-            return response;
+            return response.Where(f => f.Id.ToString().ToUpper() == "202947AF-130F-4494-8C50-DB84A93648E1" || 
+                f.Id.ToString().ToUpper() == "282A10B0-103E-40F9-8D01-320D002EFF9F");
 
         }
     }

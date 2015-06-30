@@ -23,9 +23,9 @@ namespace RoadMaintenance.FaultRepair.Core
             this.wo = wo;
         }
 
-        public void AddTask(string description)
+        public void AddTask(string description, byte[] image = null, string imageAnnotation = "")
         {
-            wo.Tasks.Add(new WorkOrderTask(WorkOrderTaskStatus.Created, description));
+            wo.Tasks.Add(new WorkOrderTask(WorkOrderTaskStatus.Created, description, image, imageAnnotation));
         }
 
         public void AddEquipment(string description, int quantity)
